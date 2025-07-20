@@ -1,11 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HappeningHub - Event Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
+<body class="bg-white font-sans text-gray-800">
+
+  <!-- Header with Logo -->
+  <header class="flex items-center justify-center py-4 bg-gradient-to-r from-purple-600 to-pink-500">
+    <img src="https://via.placeholder.com/50" alt="HappeningHub Logo" class="h-12 mr-2" />
+    <h1 class="text-3xl font-bold text-white">HappeningHub</h1>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="bg-black bg-opacity-60 backdrop-blur sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+      <!-- Dropdown -->
+      <div class="relative group">
+        <button class="text-white px-3 py-2 flex items-center hover:bg-gray-700 rounded">
+          Events
+          <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="absolute hidden group-hover:block bg-black text-white rounded shadow mt-2 w-48">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-700">Marriage</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-700">Birthday</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-700">Concert</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-700">Corporate Events</a>
+        </div>
+      </div>
+      <!-- Contact Us -->
+      <button onclick="toggleOffcanvas()" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">
+        Contact Us
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Carousel -->
+  <div class="relative w-full h-[28rem] overflow-hidden">
+    <div class="absolute inset-0 flex transition-transform duration-500" id="carousel">
+      <div class="min-w-full bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1200x400?text=Marriage+Event')">
+        <div class="flex items-center justify-center h-full bg-black bg-opacity-40">
+          <h2 class="text-4xl text-white font-extrabold">Make Your Big Day Magical</h2>
+        </div>
+      </div>
+      <div class="min-w-full bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1200x400?text=Concert+Event')">
+        <div class="flex items-center justify-center h-full bg-black bg-opacity-40">
+          <h2 class="text-4xl text-white font-extrabold">Feel the Beat with Epic Events</h2>
+        </div>
+      </div>
+      <div class="min-w-full bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1200x400?text=Corporate+Event')">
+        <div class="flex items-center justify-center h-full bg-black bg-opacity-40">
+          <h2 class="text-4xl text-white font-extrabold">Professional. Elegant. Seamless.</h2>
+        </div>
+      </div>
+    </div>
+    <button onclick="prevSlide()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-r">&lt;</button>
+    <button onclick="nextSlide()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-l">&gt;</button>
+  </div>
+
+  <!-- Services Section -->
+  <section class="py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+          <h3 class="text-xl font-bold mb-2">Wedding Planning</h3>
+          <p>From venues to vows, we craft unforgettable weddings tailored to your style.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+          <h3 class="text-xl font-bold mb-2">Birthday Events</h3>
+          <p>Celebrate life with unique birthday themes, games, and delightful moments.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+          <h3 class="text-xl font-bold mb-2">Corporate Meetings</h3>
+          <p>Delivering high-end professionalism for corporate events, product launches, and conferences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto text-center px-4">
+      <h2 class="text-3xl font-bold mb-12">What Our Clients Say</h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+          <p class="italic">“HappeningHub made our wedding dream come true. Everything was perfect and stress-free!”</p>
+          <h4 class="mt-4 font-semibold text-purple-600">– Aisha & Rohit</h4>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+          <p class="italic">“Their birthday planning team turned my kid's party into a wonderland. Amazing job!”</p>
+          <h4 class="mt-4 font-semibold text-purple-600">– Priya K.</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-gradient-to-r from-indigo-600 to-pink-500 text-white py-16">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-3xl font-bold mb-4">Ready to Plan Your Next Big Event?</h2>
+      <p class="mb-6">Let our team turn your vision into a spectacular reality. Get in touch today.</p>
+      <button onclick="toggleOffcanvas()" class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-200">
+        Contact Us
+      </button>
+    </div>
+  </section>
+
+  <!-- Offcanvas Contact Form -->
+  <div id="offcanvas" class="fixed inset-y-0 right-0 w-80 bg-white shadow transform translate-x-full transition-transform duration-300 z-50">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold">Contact Us</h2>
+        <button onclick="toggleOffcanvas()" class="text-gray-600 hover:text-black">
+          ✕
+        </button>
+      </div>
+      <form>
+        <input type="text" placeholder="Name" class="w-full mb-4 px-3 py-2 border rounded" />
+        <input type="email" placeholder="Email" class="w-full mb-4 px-3 py-2 border rounded" />
+        <textarea placeholder="Message" class="w-full mb-4 px-3 py-2 border rounded"></textarea>
+        <button type="button" class="w-full bg-black text-white py-2 rounded hover:bg-gray-800">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-2">HappeningHub</h3>
+        <p>Your one-stop solution for unforgettable events. We make it happen!</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-2">Quick Links</h3>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#" class="hover:underline">Services</a></li>
+          <li><a href="#" class="hover:underline">Gallery</a></li>
+          <li><a href="#" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-2">Follow Us</h3>
+        <div class="flex space-x-4">
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook--v1.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-400 mt-6 text-sm">&copy; 2025 HappeningHub. All rights reserved.</div>
+  </footer>
+
+  <!-- JS for Carousel & Offcanvas -->
+  <script>
+    function toggleOffcanvas() {
+      document.getElementById('offcanvas').classList.toggle('translate-x-full');
+    }
+
+    let currentSlide = 0;
+    const carousel = document.getElementById('carousel');
+    const totalSlides = carousel.children.length;
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    setInterval(nextSlide, 5000);
+  </script>
 </body>
 </html>
