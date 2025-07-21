@@ -1,11 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HappeningHub - Event Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
 </head>
-<body>
-    
+<body class="bg-white font-sans text-gray-800">
+
+  <!-- Header -->
+  <header class="flex items-center justify-center py-4 bg-gradient-to-r from-blue-600 to-teal-500">
+    <img src="./image/Location Pin Celebration Design.png" alt="HappeningHub Logo" class="h-24 pt-2" />
+    <h1 class="text-3xl font-bold text-white ml-2">HappeningHub</h1>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="bg-black bg-opacity-60 backdrop-blur sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+      <div class="flex space-x-6 items-center">
+        <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Home</a>
+
+        <div class="relative">
+          <button onclick="toggleDropdown()" class="text-white px-3 py-2 flex items-center hover:bg-gray-700 rounded text-sm font-medium">
+            Events
+            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id="dropdownMenu" class="absolute hidden bg-black text-white rounded shadow mt-2 w-48">
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Marriage</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Birthday</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Concert</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Corporate Events</a>
+          </div>
+        </div>
+
+        <!-- Blog Link -->
+        <a href="#blog" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Blog</a>
+      </div>
+
+      <div class="flex space-x-4 items-center">
+        <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign In</a>
+        <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign Up</a>
+        <button onclick="toggleOffcanvas()" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Contact Us</button>
+      </div>
+    </div>
+  </nav>
+
+ <!-- HERO VIDEO CAROUSEL -->
+<section class="relative h-screen overflow-hidden" id="hero">
+  <div id="heroCarousel" class="flex transition-transform duration-700 ease-in-out h-full w-[400%]">
+    <!-- Slide 1 -->
+    <div class="w-full h-full relative">
+      <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
+        <source src="./landingvedios/concert.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+        <div class="text-white text-center p-8">
+          <h1 class="text-4xl font-bold mb-4">Rainy Concert Vibes</h1>
+          <p class="text-lg">Feel the energy of every drop and beat.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="w-full h-full relative">
+      <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
+        <source src="./landingvedios/wed.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+        <div class="text-white text-center p-8">
+          <h1 class="text-4xl font-bold mb-4">Elegant Wedding Moments</h1>
+          <p class="text-lg">We make your big day unforgettable.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="w-full h-full relative">
+      <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
+        <source src="./landingvedios/corp.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+        <div class="text-white text-center p-8">
+          <h1 class="text-4xl font-bold mb-4">Corporate Excellence</h1>
+          <p class="text-lg">From seminars to success stories.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="w-full h-full relative">
+      <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
+        <source src="./landingvedios/birthday.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+        <div class="text-white text-center p-8">
+          <h1 class="text-4xl font-bold mb-4">Magical Birthday Celebrations</h1>
+          <p class="text-lg">Celebrate your day, your way – we make it unforgettable!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- services section start -->
+  <section class="py-12 bg-gray-100" id="services">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">Our Services</h2>
+
+    <!-- Service 1: Wedding Planning -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8 flex flex-col md:flex-row transform transition duration-300 hover:shadow-lg hover:-translate-y-1 active:translate-y-0 active:shadow-md cursor-pointer">
+      <img src="https://cdn-icons-png.flaticon.com/512/1033/1033034.png" alt="Wedding Planning" class="w-full md:w-1/3 h-auto object-contain mb-4 md:mb-0 md:mr-6">
+      <div class="md:w-2/3">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">Wedding Planning</h3>
+        <p class="text-gray-600 mb-2">Create the wedding of your dreams with our comprehensive planning services. We handle everything from venue selection and decor to catering and entertainment, ensuring a seamless and personalized experience that reflects your unique love story.</p>
+        <ul class="list-disc list-inside text-gray-600">
+          <li>Customized venue selection and design</li>
+          <li>Full-service catering and menu planning</li>
+          <li>Professional photography and videography</li>
+          <li>Entertainment and music coordination</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Service 2: Birthday Events -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8 flex flex-col md:flex-row transform transition duration-300 hover:shadow-lg hover:-translate-y-1 active:translate-y-0 active:shadow-md cursor-pointer">
+      <img src="https://cdn-icons-png.flaticon.com/512/3377/3377310.png" alt="Birthday Events" class="w-full md:w-1/3 h-auto object-contain mb-4 md:mb-0 md:mr-6">
+      <div class="md:w-2/3">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">Birthday Events</h3>
+        <p class="text-gray-600 mb-2">Make birthdays extra special with our creative and exciting party planning. From children's birthday bashes to milestone celebrations, we manage decor, games, food, and entertainment tailored to the occasion.</p>
+        <ul class="list-disc list-inside text-gray-600">
+          <li>Themed decor and party styling</li>
+          <li>Games, activities, and entertainment</li>
+          <li>Custom cake and menu options</li>
+          <li>Venue and guest coordination</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Service 3: Concert Management -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8 flex flex-col md:flex-row transform transition duration-300 hover:shadow-lg hover:-translate-y-1 active:translate-y-0 active:shadow-md cursor-pointer">
+      <img src="https://cdn-icons-png.flaticon.com/512/8081/8081920.png" alt="Concert Management" class="w-full md:w-1/3 h-auto object-contain mb-4 md:mb-0 md:mr-6">
+      <div class="md:w-2/3">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">Concert Management</h3>
+        <p class="text-gray-600 mb-2">Deliver unforgettable music experiences with our professional concert planning and management services. We coordinate venues, artists, security, sound, and lighting to create spectacular shows.</p>
+        <ul class="list-disc list-inside text-gray-600">
+          <li>Artist and talent booking</li>
+          <li>Venue setup and stage management</li>
+          <li>Sound and light coordination</li>
+          <li>Security and crowd control</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Service 4: Corporate Events -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8 flex flex-col md:flex-row transform transition duration-300 hover:shadow-lg hover:-translate-y-1 active:translate-y-0 active:shadow-md cursor-pointer">
+      <img src="https://cdn-icons-png.flaticon.com/512/3208/3208728.png" alt="Corporate Events" class="w-full md:w-1/3 h-auto object-contain mb-4 md:mb-0 md:mr-6">
+      <div class="md:w-2/3">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">Corporate Events</h3>
+        <p class="text-gray-600 mb-2">Host professional and impactful corporate events with our end-to-end planning services. From conferences and product launches to team-building retreats, we ensure everything runs smoothly and on-brand.</p>
+        <ul class="list-disc list-inside text-gray-600">
+          <li>Event branding and design</li>
+          <li>Venue and logistics management</li>
+          <li>Guest coordination and RSVP handling</li>
+          <li>Audio-visual and tech support</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  
+<!-- Customer Blog Section -->
+<section class="py-16 bg-white" id="blog">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Customer Blog & Reviews</h2>
+
+    <!-- Blog Form -->
+    <div class="bg-gray-100 p-6 rounded-lg shadow-md mb-12 max-w-2xl mx-auto">
+      <h3 class="text-xl font-semibold mb-4 text-gray-700">Share Your Experience</h3>
+      <form>
+        <input type="text" placeholder="Name" class="w-full mb-4 px-4 py-2 border rounded" />
+        <textarea placeholder="Write your review..." class="w-full mb-4 px-4 py-2 border rounded h-28"></textarea>
+        <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">Post Review</button>
+      </form>
+    </div>
+
+    <!-- Customer Blog Carousel -->
+    <div class="relative overflow-hidden">
+      <div id="customerCarousel" class="flex transition-transform duration-500 ease-in-out space-x-6">
+        <!-- Slide 1 -->
+        <div class="flex space-x-6 min-w-full">
+          <!-- Card 1 -->
+          <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
+            <img src="https://i.pravatar.cc/80?img=1" alt="profile" class="w-16 h-16 rounded-full mb-3">
+            <h4 class="font-bold text-purple-600 mb-1">Aarav S.</h4>
+            <div class="text-yellow-400 mb-2">
+              ★★★★☆
+            </div>
+            <p class="text-gray-700 italic">"The concert setup was top-tier. Sound and stage lighting were spot on!"</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
+            <img src="https://i.pravatar.cc/80?img=2" alt="profile" class="w-16 h-16 rounded-full mb-3">
+            <h4 class="font-bold text-purple-600 mb-1">Nisha R.</h4>
+            <div class="text-yellow-400 mb-2">
+              ★★★★★
+            </div>
+            <p class="text-gray-700 italic">"Our wedding was magical, thanks to the wonderful planning team!"</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
+            <img src="https://i.pravatar.cc/80?img=3" alt="profile" class="w-16 h-16 rounded-full mb-3">
+            <h4 class="font-bold text-purple-600 mb-1">Karan V.</h4>
+            <div class="text-yellow-400 mb-2">
+              ★★★★☆
+            </div>
+            <p class="text-gray-700 italic">"I loved how professional everything was for our corporate event."</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="flex space-x-6 min-w-full">
+          <!-- Card 4 -->
+          <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
+            <img src="https://i.pravatar.cc/80?img=4" alt="profile" class="w-16 h-16 rounded-full mb-3">
+            <h4 class="font-bold text-purple-600 mb-1">Meena T.</h4>
+            <div class="text-yellow-400 mb-2">
+              ★★★★★
+            </div>
+            <p class="text-gray-700 italic">"My son’s birthday party turned out amazing. Highly recommend!"</p>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
+            <img src="https://i.pravatar.cc/80?img=5" alt="profile" class="w-16 h-16 rounded-full mb-3">
+            <h4 class="font-bold text-purple-600 mb-1">Ajay G.</h4>
+            <div class="text-yellow-400 mb-2">
+              ★★★★☆
+            </div>
+            <p class="text-gray-700 italic">"They made our anniversary event memorable. Beautiful decor!"</p>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
+            <img src="https://i.pravatar.cc/80?img=6" alt="profile" class="w-16 h-16 rounded-full mb-3">
+            <h4 class="font-bold text-purple-600 mb-1">Sneha M.</h4>
+            <div class="text-yellow-400 mb-2">
+              ★★★★☆
+            </div>
+            <p class="text-gray-700 italic">"Excellent customer service and attention to detail!"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Controls -->
+      <button onclick="prevCustomerSlide()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 z-10">❮</button>
+      <button onclick="nextCustomerSlide()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 z-10">❯</button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Call to Action -->
+  <section class="bg-gradient-to-r from-blue-600 to-teal-500 text-white py-16">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-3xl font-bold mb-4">Ready to Plan Your Next Big Event?</h2>
+      <p class="mb-6">Let our team turn your vision into a spectacular reality. Get in touch today.</p>
+      <button onclick="toggleOffcanvas()" class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-200">
+        Contact Us
+      </button>
+    </div>
+  </section>
+
+  <!-- Offcanvas Contact Form -->
+  <div id="offcanvas" class="fixed inset-y-0 right-0 w-80 bg-white shadow transform translate-x-full transition-transform duration-300 z-50">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold">Contact Us</h2>
+        <button onclick="toggleOffcanvas()" class="text-gray-600 hover:text-black">
+          ✕
+        </button>
+      </div>
+      <dotlottie-wc src="https://lottie.host/6616aa76-62ba-4216-a456-7fa6761c0698/HhW1E558Nx.lottie" style="width: 300px; height: 300px" speed="1" autoplay loop></dotlottie-wc>
+      <form>
+        <input type="text" placeholder="Name" class="w-full mb-4 px-3 py-2 border rounded" />
+        <input type="email" placeholder="Email" class="w-full mb-4 px-3 py-2 border rounded" />
+        <textarea placeholder="Message" class="w-full mb-4 px-3 py-2 border rounded"></textarea>
+        <button type="button" class="w-full bg-black text-white py-2 rounded hover:bg-gray-800">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-2">HappeningHub</h3>
+        <p>Your one-stop solution for unforgettable events. We make it happen!</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-2">Quick Links</h3>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#" class="hover:underline">Services</a></li>
+          <li><a href="#" class="hover:underline">Gallery</a></li>
+          <li><a href="#" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-2">Follow Us</h3>
+        <div class="flex space-x-4">
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook--v1.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-400 mt-6 text-sm">© 2025 HappeningHub. All rights reserved.</div>
+  </footer>
+
+  <!-- JS -->
+ <!-- Replace the existing JS scripts with this -->
+<script>
+  // Offcanvas and Dropdown Functions (unchanged)
+  function toggleOffcanvas() {
+    const offcanvas = document.getElementById('offcanvas');
+    offcanvas.classList.toggle('translate-x-full');
+    offcanvas.classList.toggle('hidden', offcanvas.classList.contains('translate-x-full'));
+  }
+
+  function toggleDropdown() {
+    document.getElementById('dropdownMenu').classList.toggle('hidden');
+  }
+
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('dropdownMenu');
+    const button = document.querySelector('button[onclick="toggleDropdown()"]');
+    if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+      dropdown.classList.add('hidden');
+    }
+  });
+
+  // Customer Blog Carousel
+  let currentCustomerSlide = 0;
+  const customerCarousel = document.getElementById('customerCarousel');
+  const customerSlides = customerCarousel.children.length;
+
+  function updateCustomerCarousel() {
+    customerCarousel.style.transform = `translateX(-${currentCustomerSlide * 100}%)`;
+  }
+
+  function nextCustomerSlide() {
+    currentCustomerSlide = (currentCustomerSlide + 1) % customerSlides;
+    updateCustomerCarousel();
+  }
+
+  function prevCustomerSlide() {
+    currentCustomerSlide = (currentCustomerSlide - 1 + customerSlides) % customerSlides;
+    updateCustomerCarousel();
+  }
+
+  setInterval(nextCustomerSlide, 6000);
+</script>
+
+<!-- Hero Carousel Script (unchanged) -->
+<script>
+  let currentHeroSlide = 0;
+  const heroCarousel = document.getElementById('heroCarousel');
+  const heroSlides = heroCarousel.children.length;
+
+  function updateHeroCarousel() {
+    heroCarousel.style.transform = `translateX(-${currentHeroSlide * (100 / heroSlides)}%)`;
+  }
+
+  function nextHeroSlide() {
+    currentHeroSlide = (currentHeroSlide + 1) % heroSlides;
+    updateHeroCarousel();
+  }
+
+  function prevHeroSlide() {
+    currentHeroSlide = (currentHeroSlide - 1 + heroSlides) % heroSlides;
+    updateHeroCarousel();
+  }
+
+  setInterval(nextHeroSlide, 4000);
+</script>
+
 </body>
 </html>
