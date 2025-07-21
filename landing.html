@@ -36,10 +36,11 @@
     .stack-container {
       position: relative;
       margin-top: 7rem;
+      padding-bottom: 100px; /* Ensure enough space for last card */
     }
 
     .card {
-      position: sticky;
+      position: relative;
       width: 80%;
       margin: 0 auto 10px auto; /* gap between cards */
       background-color: white;
@@ -48,6 +49,7 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer; /* Makes card look clickable */
+      will-change: transform; /* Optimize for smoother transitions */
     }
 
     .card:hover {
@@ -55,24 +57,24 @@
       box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
     }
 
-    /* Sticky stacking with 10px offset */
-    .card:nth-child(1) {
-      top: 100px;
+    /* Card offsets for stacking effect */
+    #card1 {
+      top: 0;
       z-index: 6;
     }
 
-    .card:nth-child(2) {
-      top: 110px;
+    #card2 {
+      top: 10px;
       z-index: 7;
     }
 
-    .card:nth-child(3) {
-      top: 120px;
+    #card3 {
+      top: 20px;
       z-index: 8;
     }
 
-    .card:nth-child(4) {
-      top: 130px;
+    #card4 {
+      top: 30px;
       z-index: 9;
     }
 
@@ -90,8 +92,6 @@
 
     /* Event Navbar Styles */
     #eventNavbar {
-      background-color: #000;
-      color: white;
       z-index: 45; /* Below main navbar (z-50) but above cards */
       width: 100%;
       transition: all 0.3s ease;
@@ -205,11 +205,12 @@
     </div>
   </div>
 </section>
+<br><br><br><br>
 
 <!-- Event section -->
 <section id="eventSection">
   <!-- Navigation -->
-  <div id="eventNavbar" class="bg-black text-white flex justify-center space-x-4 p-4 z-45">
+  <div id="eventNavbar" class="bg-white text-black flex justify-center space-x-4 p-4 z-45">
     <button class="nav-button" data-section="card1">Event planning</button>
     <button class="nav-button" data-section="card2">Ticketing</button>
     <button class="nav-button" data-section="card3">Onsite solutions</button>
@@ -308,7 +309,7 @@
   </div>
 </section>
 
-<!-- Customer Blog Section -->
+Customer Blog Section
 <section class="py-16 bg-white" id="blog">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Customer Blog & Reviews</h2>
@@ -521,8 +522,21 @@
 
     setInterval(nextHeroSlide, 4000);
 
+    // Debounce function to limit scroll event frequency
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
     // Event Navbar and Card Highlight Script
-    window.addEventListener('scroll', () => {
+    const handleScroll = debounce(() => {
       const eventSection = document.getElementById('eventSection');
       const eventNavbar = document.getElementById('eventNavbar');
       const navButtons = eventNavbar.getElementsByClassName('nav-button');
@@ -532,7 +546,9 @@
       const lastCardRect = lastCard.getBoundingClientRect();
 
       // Fix navbar when scrolling within event section until the bottom of the last card
-      if (eventRect.top <= 64 && lastCardRect.bottom > 64) { // Account for main navbar height (64px)
+      const navbarHeight = 64; // Main navbar height (h-16 = 64px)
+      const buffer = 20; // Increased buffer for smoother transitions
+      if (eventRect.top <= navbarHeight + buffer && lastCardRect.bottom > navbarHeight + buffer) {
         eventNavbar.classList.add('fixed');
       } else {
         eventNavbar.classList.remove('fixed');
@@ -549,7 +565,9 @@
           navButton.classList.add('selected');
         }
       });
-    });
+    }, 50); // Debounce with 50ms delay
+
+    window.addEventListener('scroll', handleScroll);
   </script>
 </body>
 </html>
