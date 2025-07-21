@@ -8,7 +8,7 @@
   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
 
   <!-- event card -->
-   <style>
+  <style>
     body {
       background-color: #fef3c7;
       font-family: sans-serif;
@@ -35,12 +35,11 @@
 
     .stack-container {
       position: relative;
-      margin-top: 7rem;
-      padding-bottom: 100px; /* Ensure enough space for last card */
+      margin-top: 9rem; /* Maintain margin for initial positioning */
     }
 
     .card {
-      position: relative;
+      position: sticky;
       width: 80%;
       margin: 0 auto 10px auto; /* gap between cards */
       background-color: white;
@@ -49,7 +48,6 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer; /* Makes card look clickable */
-      will-change: transform; /* Optimize for smoother transitions */
     }
 
     .card:hover {
@@ -57,24 +55,24 @@
       box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
     }
 
-    /* Card offsets for stacking effect */
-    #card1 {
-      top: 0;
+    /* Sticky stacking with offset to align below navbar */
+    .card:nth-child(1) {
+      top: 136px; /* 64px (main navbar) + 32px (event navbar height) + 40px (gap) */
       z-index: 6;
     }
 
-    #card2 {
-      top: 10px;
+    .card:nth-child(2) {
+      top: 146px; /* 136px + 10px offset */
       z-index: 7;
     }
 
-    #card3 {
-      top: 20px;
+    .card:nth-child(3) {
+      top: 156px; /* 146px + 10px offset */
       z-index: 8;
     }
 
-    #card4 {
-      top: 30px;
+    .card:nth-child(4) {
+      top: 166px; /* 156px + 10px offset */
       z-index: 9;
     }
 
@@ -95,12 +93,18 @@
       z-index: 45; /* Below main navbar (z-50) but above cards */
       width: 100%;
       transition: all 0.3s ease;
+      margin-bottom: 40px; /* Maintain 40px gap below navbar */
     }
 
     #eventNavbar.fixed {
       position: fixed;
       top: 64px; /* Adjust for main navbar height (h-16 = 64px) */
       left: 0;
+    }
+
+    /* Offcanvas Styles */
+    #offcanvas {
+      width: 400px; /* Increased width from 320px (w-80) to 400px */
     }
   </style>
 </head>
@@ -134,7 +138,7 @@
         </div>
 
         <!-- Blog Link -->
-        <a href="#blog" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Blog</a>
+        <a href="#blog" class="text-white hover:rounded text-sm font-medium">Blog</a>
       </div>
 
       <div class="flex space-x-4 items-center">
@@ -205,7 +209,6 @@
     </div>
   </div>
 </section>
-<br><br><br><br>
 
 <!-- Event section -->
 <section id="eventSection">
@@ -413,7 +416,7 @@
   </section>
 
   <!-- Offcanvas Contact Form -->
-  <div id="offcanvas" class="fixed inset-y-0 right-0 w-80 bg-white shadow transform translate-x-full transition-transform duration-300 z-50">
+  <div id="offcanvas" class="fixed inset-y-0 right-0 bg-white shadow transform translate-x-full transition-transform duration-300 z-50">
     <div class="p-6">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-bold">Contact Us</h2>
@@ -522,21 +525,8 @@
 
     setInterval(nextHeroSlide, 4000);
 
-    // Debounce function to limit scroll event frequency
-    function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
-
     // Event Navbar and Card Highlight Script
-    const handleScroll = debounce(() => {
+    window.addEventListener('scroll', () => {
       const eventSection = document.getElementById('eventSection');
       const eventNavbar = document.getElementById('eventNavbar');
       const navButtons = eventNavbar.getElementsByClassName('nav-button');
@@ -546,9 +536,7 @@
       const lastCardRect = lastCard.getBoundingClientRect();
 
       // Fix navbar when scrolling within event section until the bottom of the last card
-      const navbarHeight = 64; // Main navbar height (h-16 = 64px)
-      const buffer = 20; // Increased buffer for smoother transitions
-      if (eventRect.top <= navbarHeight + buffer && lastCardRect.bottom > navbarHeight + buffer) {
+      if (eventRect.top <= 64 && lastCardRect.bottom > 64) { // Account for main navbar height (64px)
         eventNavbar.classList.add('fixed');
       } else {
         eventNavbar.classList.remove('fixed');
@@ -565,9 +553,7 @@
           navButton.classList.add('selected');
         }
       });
-    }, 50); // Debounce with 50ms delay
-
-    window.addEventListener('scroll', handleScroll);
+    });
   </script>
 </body>
 </html>
