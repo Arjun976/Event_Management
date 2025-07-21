@@ -330,66 +330,51 @@
   </footer>
 
   <!-- JS -->
-  <script>
-    function toggleOffcanvas() {
-      const offcanvas = document.getElementById('offcanvas');
-      offcanvas.classList.toggle('translate-x-full');
-      offcanvas.classList.toggle('hidden', offcanvas.classList.contains('translate-x-full'));
+ <!-- Replace the existing JS scripts with this -->
+<script>
+  // Offcanvas and Dropdown Functions (unchanged)
+  function toggleOffcanvas() {
+    const offcanvas = document.getElementById('offcanvas');
+    offcanvas.classList.toggle('translate-x-full');
+    offcanvas.classList.toggle('hidden', offcanvas.classList.contains('translate-x-full'));
+  }
+
+  function toggleDropdown() {
+    document.getElementById('dropdownMenu').classList.toggle('hidden');
+  }
+
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('dropdownMenu');
+    const button = document.querySelector('button[onclick="toggleDropdown()"]');
+    if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+      dropdown.classList.add('hidden');
     }
+  });
 
-    function toggleDropdown() {
-      document.getElementById('dropdownMenu').classList.toggle('hidden');
-    }
+  // Customer Blog Carousel
+  let currentCustomerSlide = 0;
+  const customerCarousel = document.getElementById('customerCarousel');
+  const customerSlides = customerCarousel.children.length;
 
-    document.addEventListener('click', function(event) {
-      const dropdown = document.getElementById('dropdownMenu');
-      const button = document.querySelector('button[onclick="toggleDropdown()"]');
-      if (!dropdown.contains(event.target) && !button.contains(event.target)) {
-        dropdown.classList.add('hidden');
-      }
-    });
+  function updateCustomerCarousel() {
+    customerCarousel.style.transform = `translateX(-${currentCustomerSlide * 100}%)`;
+  }
 
-    let currentSlide = 0;
-    const carousel = document.getElementById('carousel');
-    const totalSlides = carousel.children.length;
+  function nextCustomerSlide() {
+    currentCustomerSlide = (currentCustomerSlide + 1) % customerSlides;
+    updateCustomerCarousel();
+  }
 
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
+  function prevCustomerSlide() {
+    currentCustomerSlide = (currentCustomerSlide - 1 + customerSlides) % customerSlides;
+    updateCustomerCarousel();
+  }
 
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
+  setInterval(nextCustomerSlide, 6000);
+</script>
 
-    setInterval(nextSlide, 5000);
-
-    // Customer Blog Carousel
-    let currentCustomerSlide = 0;
-    const customerCarousel = document.getElementById('customerCarousel');
-    const customerSlides = customerCarousel.children.length;
-
-    function updateCustomerCarousel() {
-      customerCarousel.style.transform = `translateX(-${currentCustomerSlide * 100}%)`;
-    }
-
-    function nextCustomerSlide() {
-      currentCustomerSlide = (currentCustomerSlide + 1) % customerSlides;
-      updateCustomerCarousel();
-    }
-
-    function prevCustomerSlide() {
-      currentCustomerSlide = (currentCustomerSlide - 1 + customerSlides) % customerSlides;
-      updateCustomerCarousel();
-    }
-
-    setInterval(nextCustomerSlide, 6000);
-  </script>
-
-  <!-- script for the video slide -->
-
-  <script>
+<!-- Hero Carousel Script (unchanged) -->
+<script>
   let currentHeroSlide = 0;
   const heroCarousel = document.getElementById('heroCarousel');
   const heroSlides = heroCarousel.children.length;
@@ -408,9 +393,7 @@
     updateHeroCarousel();
   }
 
-  // Auto-scroll every 6 seconds
   setInterval(nextHeroSlide, 4000);
-  
 </script>
 
 </body>
