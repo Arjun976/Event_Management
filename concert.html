@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HappeningHub</title>
+
+    <!-- favicon -->
+
+    <link rel="icon" href="./concertvideos/logo.png">
 
     <!-- tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,7 +34,7 @@
                 <!-- Logo -->
                 <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="./concertvideos/logo.png" class="h-10 md:h-12 object-contain" alt="Flowbite Logo">
-                    <span class="text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                    <span class="text-xl font-semibold whitespace-nowrap dark:text-white">HappeningHub</span>
                 </a>
 
                 <!-- Navigation Links -->
@@ -64,7 +68,7 @@
         <!-- Carousel -->
         <div id="default-carousel" class="relative w-full pt-[60px]" data-carousel="slide">
             <!-- Carousel wrapper -->
-            <div class="relative h-[665px] overflow-hidden">
+            <div class="relative h-[668px] overflow-hidden">
 
                 <!-- Slide 1 -->
                 <div class="block duration-700 ease-in-out" data-carousel-item="active">
@@ -170,7 +174,7 @@
 
 
         <div class="gallary" id="Gallary">
-            <h2 class="text-white text-4xl md:text-5xl font-bold mb-10 flex flex-wrap items-center justify-center">
+            <h2 class="text-white text-4xl md:text-5xl font-bold mb-20 flex flex-wrap items-center justify-center">
                 Concerts We Hosted</h2>
 
             <div class="gallary_image_box">
@@ -239,6 +243,86 @@
         </div>
     </section>
 
+    <!-- venue -->
+
+    <section class="venue bg-[#112B46] py-20 px-4 md:px-12">
+        <h2 class="text-white text-4xl md:text-5xl font-bold mb-10 text-center">
+            Venues
+        </h2>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Card 1 -->
+            <div
+                class="bg-gray-900 border border-gray-700 rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 hover:shadow-lg">
+                <img class="w-full h-60 object-cover" src="./concertvideos/venue1.jpg" alt="Venue 1" />
+                <div class="p-6">
+                    <h5 class="text-white text-2xl font-semibold mb-2">
+                        Electro Beats Fest
+                    </h5>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Experience the ultimate EDM festival with laser lights and powerful bass.
+                    </p>
+                    <a href="#"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 transition-colors">
+                        More Details
+                        <svg class="rtl:rotate-180 w-4 h-4 ms-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 5h12m0 0L9 1m4 4L9 9" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+                class="bg-gray-900 border border-gray-700 rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 hover:shadow-lg">
+                <img class="w-full h-60 object-cover" src="./concertvideos/venue2.jpg" alt="Venue 2" />
+                <div class="p-6">
+                    <h5 class="text-white text-2xl font-semibold mb-2">
+                        Rock Nation Night
+                    </h5>
+                    <p class="text-gray-300 text-sm mb-4">
+                        A fiery rock experience with live bands and unforgettable performances.
+                    </p>
+                    <a href="#"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 transition-colors">
+                        More Details
+                        <svg class="rtl:rotate-180 w-4 h-4 ms-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 5h12m0 0L9 1m4 4L9 9" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+                class="bg-gray-900 border border-gray-700 rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 hover:shadow-lg">
+                <img class="w-full h-60 object-cover" src="./concertvideos/venue3.jpg" alt="Venue 3" />
+                <div class="p-6">
+                    <h5 class="text-white text-2xl font-semibold mb-2">
+                        Indie Chill Fest
+                    </h5>
+                    <p class="text-gray-300 text-sm mb-4">
+                        A laid-back atmosphere featuring top indie artists and acoustic vibes.
+                    </p>
+                    <a href="#"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 transition-colors">
+                        More Details
+                        <svg class="rtl:rotate-180 w-4 h-4 ms-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 5h12m0 0L9 1m4 4L9 9" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
     <section id="book"
         class="relative bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center text-center"
@@ -251,7 +335,7 @@
             </h4>
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
                 Book the event now and be a part of the<br>
-                most unforgettable music event of the year.
+                most unforgettable music event.
             </h1>
             <p class="text-lg md:text-xl text-gray-200 mb-8">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius totam officia qui commodi et voluptate...
@@ -263,6 +347,16 @@
         </div>
     </section>
 
+    <!-- Footer -->
+
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-center items-center">
+            <p class="text-sm flex items-center">
+                <span class="mr-1">&copy;</span>
+                2025 HappeningHub. All rights reserved.
+            </p>
+        </div>
+    </footer>
 
 
 
