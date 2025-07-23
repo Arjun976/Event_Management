@@ -24,36 +24,45 @@
 <style>
     body {
         font-family: "Poppins", sans-serif;
-
     }
 
-    .navbar{
+    .navbar {
         background-color: black;
     }
 
-    .navbar ul{
+    .navbar ul {
         background-color: black;
     }
 
-    .head-title{
+    .head-title {
         font-family: "Lexend Mega", sans-serif;
-
     }
 
-    .sub-btn{
+    .sub-btn {
         background-color: rgb(27, 27, 27);
     }
 
+    .gradient-bg {
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    }
+
+    .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
 </style>
 </head>
 
 <body class="">
 
-
-    <nav class=" navbar bg-white border-gray-200 dark:border-gray-700">
+    <nav class=" navbar border-gray-200 dark:border-gray-700 lg:py-3 sticky absolute top-0 z-1">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Happening Hub</span>
+                <span class="self-center1 text-1xl lg:text-2xl font-semibold whitespace-nowrap dark:text-white">Happening Hub</span>
             </a>
             <button data-collapse-toggle="navbar-dropdown" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -67,15 +76,14 @@
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
                 <ul
-                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:border-gray-700">
+                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                            aria-current="page">Home</a>
+                            class="block py-2 px-3 text-gray-400 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-100 md:p-0 dark:text-gray-350 md:dark:hover:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
                     </li>
                     <li>
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                            class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Dropdown
+                            class="flex items-center justify-between w-full py-2 px-3 text-gray-400 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-100 md:p-0 md:w-auto dark:text-gray-350 md:dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Events
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -83,60 +91,225 @@
                             </svg></button>
                         <!-- Dropdown menu -->
                         <div id="dropdownNavbar"
-                            class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 ">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-400"
                                 aria-labelledby="dropdownLargeButton">
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Marriage</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Birthday</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Concert</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Corporate
+                                        Events</a>
                                 </li>
                             </ul>
-                            <div class="py-1">
-                                <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                    out</a>
-                            </div>
                         </div>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+                            class="block py-2 px-3 text-gray-400 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-100 md:p-0 dark:text-gray-350 md:dark:hover:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-white md:dark:hover:bg-transparent">Blog</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                            class="block py-2 px-3 text-gray-400 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-100 md:p-0 dark:text-gray-350 md:dark:hover:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="h-[300px] bg-cover bg-center relative"
-        style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.833), rgba(0, 0, 0, 0.682)),
+    <div class="h-[300px] bg-cover bg-center relative" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.833), rgba(0, 0, 0, 0.682)),
                                 url('./images/help-bg.jpg');
                                 background-position: center;">
         <div class="absolute inset-0  bg-opacity-50"></div>
 
         <div class="relative h-full flex items-center justify-start pr-10">
-            <div class="text-white max-w-xl pl-20">
+            <div class="text-white max-w-xl pl-5 lg:pl-20">
                 <h1 class="text-5xl font-bold mb-4">Need Help?</h1>
                 <p class="text-lg mt-10">We're here to assist you with your events, bookings, or general queries
                     anytime.</p>
             </div>
         </div>
     </div>
+
+    <!-- Quick Help Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Quick Help Categories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-gray-50 rounded-lg card-hover">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Event Booking</h3>
+                    <p class="text-gray-600">Get help with booking your perfect event, from weddings to corporate
+                        gatherings.</p>
+                </div>
+
+                <div class="text-center p-6 bg-gray-50 rounded-lg card-hover">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-credit-card text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Payment & Billing</h3>
+                    <p class="text-gray-600">Questions about pricing, payment methods, and billing information.</p>
+                </div>
+
+                <div class="text-center p-6 bg-gray-50 rounded-lg card-hover">
+                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Technical Support</h3>
+                    <p class="text-gray-600">Having trouble with our website or need technical assistance?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Methods Section -->
+    <section class="py-16 px-4 gradient-bg">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">Ways to Reach Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg text-center card-hover">
+                    <i class="fas fa-phone text-3xl text-gray-800 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Phone Support</h3>
+                    <p class="text-gray-600 mb-3">Mon-Fri: 9AM-6PM</p>
+                    <p class="text-gray-800 font-medium">+1 (555) 123-4567</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg text-center card-hover">
+                    <i class="fas fa-envelope text-3xl text-gray-800 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Email Support</h3>
+                    <p class="text-gray-600 mb-3">Response within 24hrs</p>
+                    <p class="text-gray-800 font-medium">help@happeninghub.com</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg text-center card-hover">
+                    <i class="fas fa-comments text-3xl text-gray-800 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Live Chat</h3>
+                    <p class="text-gray-600 mb-3">Available 24/7</p>
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition">Start
+                        Chat</button>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg text-center card-hover">
+                    <i class="fas fa-map-marker-alt text-3xl text-gray-800 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Visit Us</h3>
+                    <p class="text-gray-600 mb-3">Mon-Sat: 10AM-7PM</p>
+                    <p class="text-gray-800 font-medium text-sm">123 Event Street, City</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step-by-Step Guide Section -->
+    <section class="py-16 px-4 bg-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">How to Book Your Event</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div
+                        class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                        1</div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-800">Choose Event Type</h3>
+                    <p class="text-gray-600">Select from our range of event categories that suit your needs.</p>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                        2</div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-800">Select Date & Venue</h3>
+                    <p class="text-gray-600">Pick your preferred date and choose from available venues.</p>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                        3</div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-800">Customize Details</h3>
+                    <p class="text-gray-600">Add special requirements, catering, decorations, and more.</p>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                        4</div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-800">Confirm & Pay</h3>
+                    <p class="text-gray-600">Review your booking details and complete the payment process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Troubleshooting Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Common Issues & Solutions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-exclamation-triangle text-gray-600 mr-3"></i>
+                        Can't find available dates?
+                    </h3>
+                    <p class="text-gray-600 mb-4">If your preferred dates aren't showing as available:</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Try alternative dates within your flexible range</li>
+                        <li>• Contact us for last-minute cancellations</li>
+                        <li>• Consider weekday events for better availability</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-credit-card text-gray-600 mr-3"></i>
+                        Payment not processing?
+                    </h3>
+                    <p class="text-gray-600 mb-4">If you're having payment issues:</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Check your card details and billing address</li>
+                        <li>• Ensure sufficient funds are available</li>
+                        <li>• Try a different payment method</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-envelope text-gray-600 mr-3"></i>
+                        Not receiving confirmation emails?
+                    </h3>
+                    <p class="text-gray-600 mb-4">If you're missing important emails:</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Check your spam/junk folder</li>
+                        <li>• Verify your email address is correct</li>
+                        <li>• Add us to your email whitelist</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-calendar-times text-gray-600 mr-3"></i>
+                        Need to modify or cancel?
+                    </h3>
+                    <p class="text-gray-600 mb-4">For booking changes or cancellations:</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Contact us at least 48 hours in advance</li>
+                        <li>• Check our cancellation policy</li>
+                        <li>• Have your booking reference ready</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FAQ-Section -->
     <section class="bg-gray-100 py-16 px-4">
@@ -156,7 +329,7 @@
                         </summary>
                         <p class="mt-4 text-gray-600">
                             You can book an event by contacting us through our website form, phone, or visiting us in
-                            person.
+                            person. Our team will guide you through the entire process.
                         </p>
                     </details>
 
@@ -168,7 +341,8 @@
                             <span class="ml-2 transition-transform group-open:rotate-180">&#9660;</span>
                         </summary>
                         <p class="mt-4 text-gray-600">
-                            Yes, we tailor wedding packages to fit your preferences and budget — from venue to décor.
+                            Yes, we tailor wedding packages to fit your preferences and budget — from venue to décor,
+                            catering, and entertainment.
                         </p>
                     </details>
 
@@ -180,7 +354,8 @@
                             <span class="ml-2 transition-transform group-open:rotate-180">&#9660;</span>
                         </summary>
                         <p class="mt-4 text-gray-600">
-                            Absolutely! We’re available for destination events. Travel charges may apply.
+                            Absolutely! We're available for destination events. Travel charges may apply depending on
+                            the location.
                         </p>
                     </details>
 
@@ -192,7 +367,34 @@
                             <span class="ml-2 transition-transform group-open:rotate-180">&#9660;</span>
                         </summary>
                         <p class="mt-4 text-gray-600">
-                            We manage educational, motivational, and corporate skill-building workshops.
+                            We manage educational, motivational, and corporate skill-building workshops with expert
+                            facilitators.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 5 -->
+                    <details class="bg-white p-6 rounded-lg shadow group">
+                        <summary
+                            class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+                            What is your cancellation policy?
+                            <span class="ml-2 transition-transform group-open:rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">
+                            Cancellations made 30+ days in advance receive full refund. 15-29 days: 50% refund. Less
+                            than 15 days: 25% refund.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 6 -->
+                    <details class="bg-white p-6 rounded-lg shadow group">
+                        <summary
+                            class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+                            Do you provide equipment and decorations?
+                            <span class="ml-2 transition-transform group-open:rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">
+                            Yes, we provide complete event equipment including sound systems, lighting, furniture, and
+                            custom decorations.
                         </p>
                     </details>
                 </div>
@@ -201,23 +403,23 @@
             <!-- Right Side -->
             <div class="bg-white mt-15 p-8 rounded-lg shadow-lg h-fit">
                 <h3 class="text-2xl font-semibold mb-4">Still have questions?</h3>
-                <p class="text-gray-600 mb-6">If you can’t find your answer here, feel free to ask us directly.</p>
+                <p class="text-gray-600 mb-6">If you can't find your answer here, feel free to ask us directly.</p>
 
                 <form class="space-y-4">
                     <input type="text" placeholder="Enter Your Name"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
                         required />
 
-                    <input type="text" placeholder="Enter Your Email Address"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    <input type="email" placeholder="Enter Your Email Address"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
                         required />
 
-                    <input type="text" placeholder="Enter your question"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required />
+                    <textarea placeholder="Enter your question" rows="4"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+                        required></textarea>
 
                     <button type="submit"
-                        class="sub-btn w-full text-white font-semibold py-3 rounded-md hover:bg-blue-700 transition duration-300">
+                        class="sub-btn w-full text-white font-semibold py-3 rounded-md hover:bg-gray-700 transition duration-300">
                         Submit Question
                     </button>
                 </form>
@@ -226,69 +428,13 @@
         </div>
     </section>
 
+    <footer class="bg-black text-gray-200 py-10  px-4 border-t border-gray-700">
+        <div class="text-center text-sm text-gray-500 ">
+            © 2025 HappeningHub. All rights reserved.
+        </div>
+    </footer>
 
-    <section class="text-white py-12 px-4 mt-10 text-center rounded-lg max-w-5xl lg:max-w-7xl mx-2 lg:mx-auto" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.708), rgba(0, 0, 0, 0.708)),
-                                url('./images/Untitled\ \(Copy\).png');
-                                background-repeat: no-repeat;
-                                background-size: cover;
-                                background-position: center;"">
-        <h3 class="text-3xl font-bold mb-4">Ready to Plan Your Event?</h3>
-        <p class="mb-6 text-lg">Let our experienced team handle every detail — from vision to execution.</p>
-        <a href="/book"
-            class="bg-white text-slate-950 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">Book
-            Now</a>
-    </section>
-
-    <footer class="bg-slate-950 text-gray-200 pt-10 pb-6 px-4 mt-10">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-8">
-    
-    <!-- Brand/About -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4 head-title">Happening Hub</h3>
-      <p class="text-sm text-gray-400">Creating unforgettable events and experiences. Let us turn your ideas into reality.</p>
-    </div>
-
-    <!-- Quick Links -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-      <ul class="space-y-2 text-sm">
-        <li><a href="#" class="hover:text-white">Home</a></li>
-        <li><a href="#" class="hover:text-white">Services</a></li>
-        <li><a href="#" class="hover:text-white">About</a></li>
-        <li><a href="#" class="hover:text-white">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- Support -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Support</h3>
-      <ul class="space-y-2 text-sm">
-        <li><a href="#" class="hover:text-white">Help Center</a></li>
-        <li><a href="#" class="hover:text-white">FAQs</a></li>
-        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
-        <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact Info -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-      <p class="text-sm text-gray-400"><i class="fa-solid fa-envelope pr-3 text-gray-100"></i>support@happeninghub.com</p>
-      <p class="text-sm text-gray-400"><i class="fa-solid fa-phone pr-3 text-gray-100 mt-2"></i>+91 98765 43210</p>
-      <div class="flex space-x-4 mt-4">
-        <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom line -->
-  <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-500">
-    © 2025 HappeningHub. All rights reserved.
-  </div>
-</footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>
 
