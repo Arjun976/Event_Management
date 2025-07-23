@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HappeningHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="overflow-hidden">
+
+  <section class="bg-[#112B46] h-screen flex items-center justify-center px-4">
+    <div class="max-w-3xl w-full bg-[#1C3B5A] rounded-lg shadow-lg p-6 md:p-8 overflow-y-auto max-h-[95vh]">
+      <h2 class="text-white text-3xl md:text-4xl font-bold mb-4 text-center">Book Your Event</h2>
+      <p class="text-gray-300 text-center mb-6">Book The Event</p>
+
+      <form class="grid md:grid-cols-2 gap-4">
+        <!-- Full Name -->
+        <div>
+          <label class="block text-teal-400 mb-1">Full Name</label>
+          <input type="text" placeholder="Enter your name"
+            class="w-full px-4 py-2 rounded-md bg-[#274866] text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-400" />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-teal-400 mb-1">Email Address</label>
+          <input type="email" placeholder="Your mail"
+            class="w-full px-4 py-2 rounded-md bg-[#274866] text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-400" />
+        </div>
+
+        <!-- Venue Dropdown -->
+        <div>
+          <label class="block text-teal-400 mb-1">Select Venue</label>
+          <select
+            class="w-full px-4 py-2 rounded-md bg-[#274866] text-white focus:outline-none focus:ring-2 focus:ring-teal-400">
+            <option value="" disabled selected>Select a venue</option>
+            <option>Venue 1</option>
+            <option>Venue 2</option>
+            <option>Venue 3</option>
+          </select>
+        </div>
+
+        <!-- Number of Days -->
+        <div>
+          <label class="block text-teal-400 mb-1">Number of Days</label>
+          <input type="number" min="1" max="5" value="1"
+            class="w-full px-4 py-2 rounded-md bg-[#274866] text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-400" />
+        </div>
+
+        <!-- Date -->
+        <div>
+          <label class="block text-teal-400 mb-1">Date</label>
+          <input type="date"
+            class="w-full px-4 py-2 rounded-md bg-[#274866] text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-400" />
+        </div>
+
+        <!-- Notes -->
+        <div class="md:col-span-2">
+          <label class="block text-teal-400 mb-1">Additional Notes</label>
+          <textarea rows="3" placeholder="Any special requests?"
+            class="w-full px-4 py-2 rounded-md bg-[#274866] text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-400"></textarea>
+        </div>
+
+        <!-- Button -->
+        <div class="md:col-span-2 flex justify-center mt-2">
+          <button type="submit"
+            class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-2 rounded-full transition duration-300">
+            Book Now
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</body>
+
+</html>
