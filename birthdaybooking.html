@@ -31,43 +31,60 @@
             50% { transform: translateY(-10px); }
         }
         
-        /* Background Carousel Styles */
-        .hero-bg {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        /* Video Carousel Styles */
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            opacity: 0;
             transition: opacity 1.5s ease-in-out;
+            object-fit: cover;
         }
         
-        /* Replace these image paths with your original birthday images */
-        .hero-bg-1 {
-            background-image: url('./images/birthday-cake-celebration.jpg');
-            /* Fallback to Unsplash if image not found */
-            background-image: url('./images/birthday-cake-celebration.jpg'), url('https://cdn.pixabay.com/photo/2020/03/05/16/07/happy-birthday-4904779_1280.jpg');
+        .hero-video.active {
+            opacity: 1;
         }
         
-        .hero-bg-2 {
-            background-image: url('./images/birthday-balloons-party.jpg');
-            /* Fallback to Unsplash if image not found */
-            background-image: url('./images/birthday-balloons-party.jpg'), url('https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+        /* Video overlay for better text readability */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(236, 72, 153, 0.3) 0%,
+                rgba(139, 92, 246, 0.3) 50%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+            z-index: 1;
         }
         
-        .hero-bg-3 {
-            background-image: url('./images/birthday-party-table.jpg');
-            /* Fallback to Unsplash if image not found */
-            background-image: url('./images/birthday-party-table.jpg'), url('https://cdn.pixabay.com/photo/2017/05/23/22/33/birthday-2338813_1280.jpg');
+        /* Responsive video adjustments */
+        @media (max-width: 768px) {
+            .hero-video {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
         }
         
-        .hero-bg-4 {
-            background-image: url('./images/kids-birthday-celebration.jpg');
-            /* Fallback to Unsplash if image not found */
-            background-image: url('./images/kids-birthday-celebration.jpg'), url('https://images.unsplash.com/photo-1555597673-b21d6c935ca1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
-        }
-        
-        .hero-bg-5 {
-            background-image: url('./images/birthday-gifts-decorations.jpg');
-            /* Fallback to Unsplash if image not found */
-            background-image: url('./images/birthday-gifts-decorations.jpg'), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+        /* Loading animation for videos */
+        .hero-video:not(.active) {
+            pointer-events: none;
         }
         
         /* Offcanvas Styles */
@@ -142,88 +159,52 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="py-20 overflow-hidden relative min-h-screen">
-        <!-- Background Carousel -->
-        <div id="hero-bg" class="absolute inset-0 hero-bg hero-bg-1"></div>
+    <section id="home" class="py-10 overflow-hidden relative min-h-screen">
+        <!-- Video Carousel Container -->
+        <div class="hero-video-container">
+            <video class="hero-video active" autoplay muted loop playsinline>
+                <source src="./landingvedios/birthday.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="./landingvedios/bday.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="./landingvedios/wed.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
         
-        <!-- Overlay for readability -->
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20"></div>
+        <!-- Video Overlay -->
+        <div class="video-overlay"></div>
         
         <!-- Carousel Navigation Dots -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-            <button class="hero-dot w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all active" data-slide="0"></button>
-            <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-slide="1"></button>
-            <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-slide="2"></button>
-            <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-slide="3"></button>
-            <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-slide="4"></button>
+            <button class="hero-dot w-4 h-4 rounded-full bg-white/90 hover:bg-white transition-all active border-2 border-white" data-slide="0"></button>
+            <button class="hero-dot w-4 h-4 rounded-full bg-white/50 hover:bg-white/80 transition-all border-2 border-white" data-slide="1"></button>
+            <button class="hero-dot w-4 h-4 rounded-full bg-white/50 hover:bg-white/80 transition-all border-2 border-white" data-slide="2"></button>
         </div>
         
         <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center min-h-[600px]">
-                <div class="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
-                    <h2 class="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+            <div class="flex flex-col items-center justify-center min-h-[70vh] text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
                         Make Every
-                        <span class="text-yellow-300 drop-shadow-lg">
+                        <span class="text-yellow-300 drop-shadow-2xl animate-pulse">
                             Birthday
                         </span>
                         Magical! ✨
                     </h2>
-                    <p class="text-xl text-white mb-8 leading-relaxed max-w-xl drop-shadow-md">
+                    <p class="text-2xl lg:text-3xl text-white mb-12 leading-relaxed max-w-3xl mx-auto drop-shadow-lg font-light">
                         Transform ordinary moments into extraordinary memories with our professional birthday party planning services.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="openBookingOffcanvas()" class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all text-center">
-                            🎂 Book Your Party
-                        </button>
-                        <a href="#packages" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-pink-500 transition-all text-center backdrop-blur-sm">
-                            🎁 View Packages
-                        </a>
-                    </div>
-                </div>
-                <div class="lg:w-1/2 relative">
-                    <!-- Floating Cards -->
-                    <div class="relative z-10 grid grid-cols-2 gap-6">
-                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg transform rotate-2 hover:rotate-3 transition-transform">
-                            <div class="bg-pink-500 p-4 rounded-lg mb-4">
-                                <span class="text-white text-3xl">🎨</span>
-                            </div>
-                            <h3 class="font-bold text-gray-800 text-lg">Custom Themes</h3>
-                            <p class="text-gray-600 text-sm">Princess, Superhero, Unicorn & more!</p>
-                        </div>
-                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg transform -rotate-2 hover:-rotate-3 transition-transform">
-                            <div class="bg-blue-500 p-4 rounded-lg mb-4">
-                                <span class="text-white text-3xl">🎂</span>
-                            </div>
-                            <h3 class="font-bold text-gray-800 text-lg">Custom Cakes</h3>
-                            <p class="text-gray-600 text-sm">Delicious & Instagram-worthy!</p>
-                        </div>
-                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg transform rotate-1 hover:rotate-3 transition-transform">
-                            <div class="bg-yellow-500 p-4 rounded-lg mb-4">
-                                <span class="text-white text-3xl">🎵</span>
-                            </div>
-                            <h3 class="font-bold text-gray-800 text-lg">Entertainment</h3>
-                            <p class="text-gray-600 text-sm">Magic shows, games & more!</p>
-                        </div>
-                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg transform -rotate-1 hover:-rotate-3 transition-transform">
-                            <div class="bg-green-500 p-4 rounded-lg mb-4">
-                                <span class="text-white text-3xl">📷</span>
-                            </div>
-                            <h3 class="font-bold text-gray-800 text-lg">Photography</h3>
-                            <p class="text-gray-600 text-sm">Capture every smile!</p>
-                        </div>
-                    </div>
-                    <!-- Decorative Elements -->
-                    <div class="absolute -top-10 -right-10 text-6xl text-white/30">
-                        ⭐
-                    </div>
-                    <div class="absolute -bottom-10 -left-10 text-5xl text-white/30">
-                        ❤️
-                    </div>
+
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white">
@@ -335,154 +316,121 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-                    Choose Your <span class="text-secondary">Perfect Package</span>
+                    Choose Your <span class="text-secondary">Package</span>
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Every package is designed to create unforgettable memories
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Simple, transparent pricing for magical celebrations
                 </p>
             </div>
-            <div class="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 
                 <!-- Basic Package -->
-                <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-center mb-8">
-                        <div class="bg-gradient-to-r from-blue-500 to-cyan-400 p-4 rounded-full w-fit mx-auto mb-4">
-                            <i class="fas fa-star text-white text-3xl"></i>
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-star text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Starter Magic</h3>
-                        <div class="text-5xl font-bold text-blue-500 mb-2">$20k</div>
-                        <p class="text-gray-600">Perfect for intimate celebrations</p>
-                        <div class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mt-4">
-                            Up to 15 guests
-                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Starter Magic</h3>
+                        <div class="text-3xl font-bold text-blue-500 mb-1">$20k</div>
+                        <p class="text-gray-600 text-sm">Up to 15 guests</p>
                     </div>
-                    <ul class="space-y-4 mb-8">
+                    <ul class="space-y-3 mb-6 text-sm">
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">2-hour party duration</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>2-hour duration</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Basic themed decorations</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Basic decorations</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Custom birthday cake</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Custom cake</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Fun party games</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Party favor bags</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Party games</span>
                         </li>
                     </ul>
-                    <button onclick="openBookingOffcanvas('starter')" class="w-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        Choose Starter Magic
+                    <button onclick="openBookingOffcanvas('starter')" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-medium transition-colors">
+                        Choose Plan
                     </button>
                 </div>
 
                 <!-- Premium Package -->
-                <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-4 border-primary relative">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full text-sm font-bold">
-                        🌟 MOST POPULAR
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-primary relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-medium">
+                        POPULAR
                     </div>
-                    <div class="text-center mb-8">
-                        <div class="bg-gradient-to-r from-primary to-secondary p-4 rounded-full w-fit mx-auto mb-4">
-                            <i class="fas fa-crown text-white text-3xl"></i>
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-crown text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Premium Magic</h3>
-                        <div class="text-5xl font-bold text-primary mb-2">$50k</div>
-                        <p class="text-gray-600">The complete party experience</p>
-                        <div class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mt-4">
-                            Up to 30 guests
-                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Premium Magic</h3>
+                        <div class="text-3xl font-bold text-primary mb-1">$50k</div>
+                        <p class="text-gray-600 text-sm">Up to 30 guests</p>
                     </div>
-                    <ul class="space-y-4 mb-8">
+                    <ul class="space-y-3 mb-6 text-sm">
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">4-hour party duration</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>4-hour duration</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Premium themed decorations</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Premium decorations</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Multi-tier custom cake</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Multi-tier cake</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Professional entertainer</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Professional entertainer</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Catered meal & snacks</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Photo booth with props</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Premium party favors</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Catering & photo booth</span>
                         </li>
                     </ul>
-                    <button onclick="openBookingOffcanvas('premium')" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        Choose Premium Magic
+                    <button onclick="openBookingOffcanvas('premium')" class="w-full bg-primary hover:bg-pink-600 text-white py-3 rounded-lg font-medium transition-colors">
+                        Choose Plan
                     </button>
                 </div>
 
                 <!-- Luxury Package -->
-                <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-center mb-8">
-                        <div class="bg-gradient-to-r from-accent to-yellow-400 p-4 rounded-full w-fit mx-auto mb-4">
-                            <i class="fas fa-gem text-white text-3xl"></i>
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-gem text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Luxury Magic</h3>
-                        <div class="text-5xl font-bold text-accent mb-2">$80k</div>
-                        <p class="text-gray-600">The ultimate celebration</p>
-                        <div class="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mt-4">
-                            Up to 50 guests
-                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Luxury Magic</h3>
+                        <div class="text-3xl font-bold text-yellow-500 mb-1">$80k</div>
+                        <p class="text-gray-600 text-sm">Up to 50 guests</p>
                     </div>
-                    <ul class="space-y-4 mb-8">
+                    <ul class="space-y-3 mb-6 text-sm">
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">6-hour party duration</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>6-hour duration</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Luxury themed decorations</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Luxury decorations</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Designer custom cake</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Designer cake</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Multiple entertainers</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Multiple entertainers</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Full catering service</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Professional photography</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Luxury party favors</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-success mr-3 text-xl"></i>
-                            <span class="text-gray-700">Dedicated coordinator</span>
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Full service & photography</span>
                         </li>
                     </ul>
-                    <button onclick="openBookingOffcanvas('luxury')" class="w-full bg-gradient-to-r from-accent to-yellow-400 text-white py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        Choose Luxury Magic
+                    <button onclick="openBookingOffcanvas('luxury')" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg font-medium transition-colors">
+                        Choose Plan
                     </button>
                 </div>
             </div>
@@ -494,198 +442,100 @@
     <div class="offcanvas" id="bookingOffcanvas">
         <div class="p-6 h-full flex flex-col">
             <!-- Offcanvas Header -->
-            <div class="flex items-center justify-between mb-6 pb-4 border-b-2 border-gray-100">
-                <h2 class="text-2xl lg:text-3xl font-bold text-gray-800">
-                    Book Your <span class="text-primary">Magical Celebration</span>
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-800">
+                    Book Your Party
                 </h2>
-                <button id="closeBookingOffcanvas" class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
-                    <i class="fas fa-times text-2xl"></i>
+                <button id="closeBookingOffcanvas" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
             
             <!-- Offcanvas Body -->
             <div class="flex-1 overflow-y-auto">
-                <p class="text-lg text-gray-600 mb-6">
-                    Tell us about your dream party and we'll make it happen! ✨
+                <p class="text-gray-600 mb-6">
+                    Fill out the form below and we'll get back to you within 2 hours!
                 </p>
 
-                <form class="space-y-6" id="bookingForm">
-                    <!-- Contact Information -->
+                <form class="space-y-5" id="bookingForm">
+                    <!-- Basic Information -->
                     <div class="space-y-4">
-                        <h3 class="text-lg font-semibold text-gray-800 flex items-center">
-                            <i class="fas fa-user mr-2 text-primary"></i>
-                            Contact Information
-                        </h3>
-                        <div class="grid gap-4">
-                            <div class="space-y-2">
-                                <label class="block text-gray-700 font-medium">
-                                    Parent/Guardian Name *
-                                </label>
-                                <input type="text" required
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300"
-                                    placeholder="Your full name">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="block text-gray-700 font-medium">
-                                    Phone Number *
-                                </label>
-                                <input type="tel" required
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300"
-                                    placeholder="(555) 123-4567">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="block text-gray-700 font-medium">
-                                    Email Address *
-                                </label>
-                                <input type="email" required
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300"
-                                    placeholder="your.email@example.com">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="block text-gray-700 font-medium">
-                                    Birthday Child's Name *
-                                </label>
-                                <input type="text" required
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300"
-                                    placeholder="Child's name">
-                            </div>
+                        <h3 class="text-lg font-semibold text-gray-800">Contact Information</h3>
+                        <div class="space-y-3">
+                            <input type="text" required placeholder="Your Name *"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                            <input type="tel" required placeholder="Phone Number *"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                            <input type="email" required placeholder="Email Address *"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
                         </div>
                     </div>
 
                     <!-- Party Details -->
                     <div class="space-y-4">
-                        <h3 class="text-lg font-semibold text-gray-800 flex items-center">
-                            <i class="fas fa-birthday-cake mr-2 text-primary"></i>
-                            Party Details
-                        </h3>
-                        <div class="grid gap-4">
-                            <div class="space-y-2">
-                                <label class="block text-gray-700 font-medium">
-                                    Child's Age *
-                                </label>
-                                <select required
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300">
-                                    <option value="">Select age</option>
-                                    <option value="1">1 year old</option>
-                                    <option value="2">2 years old</option>
-                                    <option value="3">3 years old</option>
-                                    <option value="4">4 years old</option>
-                                    <option value="5">5 years old</option>
-                                    <option value="6">6 years old</option>
-                                    <option value="7">7 years old</option>
-                                    <option value="8">8 years old</option>
-                                    <option value="9">9 years old</option>
-                                    <option value="10">10 years old</option>
-                                    <option value="11">11 years old</option>
-                                    <option value="12">12 years old</option>
-                                    <option value="13+">13+ years old</option>
-                                </select>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="block text-gray-700 font-medium">
-                                    Party Date *
-                                </label>
-                                <input type="date" required
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="block text-gray-700 font-medium">
-                                    Preferred Time *
-                                </label>
-                                <select required
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300">
-                                    <option value="">Select time</option>
-                                    <option value="morning">Morning (10 AM - 1 PM)</option>
-                                    <option value="afternoon">Afternoon (1 PM - 5 PM)</option>
-                                    <option value="evening">Evening (5 PM - 8 PM)</option>
-                                </select>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="block text-gray-700 font-medium">
-                                    Number of Guests *
-                                </label>
-                                <input type="number" required min="1" max="100"
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300"
-                                    placeholder="How many guests?">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="block text-gray-700 font-medium">
-                                    Package Preference
-                                </label>
-                                <select
-                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300">
-                                    <option value="">Choose a package</option>
-                                    <option value="starter">Starter Magic - $299</option>
-                                    <option value="premium">Premium Magic - $599</option>
-                                    <option value="luxury">Luxury Magic - $999</option>
-                                    <option value="custom">Custom Package</option>
-                                </select>
-                            </div>
+                        <h3 class="text-lg font-semibold text-gray-800">Party Details</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <input type="text" placeholder="Child's Name"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                            <select required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                                <option value="">Child's Age *</option>
+                                <option value="1">1 year old</option>
+                                <option value="2">2 years old</option>
+                                <option value="3">3 years old</option>
+                                <option value="4">4 years old</option>
+                                <option value="5">5 years old</option>
+                                <option value="6">6 years old</option>
+                                <option value="7">7 years old</option>
+                                <option value="8">8+ years old</option>
+                            </select>
                         </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <input type="date" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                            <input type="number" required min="1" max="100" placeholder="Number of Guests *"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                        </div>
+                        <select
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                            <option value="">Choose Package</option>
+                            <option value="starter">Starter Magic - $20k</option>
+                            <option value="premium">Premium Magic - $50k</option>
+                            <option value="luxury">Luxury Magic - $80k</option>
+                        </select>
                     </div>
 
                     <!-- Theme Selection -->
                     <div class="space-y-4">
-                        <h3 class="text-lg font-semibold text-gray-800 flex items-center">
-                            <i class="fas fa-palette mr-2 text-primary"></i>
-                            Party Theme
-                        </h3>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-primary cursor-pointer transition-all duration-300">
-                                <input type="checkbox" class="text-primary focus:ring-primary rounded">
-                                <span class="text-sm">🏰 Princess</span>
-                            </label>
-                            <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-primary cursor-pointer transition-all duration-300">
-                                <input type="checkbox" class="text-primary focus:ring-primary rounded">
-                                <span class="text-sm">🦸 Superhero</span>
-                            </label>
-                            <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-primary cursor-pointer transition-all duration-300">
-                                <input type="checkbox" class="text-primary focus:ring-primary rounded">
-                                <span class="text-sm">🦄 Unicorn</span>
-                            </label>
-                            <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-primary cursor-pointer transition-all duration-300">
-                                <input type="checkbox" class="text-primary focus:ring-primary rounded">
-                                <span class="text-sm">🏴‍☠️ Pirate</span>
-                            </label>
-                            <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-primary cursor-pointer transition-all duration-300">
-                                <input type="checkbox" class="text-primary focus:ring-primary rounded">
-                                <span class="text-sm">🐾 Animals</span>
-                            </label>
-                            <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-primary cursor-pointer transition-all duration-300">
-                                <input type="checkbox" class="text-primary focus:ring-primary rounded">
-                                <span class="text-sm">🚀 Space</span>
-                            </label>
-                            <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-primary cursor-pointer transition-all duration-300">
-                                <input type="checkbox" class="text-primary focus:ring-primary rounded">
-                                <span class="text-sm">🌸 Garden</span>
-                            </label>
-                            <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-primary cursor-pointer transition-all duration-300">
-                                <input type="checkbox" class="text-primary focus:ring-primary rounded">
-                                <span class="text-sm">✨ Custom</span>
-                            </label>
-                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">Preferred Theme</h3>
+                        <select
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                            <option value="">Select Theme (Optional)</option>
+                            <option value="princess">Princess</option>
+                            <option value="superhero">Superhero</option>
+                            <option value="unicorn">Unicorn</option>
+                            <option value="pirate">Pirate</option>
+                            <option value="animals">Animals</option>
+                            <option value="space">Space</option>
+                            <option value="custom">Custom Theme</option>
+                        </select>
                     </div>
 
-                    <!-- Additional Details -->
+                    <!-- Special Requests -->
                     <div class="space-y-4">
-                        <h3 class="text-lg font-semibold text-gray-800 flex items-center">
-                            <i class="fas fa-comment mr-2 text-primary"></i>
-                            Special Requests
-                        </h3>
-                        <textarea rows="4"
-                            class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-300"
-                            placeholder="Tell us about any special requests, dietary restrictions, favorite characters, or anything else that will help us make this party perfect!"></textarea>
+                        <h3 class="text-lg font-semibold text-gray-800">Special Requests</h3>
+                        <textarea rows="3" placeholder="Any special requests or requirements..."
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"></textarea>
                     </div>
 
                     <!-- Submit Button -->
-                    <div class="pt-6 border-t-2 border-gray-100">
+                    <div class="pt-4">
                         <button type="submit"
-                            class="w-full bg-gradient-to-r from-primary via-secondary to-accent text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all duration-300 transform">
-                            <i class="fas fa-magic mr-2"></i>
-                            Create My Magical Party!
+                            class="w-full bg-primary hover:bg-pink-600 text-white py-3 rounded-lg font-semibold transition-colors">
+                            Send Booking Request
                         </button>
-                        <p class="text-gray-600 mt-3 text-center text-sm">
-                            We'll contact you within 2 hours to confirm all the magical details! 🎉
+                        <p class="text-gray-500 mt-2 text-center text-sm">
+                            We'll contact you within 2 hours to confirm details
                         </p>
                     </div>
                 </form>
@@ -693,79 +543,7 @@
         </div>
     </div>
 
-    <!-- Testimonials Section -->
-    <section class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-                    <span class="text-secondary">Happy Families</span> Share Their Magic
-                </h2>
-                <p class="text-xl text-gray-600">
-                    See why parents trust us with their most precious celebrations
-                </p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                
-                <!-- Testimonial 1 -->
-                <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="flex text-yellow-400 text-2xl mb-6 justify-center">
-                        ⭐⭐⭐⭐⭐
-                    </div>
-                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
-                        "Absolutely magical! Emma's princess party was beyond our wildest dreams. The attention to detail was incredible, and seeing her face light up was priceless. Thank you for making her 5th birthday unforgettable!"
-                    </p>
-                    <div class="flex items-center">
-                        <div class="bg-gradient-to-r from-primary to-secondary w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
-                            S
-                        </div>
-                        <div>
-                            <div class="font-bold text-gray-800 text-lg">Sarah Johnson</div>
-                            <div class="text-gray-500">Mom of Emma (5)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="flex text-yellow-400 text-2xl mb-6 justify-center">
-                        ⭐⭐⭐⭐⭐
-                    </div>
-                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
-                        "From setup to cleanup, everything was perfect! The superhero theme was executed flawlessly, and the kids were entertained the entire time. Worth every penny and more!"
-                    </p>
-                    <div class="flex items-center">
-                        <div class="bg-gradient-to-r from-secondary to-purple-400 w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
-                            M
-                        </div>
-                        <div>
-                            <div class="font-bold text-gray-800 text-lg">Mike Rodriguez</div>
-                            <div class="text-gray-500">Dad of Alex (8)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="flex text-yellow-400 text-2xl mb-6 justify-center">
-                        ⭐⭐⭐⭐⭐
-                    </div>
-                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
-                        "The luxury package exceeded our expectations! Professional photography captured every precious moment, and the custom cake was a work of art. Sophie is still talking about her unicorn party!"
-                    </p>
-                    <div class="flex items-center">
-                        <div class="bg-gradient-to-r from-accent to-yellow-400 w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
-                            L
-                        </div>
-                        <div>
-                            <div class="font-bold text-gray-800 text-lg">Lisa Chen</div>
-                            <div class="text-gray-500">Mom of Sophie (7)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Contact Section -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
@@ -867,86 +645,34 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-12">
-                <div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="bg-gradient-to-r from-primary to-secondary p-3 rounded-full">
-                            <i class="fas fa-birthday-cake text-white text-2xl"></i>
-                        </div>
-                        <span class="text-2xl font-bold">Party Magic</span>
-                    </div>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        Creating magical birthday celebrations that bring joy, laughter, and unforgettable memories to families since 2020.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="bg-primary/20 hover:bg-primary text-primary hover:text-white p-3 rounded-xl transition-all duration-300">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="#" class="bg-primary/20 hover:bg-primary text-primary hover:text-white p-3 rounded-xl transition-all duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="bg-primary/20 hover:bg-primary text-primary hover:text-white p-3 rounded-xl transition-all duration-300">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="#" class="bg-primary/20 hover:bg-primary text-primary hover:text-white p-3 rounded-xl transition-all duration-300">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Our Services</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li><a href="#" class="hover:text-primary transition-colors">Theme Decoration</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Custom Cakes</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Entertainment</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Photography</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Catering</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Setup & Cleanup</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Party Packages</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li><a href="#" class="hover:text-primary transition-colors">Starter Magic - $20k</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Premium Magic - $50k</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Luxury Magic - $80k</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Custom Packages</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Add-on Services</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Contact Info</h3>
-                    <div class="space-y-4 text-gray-400">
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-phone text-primary"></i>
-                            <span>+91 8590967785</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-envelope text-primary"></i>
-                            <span>hello@partymagic.com</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-map-marker-alt text-primary"></i>
-                            <span>Edapally,Kochi<br>Kerala, Cochin</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-clock text-primary"></i>
-                            <span>Mon-Sun: 8 AM - 8 PM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Party Magic. All rights reserved. Making dreams come true, one party at a time! ✨</p>
-            </div>
+    
+    <footer class="bg-black text-white py-12">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-2">HappeningHub</h3>
+        <p>Your one-stop solution for unforgettable events. We make it happen!</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-2">Quick Links</h3>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#" class="hover:underline">Services</a></li>
+          <li><a href="#" class="hover:underline">Gallery</a></li>
+          <li><a href="#" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-2">Follow Us</h3>
+        <div class="flex space-x-4">
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook--v1.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png"/></a>
         </div>
-    </footer>
+      </div>
+    </div>
+    <div class="text-center text-gray-400 mt-6 text-sm">© 2025 HappeningHub. All rights reserved.</div>
+  </footer>
+
 
     <!-- Floating Action Button -->
     <div class="fixed bottom-8 right-8 z-50">
@@ -1005,46 +731,57 @@
             }
         });
 
-        // Background Carousel functionality
-        let currentBgSlide = 0;
-        const totalBgSlides = 5;
-        const heroBg = document.getElementById('hero-bg');
+        // Video Carousel functionality
+        let currentVideoSlide = 0;
+        const totalVideoSlides = 3;
+        const heroVideos = document.querySelectorAll('.hero-video');
         const heroDots = document.querySelectorAll('.hero-dot');
 
-        function updateBackgroundCarousel() {
-            // Remove all background classes
-            heroBg.classList.remove('hero-bg-1', 'hero-bg-2', 'hero-bg-3', 'hero-bg-4', 'hero-bg-5');
-            
-            // Add current background class
-            heroBg.classList.add(`hero-bg-${currentBgSlide + 1}`);
+        function updateVideoCarousel() {
+            // Hide all videos and remove active class
+            heroVideos.forEach((video, index) => {
+                if (index === currentVideoSlide) {
+                    video.classList.add('active');
+                    video.currentTime = 0; // Restart video
+                    video.play();
+                } else {
+                    video.classList.remove('active');
+                    video.pause();
+                }
+            });
             
             // Update dots
             heroDots.forEach((dot, index) => {
-                if (index === currentBgSlide) {
+                if (index === currentVideoSlide) {
                     dot.classList.remove('bg-white/50');
-                    dot.classList.add('bg-white/80', 'active');
+                    dot.classList.add('bg-white/90', 'active');
                 } else {
-                    dot.classList.remove('bg-white/80', 'active');
+                    dot.classList.remove('bg-white/90', 'active');
                     dot.classList.add('bg-white/50');
                 }
             });
         }
 
-        function nextBackgroundSlide() {
-            currentBgSlide = (currentBgSlide + 1) % totalBgSlides;
-            updateBackgroundCarousel();
+        function nextVideoSlide() {
+            currentVideoSlide = (currentVideoSlide + 1) % totalVideoSlides;
+            updateVideoCarousel();
         }
 
         // Event listeners for hero dots
         heroDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
-                currentBgSlide = index;
-                updateBackgroundCarousel();
+                currentVideoSlide = index;
+                updateVideoCarousel();
             });
         });
 
-        // Auto-advance background carousel every 6 seconds
-        setInterval(nextBackgroundSlide, 6000);
+        // Auto-advance video carousel every 8 seconds
+        setInterval(nextVideoSlide, 8000);
+
+        // Initialize video carousel on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateVideoCarousel();
+        });
 
         // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
