@@ -8,18 +8,17 @@
   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
 
   <!-- event card -->
-   <style>
+  <style>
     body {
       background-color: #fef3c7;
       font-family: sans-serif;
     }
 
     .popup {
-      background-color: #f97316;
       border-radius: 1rem;
-      width: 16rem;
-      height: 18rem;
-      padding: 1rem;
+      width: 20rem;
+      height: 22rem;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -27,78 +26,114 @@
     }
 
     .speaker-image {
-      width: 60px;
-      height: 60px;
+      width: 18rem;
+      height: 16rem;
       object-fit: cover;
-      border-radius: 9999px;
+      border-radius: 1rem;
     }
 
     .stack-container {
       position: relative;
-      margin-top: 9rem;
+      margin-top: 8rem;
     }
 
     .card {
       position: sticky;
       width: 80%;
-      margin: 0 auto 10px auto; /* gap between cards */
-      background-color: white;
+      margin: 0 auto 15px auto;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.3));
+      backdrop-filter: blur(10px);
       border-radius: 1rem;
-      padding: 1.5rem;
+      padding: 2rem;
+      min-height: 28rem;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer; /* Makes card look clickable */
+      cursor: pointer;
     }
 
     .card:hover {
-      transform: translateY(-5px); /* Slight lift on hover */
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
 
-    /* Sticky stacking with 10px offset */
+    .card#card1 {
+      border: 2px solid #3b82f6;
+    }
+
+    .card#card2 {
+      border: 2px solid #22c55e;
+    }
+
+    .card#card3 {
+      border: 2px solid #a855f7;
+    }
+
+    .card#card4 {
+      border: 2px solid red;
+    }
+
     .card:nth-child(1) {
-      top: 100px;
+      top: 146px;
       z-index: 6;
     }
 
     .card:nth-child(2) {
-      top: 110px;
+      top: 161px;
       z-index: 7;
     }
 
     .card:nth-child(3) {
-      top: 120px;
+      top: 176px;
       z-index: 8;
     }
 
     .card:nth-child(4) {
-      top: 130px;
+      top: 191px;
       z-index: 9;
     }
 
-    /* Navigation Styles */
     .nav-button {
+      margin-top: 10px;
       padding: 0.5rem 1rem;
       border-radius: 9999px;
       transition: background-color 0.3s ease;
     }
 
-    .nav-button.selected {
-      background-color: #f97316;
+    .nav-button.selected-blue {
+      background-color: #3b82f6;
       color: white;
     }
 
-    /* Event Navbar Styles */
+    .nav-button.selected-green {
+      background-color: #22c55e;
+      color: white;
+    }
+
+    .nav-button.selected-purple {
+      background-color: #a855f7;
+      color: white;
+    }
+
+    .nav-button.selected-red {
+      background-color: red;
+      color: white;
+    }
+
     #eventNavbar {
-      z-index: 45; /* Below main navbar (z-50) but above cards */
+      z-index: 45;
       width: 100%;
       transition: all 0.3s ease;
+      margin-bottom: 40px;
     }
 
     #eventNavbar.fixed {
       position: fixed;
-      top: 64px; /* Adjust for main navbar height (h-16 = 64px) */
+      top: 64px;
       left: 0;
+    }
+
+    #offcanvas {
+      width: 400px;
     }
   </style>
 </head>
@@ -131,8 +166,7 @@
           </div>
         </div>
 
-        <!-- Blog Link -->
-        <a href="#blog" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Blog</a>
+        <a href="#blog" class="text-white hover:rounded text-sm font-medium">Blog</a>
       </div>
 
       <div class="flex space-x-4 items-center">
@@ -146,7 +180,6 @@
  <!-- HERO VIDEO CAROUSEL -->
 <section class="relative h-screen overflow-hidden" id="hero">
   <div id="heroCarousel" class="flex transition-transform duration-700 ease-in-out h-full w-[400%]">
-    <!-- Slide 1 -->
     <div class="w-full h-full relative">
       <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
         <source src="./landingvedios/concert.mp4" type="video/mp4">
@@ -159,8 +192,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Slide 2 -->
     <div class="w-full h-full relative">
       <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
         <source src="./landingvedios/wed.mp4" type="video/mp4">
@@ -173,8 +204,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Slide 3 -->
     <div class="w-full h-full relative">
       <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
         <source src="./landingvedios/corp.mp4" type="video/mp4">
@@ -187,8 +216,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Slide 4 -->
     <div class="w-full h-full relative">
       <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
         <source src="./landingvedios/birthday.mp4" type="video/mp4">
@@ -206,100 +233,122 @@
 
 <!-- Event section -->
 <section id="eventSection">
-  <!-- Navigation -->
   <div id="eventNavbar" class="bg-white text-black flex justify-center space-x-4 p-4 z-45">
-    <button class="nav-button" data-section="card1">Event planning</button>
-    <button class="nav-button" data-section="card2">Ticketing</button>
-    <button class="nav-button" data-section="card3">Onsite solutions</button>
-    <button class="nav-button" data-section="card4">Expo</button>
+    <button class="nav-button" data-section="card1">Concert</button>
+    <button class="nav-button" data-section="card2">Marriage</button>
+    <button class="nav-button" data-section="card3">Birthday</button>
+    <button class="nav-button" data-section="card4">Corporate</button>
   </div>
 
-  <!-- Cards Section -->
   <div class="stack-container">
     <!-- Card 1 -->
-    <div class="card" id="card1">
+    <div class="card" id="card1" onclick="window.location.href='/book/concert'">
       <div class="flex justify-between items-start">
         <div>
           <div class="flex items-center space-x-4">
             <span class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-gray-500">01</span>
-            <h2 class="text-2xl font-bold">Event planning, at every stage</h2>
+            <h2 class="text-2xl font-bold">Concert Event Management</h2>
           </div>
-          <ul class="mt-6 space-y-2 text-gray-700">
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Set up an agenda for event activities</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate event sponsorships</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage regular and add-on session registrations</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Handle check-in for exclusive event zones</li>
+          <p class="mt-4 text-gray-600">Experience electrifying concerts with seamless planning and execution, ensuring every beat resonates with your audience.</p>
+          <ul class="mt-4 space-y-2 text-gray-700">
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate with artists and sound engineers</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Plan stage setup and lighting design</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage crowd control and safety protocols</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Organize backstage and VIP experiences</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange ticketing and entry systems</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate food and beverage vendors</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Provide real-time event monitoring</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange post-concert merchandise sales</li>
           </ul>
+          <button class="mt-4 bg-blue-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-blue-600 cursor-pointer">Book Now</button>
         </div>
-        <div class="popup">
-          <h2 class="text-2xl font-bold text-white mb-4">Speaker</h2>
-          <img src="https://cdn0.weddingwire.in/article/3713/3_2/1280/jpg/63173-marriage-images-rituals-wedding-photography-lead-image.webp" alt="Speaker" class="speaker-image">
+        <div class="popup bg-blue-500">
+          <h2 class="text-2xl font-bold text-white mb-4">Concert Highlights</h2>
+          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Concert" class="speaker-image">
         </div>
       </div>
     </div>
 
     <!-- Card 2 -->
-    <div class="card" id="card2">
+    <div class="card" id="card2" onclick="window.location.href='/book/marriage'">
       <div class="flex justify-between items-start">
         <div>
           <div class="flex items-center space-x-4">
             <span class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-gray-500">02</span>
-            <h2 class="text-2xl font-bold">Ticketing Management</h2>
+            <h2 class="text-2xl font-bold">Marriage Event Management</h2>
           </div>
-          <ul class="mt-6 space-y-2 text-gray-700">
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Create and manage ticket types</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Process online ticket sales</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Handle refund requests</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Generate attendance reports</li>
+          <p class="mt-4 text-gray-600">Create your dream wedding with our meticulous planning, turning your special day into a timeless celebration.</p>
+          <ul class="mt-4 space-y-2 text-gray-700">
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Plan wedding ceremonies and receptions</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate with vendors for decor and catering</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage guest lists and RSVPs</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Organize photography and entertainment</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Design custom invitations and stationery</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Provide day-of coordination services</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange transportation for guests and couple</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Offer post-wedding event planning</li>
           </ul>
+          <button class="mt-4 bg-green-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-green-600 cursor-pointer">Book Now</button>
         </div>
-        <div class="popup">
-          <h2 class="text-2xl font-bold text-white mb-4">Speaker</h2>
-          <img src="https://cdn0.weddingwire.in/article/3713/3_2/1280/jpg/63173-marriage-images-rituals-wedding-photography-lead-image.webp" alt="Speaker" class="speaker-image">
+        <div class="popup bg-green-500">
+          <h2 class="text-2xl font-bold text-white mb-4">Wedding Moments</h2>
+          <img src="https://cdn0.weddingwire.in/article/3713/3_2/1280/jpg/63173-marriage-images-rituals-wedding-photography-lead-image.webp" alt="Wedding" class="speaker-image">
         </div>
       </div>
     </div>
 
     <!-- Card 3 -->
-    <div class="card" id="card3">
+    <div class="card" id="card3" onclick="window.location.href='/book/birthday'">
       <div class="flex justify-between items-start">
         <div>
           <div class="flex items-center space-x-4">
             <span class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-gray-500">03</span>
-            <h2 class="text-2xl font-bold">Onsite Solutions</h2>
+            <h2 class="text-2xl font-bold">Birthday Event Management</h2>
           </div>
-          <ul class="mt-6 space-y-2 text-gray-700">
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage onsite check-in</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate staff schedules</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Handle real-time updates</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Provide technical support</li>
+          <p class="mt-4 text-gray-600">Celebrate milestones with joy and creativity, tailored to make every birthday unforgettable for all ages.</p>
+          <ul class="mt-4 space-y-2 text-gray-700">
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Plan themed birthday parties</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange entertainment and activities</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate catering and cake services</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage decorations and party favors</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Organize guest transportation if needed</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Provide personalized party planning consultations</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange interactive games and workshops</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Offer professional photography services</li>
           </ul>
+          <button class="mt-4 bg-purple-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-purple-600 cursor-pointer">Book Now</button>
         </div>
-        <div class="popup">
-          <h2 class="text-2xl font-bold text-white mb-4">Speaker</h2>
-          <img src="https://cdn0.weddingwire.in/article/3713/3_2/1280/jpg/63173-marriage-images-rituals-wedding-photography-lead-image.webp" alt="Speaker" class="speaker-image">
+        <div class="popup bg-purple-500">
+          <h2 class="text-2xl font-bold text-white mb-4">Birthday Events</h2>
+          <img src="./landingvedios/bir.jpg" alt="Birthday Event" class="speaker-image">
         </div>
       </div>
     </div>
 
     <!-- Card 4 -->
-    <div class="card" id="card4">
+    <div class="card" id="card4" onclick="window.location.href='/book/corporate'">
       <div class="flex justify-between items-start">
         <div>
           <div class="flex items-center space-x-4">
             <span class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-gray-500">04</span>
-            <h2 class="text-2xl font-bold">Expo Organization</h2>
+            <h2 class="text-2xl font-bold">Corporate Event Management</h2>
           </div>
-          <ul class="mt-6 space-y-2 text-gray-700">
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange exhibitor booths</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage vendor logistics</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Promote expo sessions</li>
-            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate networking events</li>
+          <p class="mt-4 text-gray-600">Elevate your business events with professional planning, fostering networking and brand success.</p>
+          <ul class="mt-4 space-y-2 text-gray-700">
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Organize professional conferences and seminars</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate venue setup and AV equipment</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage speaker schedules and presentations</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Facilitate networking and team-building activities</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange corporate branding and signage</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Provide post-event feedback and analytics</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate catering for professional settings</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Offer virtual event integration options</li>
           </ul>
+          <button class="mt-4 bg-red-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-red-600 cursor-pointer">Book Now</button>
         </div>
-        <div class="popup">
-          <h2 class="text-2xl font-bold text-white mb-4">Speaker</h2>
-          <img src="https://cdn0.weddingwire.in/article/3713/3_2/1280/jpg/63173-marriage-images-rituals-wedding-photography-lead-image.webp" alt="Speaker" class="speaker-image">
+        <div class="popup bg-red-500">
+          <h2 class="text-2xl font-bold text-white mb-4">Corporate Events</h2>
+          <img src="https://cdn.pixabay.com/photo/2023/01/02/21/11/conference-7693055_1280.jpg" alt="Corporate Event" class="speaker-image">
         </div>
       </div>
     </div>
@@ -310,8 +359,6 @@
 <section class="py-16 bg-white" id="blog">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Customer Blog & Reviews</h2>
-
-    <!-- Blog Form -->
     <div class="bg-gray-100 p-6 rounded-lg shadow-md mb-12 max-w-2xl mx-auto">
       <h3 class="text-xl font-semibold mb-4 text-gray-700">Share Your Experience</h3>
       <form>
@@ -320,78 +367,49 @@
         <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">Post Review</button>
       </form>
     </div>
-
-    <!-- Customer Blog Carousel -->
     <div class="relative overflow-hidden">
       <div id="customerCarousel" class="flex transition-transform duration-500 ease-in-out space-x-6">
-        <!-- Slide 1 -->
         <div class="flex space-x-6 min-w-full">
-          <!-- Card 1 -->
           <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
             <img src="https://i.pravatar.cc/80?img=1" alt="profile" class="w-16 h-16 rounded-full mb-3">
             <h4 class="font-bold text-purple-600 mb-1">Aarav S.</h4>
-            <div class="text-yellow-400 mb-2">
-              ★★★★☆
-            </div>
+            <div class="text-yellow-400 mb-2">★★★★☆</div>
             <p class="text-gray-700 italic">"The concert setup was top-tier. Sound and stage lighting were spot on!"</p>
           </div>
-
-          <!-- Card 2 -->
           <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
             <img src="https://i.pravatar.cc/80?img=2" alt="profile" class="w-16 h-16 rounded-full mb-3">
             <h4 class="font-bold text-purple-600 mb-1">Nisha R.</h4>
-            <div class="text-yellow-400 mb-2">
-              ★★★★★
-            </div>
+            <div class="text-yellow-400 mb-2">★★★★★</div>
             <p class="text-gray-700 italic">"Our wedding was magical, thanks to the wonderful planning team!"</p>
           </div>
-
-          <!-- Card 3 -->
           <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
             <img src="https://i.pravatar.cc/80?img=3" alt="profile" class="w-16 h-16 rounded-full mb-3">
             <h4 class="font-bold text-purple-600 mb-1">Karan V.</h4>
-            <div class="text-yellow-400 mb-2">
-              ★★★★☆
-            </div>
+            <div class="text-yellow-400 mb-2">★★★★☆</div>
             <p class="text-gray-700 italic">"I loved how professional everything was for our corporate event."</p>
           </div>
         </div>
-
-        <!-- Slide 2 -->
         <div class="flex space-x-6 min-w-full">
-          <!-- Card 4 -->
           <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
             <img src="https://i.pravatar.cc/80?img=4" alt="profile" class="w-16 h-16 rounded-full mb-3">
             <h4 class="font-bold text-purple-600 mb-1">Meena T.</h4>
-            <div class="text-yellow-400 mb-2">
-              ★★★★★
-            </div>
+            <div class="text-yellow-400 mb-2">★★★★★</div>
             <p class="text-gray-700 italic">"My son’s birthday party turned out amazing. Highly recommend!"</p>
           </div>
-
-          <!-- Card 5 -->
           <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
             <img src="https://i.pravatar.cc/80?img=5" alt="profile" class="w-16 h-16 rounded-full mb-3">
             <h4 class="font-bold text-purple-600 mb-1">Ajay G.</h4>
-            <div class="text-yellow-400 mb-2">
-              ★★★★☆
-            </div>
+            <div class="text-yellow-400 mb-2">★★★★☆</div>
             <p class="text-gray-700 italic">"They made our anniversary event memorable. Beautiful decor!"</p>
           </div>
-
-          <!-- Card 6 -->
           <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
             <img src="https://i.pravatar.cc/80?img=6" alt="profile" class="w-16 h-16 rounded-full mb-3">
             <h4 class="font-bold text-purple-600 mb-1">Sneha M.</h4>
-            <div class="text-yellow-400 mb-2">
-              ★★★★☆
-            </div>
+            <div class="text-yellow-400 mb-2">★★★★☆</div>
             <p class="text-gray-700 italic">"Excellent customer service and attention to detail!"</p>
           </div>
         </div>
       </div>
-
-      <!-- Carousel Controls -->
       <button onclick="prevCustomerSlide()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 z-10">❮</button>
       <button onclick="nextCustomerSlide()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 z-10">❯</button>
     </div>
@@ -410,7 +428,7 @@
   </section>
 
   <!-- Offcanvas Contact Form -->
-  <div id="offcanvas" class="fixed inset-y-0 right-0 w-80 bg-white shadow transform translate-x-full transition-transform duration-300 z-50">
+  <div id="offcanvas" class="fixed inset-y-0 right-0 bg-white shadow transform translate-x-full transition-transform duration-300 z-50">
     <div class="p-6">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-bold">Contact Us</h2>
@@ -458,7 +476,6 @@
 
   <!-- JS -->
   <script>
-    // Offcanvas and Dropdown Functions
     function toggleOffcanvas() {
       const offcanvas = document.getElementById('offcanvas');
       offcanvas.classList.toggle('translate-x-full');
@@ -477,7 +494,6 @@
       }
     });
 
-    // Customer Blog Carousel
     let currentCustomerSlide = 0;
     const customerCarousel = document.getElementById('customerCarousel');
     const customerSlides = customerCarousel.children.length;
@@ -498,7 +514,6 @@
 
     setInterval(nextCustomerSlide, 6000);
 
-    // Hero Carousel Script
     let currentHeroSlide = 0;
     const heroCarousel = document.getElementById('heroCarousel');
     const heroSlides = heroCarousel.children.length;
@@ -519,32 +534,39 @@
 
     setInterval(nextHeroSlide, 4000);
 
-    // Event Navbar and Card Highlight Script
     window.addEventListener('scroll', () => {
       const eventSection = document.getElementById('eventSection');
       const eventNavbar = document.getElementById('eventNavbar');
       const navButtons = eventNavbar.getElementsByClassName('nav-button');
       const cards = document.getElementsByClassName('card');
-      const lastCard = cards[cards.length - 1]; // Get the last card (card4)
+      const lastCard = cards[cards.length - 1];
       const eventRect = eventSection.getBoundingClientRect();
       const lastCardRect = lastCard.getBoundingClientRect();
 
-      // Fix navbar when scrolling within event section until the bottom of the last card
-      if (eventRect.top <= 64 && lastCardRect.bottom > 64) { // Account for main navbar height (64px)
+      if (eventRect.top <= 64 && lastCardRect.bottom > 64) {
         eventNavbar.classList.add('fixed');
       } else {
         eventNavbar.classList.remove('fixed');
       }
 
-      // Highlight nav button based on card visibility
       Array.from(cards).forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
         const cardId = card.id;
         const navButton = document.querySelector(`.nav-button[data-section="${cardId}"]`);
 
         if (cardTop >= 0 && cardTop < window.innerHeight / 2) {
-          Array.from(navButtons).forEach(btn => btn.classList.remove('selected'));
-          navButton.classList.add('selected');
+          Array.from(navButtons).forEach(btn => {
+            btn.classList.remove('selected-blue', 'selected-green', 'selected-purple', 'selected-red');
+          });
+          if (cardId === 'card1') {
+            navButton.classList.add('selected-blue');
+          } else if (cardId === 'card2') {
+            navButton.classList.add('selected-green');
+          } else if (cardId === 'card3') {
+            navButton.classList.add('selected-purple');
+          } else if (cardId === 'card4') {
+            navButton.classList.add('selected-red');
+          }
         }
       });
     });
