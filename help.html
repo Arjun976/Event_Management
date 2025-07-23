@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="./images/yoga-logo.png" type="image/x-icon">
+<title>Help</title>
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+
+    }
+
+    .navbar{
+        background-color: black;
+    }
+
+    .navbar ul{
+        background-color: black;
+    }
+
+    .head-title{
+        font-family: "Lexend Mega", sans-serif;
+
+    }
+
+    .sub-btn{
+        background-color: rgb(27, 27, 27);
+    }
+
+</style>
+</head>
+
+<body class="">
+
+
+    <nav class=" navbar bg-white border-gray-200 dark:border-gray-700">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Happening Hub</span>
+            </a>
+            <button data-collapse-toggle="navbar-dropdown" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-dropdown" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+                <ul
+                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:border-gray-700">
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
+                            aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                            class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Dropdown
+                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg></button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbar"
+                            class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-400"
+                                aria-labelledby="dropdownLargeButton">
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                </li>
+                            </ul>
+                            <div class="py-1">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                    out</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="h-[300px] bg-cover bg-center relative"
+        style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.833), rgba(0, 0, 0, 0.682)),
+                                url('./images/help-bg.jpg');
+                                background-position: center;">
+        <div class="absolute inset-0  bg-opacity-50"></div>
+
+        <div class="relative h-full flex items-center justify-start pr-10">
+            <div class="text-white max-w-xl pl-20">
+                <h1 class="text-5xl font-bold mb-4">Need Help?</h1>
+                <p class="text-lg mt-10">We're here to assist you with your events, bookings, or general queries
+                    anytime.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ-Section -->
+    <section class="bg-gray-100 py-16 px-4">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+
+            <!-- Left Side -->
+            <div>
+                <h2 class="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
+
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <details class="bg-white p-6 rounded-lg shadow group">
+                        <summary
+                            class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+                            How do I book an event?
+                            <span class="ml-2 transition-transform group-open:rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">
+                            You can book an event by contacting us through our website form, phone, or visiting us in
+                            person.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 2 -->
+                    <details class="bg-white p-6 rounded-lg shadow group">
+                        <summary
+                            class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+                            Do you offer custom wedding packages?
+                            <span class="ml-2 transition-transform group-open:rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">
+                            Yes, we tailor wedding packages to fit your preferences and budget — from venue to décor.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 3 -->
+                    <details class="bg-white p-6 rounded-lg shadow group">
+                        <summary
+                            class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+                            Are your services available outside the city?
+                            <span class="ml-2 transition-transform group-open:rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">
+                            Absolutely! We’re available for destination events. Travel charges may apply.
+                        </p>
+                    </details>
+
+                    <!-- FAQ 4 -->
+                    <details class="bg-white p-6 rounded-lg shadow group">
+                        <summary
+                            class="cursor-pointer text-lg font-medium text-gray-800 flex justify-between items-center">
+                            What types of workshops do you manage?
+                            <span class="ml-2 transition-transform group-open:rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">
+                            We manage educational, motivational, and corporate skill-building workshops.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="bg-white mt-15 p-8 rounded-lg shadow-lg h-fit">
+                <h3 class="text-2xl font-semibold mb-4">Still have questions?</h3>
+                <p class="text-gray-600 mb-6">If you can’t find your answer here, feel free to ask us directly.</p>
+
+                <form class="space-y-4">
+                    <input type="text" placeholder="Enter Your Name"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required />
+
+                    <input type="text" placeholder="Enter Your Email Address"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required />
+
+                    <input type="text" placeholder="Enter your question"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required />
+
+                    <button type="submit"
+                        class="sub-btn w-full text-white font-semibold py-3 rounded-md hover:bg-blue-700 transition duration-300">
+                        Submit Question
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="text-white py-12 px-4 mt-10 text-center rounded-lg max-w-5xl lg:max-w-7xl mx-2 lg:mx-auto" style="background-image:linear-gradient(to right, rgba(0, 0, 0, 0.708), rgba(0, 0, 0, 0.708)),
+                                url('./images/Untitled\ \(Copy\).png');
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                background-position: center;"">
+        <h3 class="text-3xl font-bold mb-4">Ready to Plan Your Event?</h3>
+        <p class="mb-6 text-lg">Let our experienced team handle every detail — from vision to execution.</p>
+        <a href="/book"
+            class="bg-white text-slate-950 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">Book
+            Now</a>
+    </section>
+
+    <footer class="bg-slate-950 text-gray-200 pt-10 pb-6 px-4 mt-10">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-8">
+    
+    <!-- Brand/About -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4 head-title">Happening Hub</h3>
+      <p class="text-sm text-gray-400">Creating unforgettable events and experiences. Let us turn your ideas into reality.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#" class="hover:text-white">Home</a></li>
+        <li><a href="#" class="hover:text-white">Services</a></li>
+        <li><a href="#" class="hover:text-white">About</a></li>
+        <li><a href="#" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Support -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Support</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#" class="hover:text-white">Help Center</a></li>
+        <li><a href="#" class="hover:text-white">FAQs</a></li>
+        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+      <p class="text-sm text-gray-400"><i class="fa-solid fa-envelope pr-3 text-gray-100"></i>support@happeninghub.com</p>
+      <p class="text-sm text-gray-400"><i class="fa-solid fa-phone pr-3 text-gray-100 mt-2"></i>+91 98765 43210</p>
+      <div class="flex space-x-4 mt-4">
+        <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom line -->
+  <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-500">
+    © 2025 HappeningHub. All rights reserved.
+  </div>
+</footer>
+
+
+</body>
+
+</html>
