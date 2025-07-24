@@ -8,6 +8,42 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="#" class="text-xl font-bold text-blue-600">pro-events</a>
+        </div>
+
+        <!-- Menu button (mobile) -->
+        <div class="flex items-center md:hidden">
+          <button id="menu-btn" class="text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Menu (desktop) -->
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="./corporate.html" class="text-gray-700 hover:text-blue-600">Home</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">Services</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Services</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
+    </div>
+  </nav>
   <!-- Hero Section -->
   <section class="bg-blue-800 text-white py-16 text-center px-6">
     <h1 class="text-4xl md:text-5xl font-bold">Professional Workshop Management</h1>
@@ -36,21 +72,21 @@
     <h2 class="text-3xl font-bold text-center mb-8">Workshops We’ve Conducted</h2>
     <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
       <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
-        <img src="./26540_Nasscom.jpg" alt="Leadership Workshop">
+        <img src="./img/26540_Nasscom.jpg" alt="Leadership Workshop">
         <div class="p-4">
           <h3 class="text-lg font-bold mb-2">Leadership Development - Mumbai</h3>
           <p>Organized for 80 employees of a tech company with guest speakers.</p>
         </div>
       </div>
       <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
-        <img src="./9.webp" alt="Team Building">
+        <img src="./img/9.webp" alt="Team Building">
         <div class="p-4">
           <h3 class="text-lg font-bold mb-2">Team Building Workshop - Hyderabad</h3>
           <p>Fun, engaging and collaborative sessions for HR teams.</p>
         </div>
       </div>
       <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
-        <img src="./ANI-20221117063804.jpg" alt="Sales Training">
+        <img src="./img/ANI-20221117063804.jpg" alt="Sales Training">
         <div class="p-4">
           <h3 class="text-lg font-bold mb-2">Sales Strategy Bootcamp - Bangalore</h3>
           <p>Customized training for sales professionals from 5 companies.</p>
@@ -82,10 +118,10 @@
   <section class="py-12 px-6 bg-gray-50">
     <h2 class="text-3xl font-bold text-center mb-8">Gallery</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-      <img src="./istockphoto-1428719703-1024x1024.jpg" class="rounded hover:scale-105 transition" alt="Gallery 1">
-      <img src="./istockphoto-1.jpg" class="rounded hover:scale-105 transition" alt="Gallery 2">
-      <img src="./innov.jpg" class="rounded hover:scale-105 transition" alt="Gallery 3">
-      <img src="./rav.jpg" class="rounded hover:scale-105 transition" alt="Gallery 4">
+      <img src="./img/istockphoto-1428719703-1024x1024.jpg" class="rounded hover:scale-105 transition" alt="Gallery 1">
+      <img src="./img/istockphoto-1.jpg" class="rounded hover:scale-105 transition" alt="Gallery 2">
+      <img src="./img/innov.jpg" class="rounded hover:scale-105 transition" alt="Gallery 3">
+      <img src="./img/rav.jpg" class="rounded hover:scale-105 transition" alt="Gallery 4">
     </div>
   </section>
 

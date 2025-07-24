@@ -12,7 +12,44 @@
   </style>
 </head>
 <body class="bg-white text-gray-800">
+    
 
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="#" class="text-xl font-bold text-blue-600">pro-events</a>
+        </div>
+
+        <!-- Menu button (mobile) -->
+        <div class="flex items-center md:hidden">
+          <button id="menu-btn" class="text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Menu (desktop) -->
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="./corporate.html" class="text-gray-700 hover:text-blue-600">Home</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">Services</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Services</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
+    </div>
+  </nav>
   <!-- Header -->
   <section class="text-center py-12 px-4 bg-purple-100">
     <h1 class="text-4xl font-bold text-purple-800 uppercase tracking-wide mb-4">Seminar Event Management</h1>
@@ -39,17 +76,17 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
     
     <div class="bg-white shadow rounded-lg p-4 text-center transform transition duration-300 hover:shadow-xl hover:-translate-y-1">
-      <img src="./innov.jpg" alt="Stage Design" class="mx-auto mb-3 rounded">
+      <img src="./img/innov.jpg" alt="Stage Design" class="mx-auto mb-3 rounded">
       <p class="font-semibold">Modern Stage Backdrop</p>
     </div>
     
     <div class="bg-white shadow rounded-lg p-4 text-center transform transition duration-300 hover:shadow-xl hover:-translate-y-1">
-      <img src="./led.jpg" alt="Lighting Setup" class="mx-auto mb-3 rounded">
+      <img src="./img/led.jpg" alt="Lighting Setup" class="mx-auto mb-3 rounded">
       <p class="font-semibold">LED & Ambient Lighting</p>
     </div>
     
     <div class="bg-white shadow rounded-lg p-4 text-center transform transition duration-300 hover:shadow-xl hover:-translate-y-1">
-      <img src="./welcome-to-our-presentation-l.jpg" alt="Welcome Banner" class="mx-auto mb-3 rounded">
+      <img src="./img/welcome-to-our-presentation-l.jpg" alt="Welcome Banner" class="mx-auto mb-3 rounded">
       <p class="font-semibold">Customized Welcome Boards</p>
     </div>
 
@@ -78,7 +115,7 @@
   <div class="flex flex-col md:flex-row gap-6 max-w-6xl mx-auto">
     
     <!-- Image Section -->
-    <img src="./food.jpg" alt="Catering" class="rounded-lg w-full md:w-1/2 object-cover">
+    <img src="./img/food.jpg" alt="Catering" class="rounded-lg w-full md:w-1/2 object-cover">
     
     <!-- Text Section Center Aligned -->
     <div class="md:w-1/2 flex flex-col justify-center space-y-4">
@@ -104,19 +141,19 @@
     
     <!-- Card 1 -->
     <div class="bg-white p-4 rounded shadow hover:shadow-lg hover:scale-105 transform transition duration-300">
-      <img src="./seat.webp" class="rounded mx-auto mb-2" alt="Theatre Seating">
+      <img src="./img/seat.webp" class="rounded mx-auto mb-2" alt="Theatre Seating">
       <p class="font-semibold text-sm">Theatre Style</p>
     </div>
 
     <!-- Card 2 -->
     <div class="bg-white p-4 rounded shadow hover:shadow-lg hover:scale-105 transform transition duration-300">
-      <img src="./rounded.webp" class="rounded mx-auto mb-2" alt="Round Table">
+      <img src="./img/rounded.webp" class="rounded mx-auto mb-2" alt="Round Table">
       <p class="font-semibold text-sm">Round Table Setup</p>
     </div>
 
     <!-- Card 3 -->
     <div class="bg-white p-4 rounded shadow hover:shadow-lg hover:scale-105 transform transition duration-300">
-      <img src="./U-Shape Conference.webp" class="rounded mx-auto mb-2" alt="U Shape">
+      <img src="./img/U-Shape Conference.webp" class="rounded mx-auto mb-2" alt="U Shape">
       <p class="font-semibold text-sm">U-Shape Conference</p>
     </div>
 
@@ -132,12 +169,12 @@
     <hr>
     <br>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-      <img src="./R.jpg" class="rounded-lg shadow" alt="Gallery 1">
-      <img src="./3d-rendering-luxury-seminar-meeting-banquet-hall-room_974729-2332.avif" class="rounded-lg shadow" alt="Gallery 2">
-      <img src="./R (1).jpg" class="rounded-lg shadow" alt="Gallery 3">
-      <img src="./OIPs.webp" class="rounded-lg shadow" alt="Gallery 4">
-      <img src="./UseCase_UnivScanItAssets.jpg" class="rounded-lg shadow" alt="Gallery 5">
-      <img src="./PREMIUM-I-II-U-postava-1536x1024.jpg" class="rounded-lg shadow" alt="Gallery 6">
+      <img src="./img/R.jpg" class="rounded-lg shadow" alt="Gallery 1">
+      <img src="./img/3d-rendering-luxury-seminar-meeting-banquet-hall-room_974729-2332.avif" class="rounded-lg shadow" alt="Gallery 2">
+      <img src="./img/R (1).jpg" class="rounded-lg shadow" alt="Gallery 3">
+      <img src="./img/OIPs.webp" class="rounded-lg shadow" alt="Gallery 4">
+      <img src="./img/UseCase_UnivScanItAssets.jpg" class="rounded-lg shadow" alt="Gallery 5">
+      <img src="./img/PREMIUM-I-II-U-postava-1536x1024.jpg" class="rounded-lg shadow" alt="Gallery 6">
     </div>
   </section>
 
