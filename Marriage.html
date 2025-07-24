@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marriage Event</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Flowbite CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitcount+Grid+Double:wght@100..900&family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Engagement&family=Libertinus+Mono&family=Namdhinggo:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Slab:wght@100..900&family=Sevillana&family=Slabo+27px&family=Space+Grotesk:wght@300..700&family=Tektur:wght@400..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+
+
+</head>
+
+
+
+
+
+
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+
+  }
+
+  .canvas {
+    background-image: url();
+  }
+
+  .head-title {
+    font-family: "Montserrat", Sans-serif;
+    color: #be9e49;
+    font-size: 22px;
+  }
+
+  .second-title {
+    font-family: "Montserrat", Sans-serif;
+    color: #000000;
+    font-size: 22px;
+  }
+
+  .para {
+    text-align: justify;
+    font-size: 15px;
+  }
+
+  .main-head-img {
+    font-family: "Montserrat", Sans-serif;
+    font-size: 13px;
+    float: left;
+    font-weight: 400;
+    text-transform: uppercase;
+
+  }
+
+  .main-head-text {
+    font-size: 35px;
+    font-family: "Montserrat", Sans-serif;
+    float: left;
+  }
+
+  .background {
+    height: 600px;
+  }
+
+  .booking {
+    height: 600px;
+    background-color: #3d3d3e;
+    font-family: "Montserrat", Sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  .iso img {
+    width: 10%;
+    height: 120px;
+  }
+
+  .Choose {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 12px;
+    margin: 25px;
+    font-style: italic;
+  }
+
+  h2 {
+    color: #614788;
+  }
+
+  .unlock {
+    color: white;
+  }
+</style>
+</head>
+
+<body class="bg-white">
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="#" class="text-2xl font-bold text-gray-800">
+            <img src="image/HappeningHub Logo with Vibrant Confetti.png" alt="Logo" class="h-16 w-auto">
+          </a>
+        </div>
+
+        <div class="hidden md:flex space-x-6">
+          <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">Home</a>
+          <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">About Us</a>
+          <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">Services</a>
+          <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">Gallery</a>
+          <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">Contact</a>
+
+        </div>
+
+        <!-- Desktop Menu -->
+        <input type="checkbox" id="toggle-canvas" class="peer hidden">
+        <!-- Header with toggle label -->
+        <header class="bg-white  sticky top-0 z-50 p-4 flex justify-end">
+          <label for="toggle-canvas" class="cursor-pointer flex flex-col items-center">
+            <div class="w-8 h-5 p-2 rounded-full mb-1">
+              <svg class="w-5 h-3 text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </div>
+            <p class="text-xs text-gray-700"></p>
+          </label>
+        </header>
+
+
+
+
+
+
+
+
+
+
+        <!-- Overlay -->
+        <div class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden peer-checked:block"></div>
+
+        <!-- Off-canvas sidebar -->
+        <div
+          class="fixed top-0 right-0 h-full w-100 bg-white shadow-lg transform translate-x-full peer-checked:translate-x-0 transition-transform duration-300 z-50">
+          <div class="p-4 border-b flex justify-between items-center">
+            <h2 class="text-lg font-bold">Menu</h2>
+            <!-- Close label -->
+            <label for="toggle-canvas" class="text-gray-600 hover:text-gray-900 text-2xl cursor-pointer">×</label>
+          </div>
+          <div class="canvas p-4 space-y-4">
+
+            <p class="text-sm">Welcome to the event !</p>
+            <a href="#" class="block text-gray-700 hover:text-orange-600 font-medium text-center">Event Schedule</a>
+
+            <!-- Date schedule -->
+            <div id="date-range-picker" date-rangepicker="" class="flex items-center">
+              <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z">
+                    </path>
+                  </svg>
+                </div>
+                <input id="datepicker-range-start" name="start" type="date"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Select date start">
+              </div>
+              <span class="mx-4 text-gray-500">to</span>
+              <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z">
+                    </path>
+                  </svg>
+                </div>
+                <input id="datepicker-range-end" name="end" type="date"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Select date end">
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+
+        <!-- Mobile -->
+        <!-- <div class="md:hidden">
+          <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Home</a>
+          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">About Us</a>
+          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Services</a>
+          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Gallery</a>
+          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+
+
+
+
+
+  <section class="relative h-screen overflow-hidden">
+    <!-- Background Video -->
+    <video autoplay="" muted="" loop="" playsinline="" class="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+      id="default-carousel" data-carousel="slide">
+      <source src="MarriageEvent/marriage-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+
+    <video autoplay="" muted="" loop="" playsinline="" class="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+      id="default-carousel" data-carousel="slide">
+      <source src="./MarriageEvent/marriage-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay for darkening if needed -->
+    <div class="absolute top-0 left-0 w-full h-full bg-black/50 z-0"></div>
+
+    <!-- Foreground content -->
+    <div class="relative z-10 px-6 pt-24 pb-12 max-w-screen-xl">
+      <h1 class="text-lg text-gray-200 max-w-2xl">
+        Kerala's #1 Exclusive Event Company
+      </h1>
+      <p class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white mb-4">
+        Partner with HappeningHub Event Management in Kerala.
+      </p>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <section>
+    <div class="elementor-element elementor-element-14271ba e-grid e-con-full e-con e-child" data-id="14271ba" data-element_type="container"><div class="elementor-element elementor-element-f2136c8 elementor-widget elementor-widget-counter" data-id="f2136c8" data-element_type="widget" data-widget_type="counter.default"><div class="elementor-widget-container"><div class="elementor-counter"><div class="elementor-counter-title"> Years of Experience</div><div class="elementor-counter-number-wrapper">
+<span class="elementor-counter-number-prefix"></span>
+<span class="elementor-counter-number" data-duration="2000" data-to-value="15" data-from-value="0" data-delimiter=",">15</span>
+<span class="elementor-counter-number-suffix">+</span></div></div></div></div><div class="elementor-element elementor-element-c61a824 elementor-widget elementor-widget-counter" data-id="c61a824" data-element_type="widget" data-widget_type="counter.default"><div class="elementor-widget-container"><div class="elementor-counter"><div class="elementor-counter-title">Events Covered</div><div class="elementor-counter-number-wrapper">
+<span class="elementor-counter-number-prefix"></span>
+<span class="elementor-counter-number" data-duration="2000" data-to-value="1.7" data-from-value="0" data-delimiter=",">1.7</span>
+<span class="elementor-counter-number-suffix">K+</span></div></div></div></div><div class="elementor-element elementor-element-02e2374 elementor-widget elementor-widget-counter" data-id="02e2374" data-element_type="widget" data-widget_type="counter.default"><div class="elementor-widget-container"><div class="elementor-counter"><div class="elementor-counter-title">Satisfied Clients</div><div class="elementor-counter-number-wrapper">
+<span class="elementor-counter-number-prefix"></span>
+<span class="elementor-counter-number" data-duration="2000" data-to-value="1.5" data-from-value="0" data-delimiter=",">1.5</span>
+<span class="elementor-counter-number-suffix">K+</span></div></div></div></div><div class="elementor-element elementor-element-c125a21 elementor-widget elementor-widget-counter" data-id="c125a21" data-element_type="widget" data-widget_type="counter.default"><div class="elementor-widget-container"><div class="elementor-counter"><div class="elementor-counter-title">Customer Rating</div><div class="elementor-counter-number-wrapper">
+<span class="elementor-counter-number-prefix"></span>
+<span class="elementor-counter-number" data-duration="2000" data-to-value="4.8" data-from-value="0" data-delimiter=",">4.8</span>
+<span class="elementor-counter-number-suffix"></span></div></div></div></div></div>
+  </section> -->
+
+
+
+  <section class="py-8 mt-0 mb-4">
+    <!-- ISO Certified -->
+    <div class="iso flex flex-col items-center justify-center text-center bg-yellow-100 bg-opacity-40 w-full h-auto">
+      <img src="MarriageEvent/width_600-removebg-preview-e1746788098745.webp" alt="ISO Certified Logo" class=" mb-4">
+      <h2 class="head-title">
+        ISO 9001:2015 CERTIFIED
+      </h2>
+      <div class="second-title">
+        EVENT MANAGEMENT COMPANY IN KERALA
+        <p class="para text-gray-900 text-base md:text-lg leading-relaxed mt-6 mx-4">Have you ever dreamed of planning
+          the perfect event that will be remembered forever? Look no further than Happening Hub®
+          Events, the top-notch event management company in Kerala, India, that has everything you need to make your
+          occasion an
+          unforgettable experience.We make everything from corporate event planning and personal celebrations to even
+          small
+          customized event packages absolutely memorable! Contact us today to learn more about our services and how we
+          can help
+          you organize the top event management in Kerala.</p>
+
+        <div class="flex justify-center my-6">
+          <img src="MarriageEvent/underline.svg" class="w-48 md:w-60 lg:w-72" alt="underline">
+        </div>
+
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <section class="px-6 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+      <!-- Left: Image Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 py-10">
+
+        <!-- Carousel 1 -->
+        <div id="carousel-1" class="relative w-full" data-carousel="slide">
+          <div class="relative h-64 overflow-hidden rounded-lg">
+            <div
+              class="duration-700 ease-in-out absolute inset-0 transition-transform transform z-10 translate-x-full z-20"
+              data-carousel-item="">
+              <img src="MarriageEvent/backdrop.jpg" class="w-full h-full object-cover" alt="Slide 1">
+            </div>
+            <div
+              class="duration-700 ease-in-out absolute inset-0 transition-transform transform z-30 -translate-x-full z-10"
+              data-carousel-item="">
+              <img src="MarriageEvent/backdrop1.jpg" class="w-full h-full object-cover" alt="Slide 2">
+            </div>
+            <div
+              class="duration-700 ease-in-out absolute inset-0 transition-transform transform z-20 translate-x-0 z-30"
+              data-carousel-item="">
+              <img src="MarriageEvent/backdrop2.jpg" class="w-full h-full object-cover" alt="Slide 2">
+            </div>
+          </div>
+          <!-- Controls -->
+          <button type="button"
+            class="absolute top-1/2 left-0 z-10 flex items-center justify-center h-8 w-8 -translate-y-1/2 bg-white rounded-full shadow"
+            data-carousel-prev="">
+            <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button type="button"
+            class="absolute top-1/2 right-0 z-10 flex items-center justify-center h-8 w-8 -translate-y-1/2 bg-white rounded-full shadow"
+            data-carousel-next="">
+            <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Carousel 2 -->
+        <div id="carousel-2" class="relative w-full" data-carousel="slide">
+          <div class="relative h-64 overflow-hidden rounded-lg">
+            <div
+              class="duration-700 ease-in-out absolute inset-0 transition-transform transform z-10 translate-x-full z-20"
+              data-carousel-item="">
+              <img src="MarriageEvent/haldi1.jpg" class="w-full h-full object-cover" alt="Slide 3">
+            </div>
+            <div
+              class="duration-700 ease-in-out absolute inset-0 transition-transform transform z-30 -translate-x-full z-10"
+              data-carousel-item="">
+              <img src="MarriageEvent/haldi2.jpg" class="w-full h-full object-cover" alt="Slide 4">
+            </div>
+            <div
+              class="duration-700 ease-in-out absolute inset-0 transition-transform transform z-20 translate-x-0 z-30"
+              data-carousel-item="">
+              <img src="MarriageEvent/haldi3.jpg" class="w-full h-full object-cover" alt="Slide 4">
+            </div>
+          </div>
+          <!-- Controls -->
+          <button type="button"
+            class="absolute top-1/2 left-0 z-10 flex items-center justify-center h-8 w-8 -translate-y-1/2 bg-white rounded-full shadow"
+            data-carousel-prev="">
+            <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button type="button"
+            class="absolute top-1/2 right-0 z-10 flex items-center justify-center h-8 w-8 -translate-y-1/2 bg-white rounded-full shadow"
+            data-carousel-next="">
+            <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+
+
+
+        <!-- Carousel 3 -->
+        <div id="carousel-2" class="relative w-full" data-carousel="slide">
+          <div class="relative h-64 overflow-hidden rounded-lg">
+            <div
+              class="duration-200 ease-in-out absolute inset-0 transition-transform transform z-30 -translate-x-full z-10"
+              data-carousel-item="">
+              <img src="MarriageEvent/Gallery 01.jpg" class="w-full h-full object-cover" alt="Gallery photo">
+            </div>
+            <div
+              class="duration-500 ease-in-out absolute inset-0 transition-transform transform z-20 translate-x-0 z-30"
+              data-carousel-item="">
+              <img src="MarriageEvent/Gallery 1.jpg" class="w-full h-full object-cover" alt="Gallery photo">
+            </div>
+            <div
+              class="duration-800 ease-in-out absolute inset-0 transition-transform transform z-10 translate-x-full z-20"
+              data-carousel-item="">
+              <img src="MarriageEvent/Gallery02.jpg" class="w-full h-full object-cover" alt="Gallery photo">
+            </div>
+          </div>
+          <!-- Controls -->
+          <button type="button"
+            class="absolute top-1/2 left-0 z-10 flex items-center justify-center h-8 w-8 -translate-y-1/2 bg-white rounded-full shadow"
+            data-carousel-prev="">
+            <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button type="button"
+            class="absolute top-1/2 right-0 z-10 flex items-center justify-center h-8 w-8 -translate-y-1/2 bg-white rounded-full shadow"
+            data-carousel-next="">
+            <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+
+
+        <!-- Carousel 4 -->
+        <div id="carousel-2" class="relative w-full" data-carousel="slide">
+          <div class="relative h-64 overflow-hidden rounded-lg">
+            <div
+              class="duration-400 ease-in-out absolute inset-0 transition-transform transform z-30 -translate-x-full z-10"
+              data-carousel-item="">
+              <img src="MarriageEvent/Gallery 11.jpg" class="w-full h-full object-cover" alt="Gallery photo">
+            </div>
+            <div
+              class="duration-700 ease-in-out absolute inset-0 transition-transform transform z-20 translate-x-0 z-30"
+              data-carousel-item="">
+              <img src="MarriageEvent/Gallery2.jpg" class="w-full h-full object-cover" alt="Gallery photo">
+            </div>
+            <div
+              class="duration-300 ease-in-out absolute inset-0 transition-transform transform z-10 translate-x-full z-20"
+              data-carousel-item="">
+              <img src="MarriageEvent/Gallery3.jpg" class="w-full h-full object-cover" alt="Gallery photo">
+            </div>
+          </div>
+          <!-- Controls -->
+          <button type="button"
+            class="absolute top-1/2 left-0 z-10 flex items-center justify-center h-8 w-8 -translate-y-1/2 bg-white rounded-full shadow"
+            data-carousel-prev="">
+            <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button type="button"
+            class="absolute top-1/2 right-0 z-10 flex items-center justify-center h-8 w-8 -translate-y-1/2 bg-white rounded-full shadow"
+            data-carousel-next="">
+            <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- Right: Paragraph Content -->
+<div class="booking text-gray-100 text-base md:text-lg leading-relaxed border rounded-lg w-auto ml-4 p-6 bg-gray-900 shadow-lg">
+  <h2 class="unlock mb-4 text-center my-5 text-2xl font-bold text-orange-400">
+    Unlock Your Dream Destination Wedding in Kerala
+  </h2>
+  
+  <p class="Choose text-justify">
+    Choose <span class="font-semibold text-orange-300">HappeningHub Event Management Company</span> for your premium 
+    destination wedding in Kerala, India. Whether you dream of a beach wedding in Kerala or a backwater resort 
+    celebration, we will bring it to life, infusing rich traditions. We also offer venue selection assistance 
+    and booking services for an easier planning process. Our track record includes clients from India and abroad, 
+    making us your ideal partner for a dream destination wedding in Kerala, India.
+  </p>
+  
+  <p class="Choose mt-4 text-justify">
+    Whether it's a grand wedding or a corporate celebration, our experienced team ensures every picture tells 
+    a story of perfection.
+  </p>
+
+  <!-- Buttons -->
+  <div class="flex justify-center gap-4 mt-6">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/919876543210" target="_blank" class="flex items-center bg-green-500 hover:bg-green-600 text-white font-medium px-4 py-2 rounded-lg shadow-md transition">
+      <i class="fab fa-whatsapp mr-2 text-lg"></i> WhatsApp Us
+    </a>
+    
+    <!-- Contact Button -->
+    <a href="#contact" class="bg-orange-500 hover:bg-orange-600 text-white font-medium px-4 py-2 rounded-lg shadow-md transition">
+      Contact Us
+    </a>
+  </div>
+</div>
+
+<!-- Add Font Awesome for WhatsApp icon -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    </div>
+  </section>
+
+
+  <section>
+    <!-- Our Service -->
+    <div class="bg-yellow-100 bg-opacity-40 px-4 py-8">
+
+      <!-- Title Section -->
+      <div class="services w-full h-auto mt-6">
+        <h2 class="text-center text-2xl font-bold">Our Services</h2>
+      </div>
+
+      <div class="my-4">
+        <h1 class="text-center text-xl font-semibold">Services by HappeningHub® Event Management</h1>
+      </div>
+
+      <!-- Paragraph and Centered Underline -->
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-gray-800 text-base md:text-lg leading-relaxed text-justify">
+          HappeningHub® Event Management is an ISO 9001:2015 certified event management company providing services
+          exclusively throughout the entire state of Kerala, South India. We offer excellent, comprehensive event
+          management services, including venue booking and selection assistance, personal event planning, corporate
+          events and conferences, private parties, trade exhibitions, virtual event management services, destination
+          weddings, and entertaining stage shows all over Kerala. Feel free to contact us.
+        </p>
+
+        <div class="underline2 my-6">
+          <img src="MarriageEvent/underline1.svg" alt="underline2" class="w-60 mx-auto">
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+    <div>
+
+      <div class="grid grid-cols-3 gap-2 mx-4">
+        <!-- Repeat for each image -->
+        <div class="relative group overflow-hidden rounded-lg">
+          <img src="MarriageEvent/corporate2.jpg" class="w-full h-full object-cover" alt="corporate">
+
+          <!-- Sliding Overlay that covers the image -->
+          <div
+            class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+
+            <!-- Text container -->
+            <div class="flex flex-col items-start gap-y-2 text-left px-6">
+              <h3 class="text-2xl font-bold">Corporate Events</h3>
+              <p class="text-xs">
+                If you want to make a statement at your next corporate event, partner with HappeningHub Event Management
+                Company in Kerala.
+              </p>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Wedding Planners -->
+        <div class="relative group overflow-hidden rounded-lg">
+          <img src="MarriageEvent/planners2.jpg" class="w-full h-full object-cover" alt="">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+            <div class="flex flex-col items-start gap-y-2 text-left px-6">
+              <h3 class="text-2xl font-bold">Wedding Planners</h3>
+              <p class="text-xs">Professional wedding planners to bring your dream wedding to life with elegance and
+                ease.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Destination Weddings -->
+        <div class="relative group overflow-hidden rounded-lg">
+          <img src="MarriageEvent/destination1.jpg" class="w-full h-full object-cover" alt="">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+            <div class="flex flex-col items-start gap-y-2 text-left px-6">
+              <h3 class="text-2xl font-bold">Destination Weddings</h3>
+              <p class="text-xs">Exotic and memorable destination weddings handled with precision and luxury.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beach Weddings -->
+        <div class="relative group overflow-hidden rounded-lg">
+          <img src="MarriageEvent/beach weds.jpg" class="w-full h-full object-cover" alt="">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+            <div class="flex flex-col items-start gap-y-2 text-left px-6">
+              <h3 class="text-2xl font-bold">Beach Weddings</h3>
+              <p class="text-xs">Say “I do” with your feet in the sand — perfect beach weddings by HappeningHub.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Parties -->
+        <div class="relative group overflow-hidden rounded-lg">
+          <img src="MarriageEvent/parties.jpg" class="w-full h-full object-cover" alt="">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+            <div class="flex flex-col items-start gap-y-2 text-left px-6">
+              <h3 class="text-2xl font-bold">Parties</h3>
+              <p class="text-xs">Celebrate birthdays, anniversaries, and milestones with flair and fun.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Private Events -->
+        <div class="relative group overflow-hidden rounded-lg">
+          <img src="MarriageEvent/private.jpg" class="w-full h-full object-cover" alt="">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+            <div class="flex flex-col items-start gap-y-2 text-left px-6">
+              <h3 class="text-2xl font-bold">Private Events</h3>
+              <p class="text-xs">From intimate gatherings to lavish celebrations, we manage everything privately and
+                perfectly.</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+
+
+  <section>
+    <div class="text-center font-bold mt-6 text-4xl">
+      <h2>Client Testimonials</h2>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-gray-50">
+
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/"
+          class="hover:underline">Flowbite™</a>. All Rights Reserved.
+      </span>
+      <div class="flex mt-4 sm:justify-center sm:mt-0">
+        <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            viewBox="0 0 8 19">
+            <path fill-rule="evenodd"
+              d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span class="sr-only">Facebook page</span>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            viewBox="0 0 21 16">
+            <path
+              d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z">
+            </path>
+          </svg>
+          <span class="sr-only">Discord community</span>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            viewBox="0 0 20 17">
+            <path fill-rule="evenodd"
+              d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span class="sr-only">Twitter page</span>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span class="sr-only">GitHub account</span>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+          <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span class="sr-only">Dribbble account</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+      <div class="md:flex md:justify-between">
+        <div class="mb-6 md:mb-0">
+          <a href="https://flowbite.com/" class="flex items-center">
+            <img src="New folder/Images/HappeningHub Logo with Vibrant Confetti.png" class="h-8 me-3"
+              alt="FlowBite Logo">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Marriage Event</span>
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4">
+                <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
+              </li>
+              <li>
+                <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4">
+                <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
+              </li>
+              <li>
+                <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4">
+                <a href="#" class="hover:underline">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+
+    </div>
+  </footer>
+
+
+  <script>
+    // Toggle mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+
+
+
+  <!-- Code injected by live-server -->
+  <script>
+    // <![CDATA[  <-- For SVG support
+    if ('WebSocket' in window) {
+      (function () {
+        function refreshCSS() {
+          var sheets = [].slice.call(document.getElementsByTagName("link"));
+          var head = document.getElementsByTagName("head")[0];
+          for (var i = 0; i < sheets.length; ++i) {
+            var elem = sheets[i];
+            var parent = elem.parentElement || head;
+            parent.removeChild(elem);
+            var rel = elem.rel;
+            if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+              var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+              elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+            }
+            parent.appendChild(elem);
+          }
+        }
+        var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+        var address = protocol + window.location.host + window.location.pathname + '/ws';
+        var socket = new WebSocket(address);
+        socket.onmessage = function (msg) {
+          if (msg.data == 'reload') window.location.reload();
+          else if (msg.data == 'refreshcss') refreshCSS();
+        };
+        if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+          console.log('Live reload enabled.');
+          sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+        }
+      })();
+    }
+    else {
+      console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+    }
+    // ]]>
+  </script>
+
+
+  </section><iframe frameborder="0" scrolling="no"
+    style="background-color: transparent; border: 0px; display: none;"></iframe>
+  <div id="GOOGLE_INPUT_CHEXT_FLAG" input=""
+    input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}"
+    style="display: none;"></div>
+</body>
+
+</html>
