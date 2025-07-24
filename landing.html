@@ -6,13 +6,25 @@
   <title>HappeningHub - Event Management</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
-
   <style>
+   @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
+    /* carosel text */
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Great+Vibes&family=Italianno&family=Manufacturing+Consent&family=Playwrite+AU+QLD:wght@100..400&display=swap');
+    #head{
+      font-family: "Bowlby One SC", sans-serif;
+      font-size: 3rem;
+    }
+    #hero{
+      font-family: "Great Vibes", cursive;
+    }
+    #sup{
+      font-family: "Great Vibes", cursive;
+    }
+
     body {
       background-color: #fef3c7;
       font-family: sans-serif;
     }
-
     .popup {
       border-radius: 1rem;
       width: 20rem;
@@ -46,7 +58,7 @@
       padding: 2rem;
       min-height: 28rem;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, top 0.3s ease; /* Added top transition */
+      transition: transform 0.3s ease, box-shadow 0.3s ease, top 0.3s ease;
       cursor: pointer;
     }
 
@@ -71,7 +83,6 @@
       border: 2px solid red;
     }
 
-    /* Base top values when navbar is not fixed */
     .card:nth-child(1) {
       top: 146px;
       z-index: 6;
@@ -92,21 +103,20 @@
       z-index: 9;
     }
 
-    /* Adjusted top values when navbar is fixed (64px navbar height + 10px gap) */
     #eventNavbar.fixed ~ .stack-container .card:nth-child(1) {
-      top: 158px; /* 64px (navbar) + 10px (gap) + 64px (main navbar) = 138px */
+      top: 158px;
     }
 
     #eventNavbar.fixed ~ .stack-container .card:nth-child(2) {
-      top: 173px; /* 138px + 15px */
+      top: 173px;
     }
 
     #eventNavbar.fixed ~ .stack-container .card:nth-child(3) {
-      top: 188px; /* 153px + 15px */
+      top: 188px;
     }
 
     #eventNavbar.fixed ~ .stack-container .card:nth-child(4) {
-      top: 203px; /* 168px + 15px */
+      top: 203px;
     }
 
     .nav-button {
@@ -241,35 +251,38 @@
       overflow-x: auto;
       padding-bottom: 1rem;
       scroll-snap-type: x mandatory;
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;     /* Firefox */
     }
 
     .gallery-section::-webkit-scrollbar {
-      height: 8px;
+      display: none;             /* Chrome, Safari, Edge */
     }
 
-    .gallery-section::-webkit-scrollbar-thumb {
-      background-color: #3b82f6;
-      border-radius: 4px;
+    /* Updated header background with PNG and gradient */
+    header {
+      background: linear-gradient(to right, rgba(37, 99, 235, 0.7), rgba(20, 184, 166, 0.7)), url('./landingvedios/bg3.png') center/cover no-repeat;
     }
 
-    .gallery-section::-webkit-scrollbar-track {
-      background-color: #f1f1f1;
+    /* Updated call-to-action background with PNG and gradient */
+    .call-to-action {
+      background: linear-gradient(to right, rgba(37, 99, 235, 0.7), rgba(20, 184, 166, 0.7)), url('./landingvedios/bg3.png') center/cover no-repeat;
     }
   </style>
 </head>
 <body class="bg-white font-sans text-gray-800">
 
   <!-- Header -->
-  <header class="flex items-center justify-center py-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white">
-    <img src="./image/Location Pin Celebration Design.png" alt="HappeningHub Logo" class="h-24 pt-2" />
-    <h1 class="text-3xl font-bold text-white ml-2">HappeningHub</h1>
+  <header class="flex items-center justify-center py-4 text-white">
+    <img src="./image/Location Pin Celebration Design.png" alt="HappeningHub Logo" class="h-32 pt-2" />
+    <h1 id="head" class=" text-white ">HappeningHub</h1>
   </header>
 
   <!-- Navbar -->
   <nav class="bg-black bg-opacity-60 backdrop-blur sticky top-0 z-50 shadow-md">
     <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
       <div class="flex space-x-6 items-center">
-        <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Home</a>
+         <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Home</a>
         <div class="relative">
           <button onclick="toggleDropdown()" class="text-white px-3 py-2 flex items-center hover:bg-gray-700 rounded text-sm font-medium">
             Events
@@ -278,19 +291,19 @@
             </svg>
           </button>
           <div id="dropdownMenu" class="absolute hidden bg-black text-white rounded shadow mt-2 w-48">
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Marriage</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Birthday</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Concert</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Corporate Events</a>
+            <a href="#mar" class="block px-4 py-2 hover:bg-gray-700">Marriage</a>
+            <a href="#bir" class="block px-4 py-2 hover:bg-gray-700">Birthday</a>
+            <a href="#con" class="block px-4 py-2 hover:bg-gray-700">Concert</a>
+            <a href="#cor" class="block px-4 py-2 hover:bg-gray-700">Corporate Events</a>
           </div>
         </div>
-        <a href="#blog" class="text-white hover:rounded text-sm font-medium">Blog</a>
+         <a href="#blog" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Blog</a>
       </div>
       <div class="flex space-x-4 items-center">
-        <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign In</a>
-        <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign Up</a>
+        <a href="./log_in.html" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign In</a>
+        <a href="./signup.html" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign Up</a>
         <button onclick="toggleOffcanvas()" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Contact Us</button>
-        <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Help</a>
+        <a href="./help.html" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Help</a>
       </div>
     </div>
   </nav>
@@ -305,8 +318,8 @@
         </video>
         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
           <div class="text-white text-center p-8">
-            <h1 class="text-4xl font-bold mb-4">Rainy Concert Vibes</h1>
-            <p class="text-lg">Feel the energy of every drop and beat.</p>
+            <h1 class="text-5xl font-bold mb-4">Rainy Concert Vibes</h1>
+            <p class="text-2xl">Feel the energy of every drop and beat.</p>
           </div>
         </div>
       </div>
@@ -317,8 +330,8 @@
         </video>
         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
           <div class="text-white text-center p-8">
-            <h1 class="text-4xl font-bold mb-4">Elegant Wedding Moments</h1>
-            <p class="text-lg">We make your big day unforgettable.</p>
+            <h1 class="text-5xl font-bold mb-4">Elegant Wedding Moments</h1>
+            <p class="text-2xl">We make your big day unforgettable.</p>
           </div>
         </div>
       </div>
@@ -329,8 +342,8 @@
         </video>
         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
           <div class="text-white text-center p-8">
-            <h1 class="text-4xl font-bold mb-4">Corporate Excellence</h1>
-            <p class="text-lg">From seminars to success stories.</p>
+            <h1 class="text-5xl font-bold mb-4">Corporate Excellence</h1>
+            <p class="text-2xl">From seminars to success stories.</p>
           </div>
         </div>
       </div>
@@ -341,8 +354,8 @@
         </video>
         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
           <div class="text-white text-center p-8">
-            <h1 class="text-4xl font-bold mb-4">Magical Birthday Celebrations</h1>
-            <p class="text-lg">Celebrate your day, your way – we make it unforgettable!</p>
+            <h1 class="text-5xl font-bold mb-4">Magical Birthday Celebrations</h1>
+            <p class="text-2xl">Celebrate your day, your way – we make it unforgettable!</p>
           </div>
         </div>
       </div>
@@ -350,24 +363,55 @@
   </section>
 
   <!-- New Gray Bar Section -->
-  <section class="bg-black bg-opacity-60 backdrop-blur text-white py-4 shadow-md">
+  <section id="sup" class="bg-black bg-opacity-60 backdrop-blur text-white py-4 shadow-md">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold">Here We Make Your Dreams Happen</h2>
+      <h2 class="text-2xl font-bold">Here &nbsp; We &nbsp; Make  &nbsp;Your &nbsp; Dreams &nbsp;  Happen</h2>
+    </div>
+  </section>
+
+  <section class="mt-6 mb-4">
+    <!-- ISO Certified -->
+    <div class="iso flex flex-col items-center justify-center text-center bg-white bg-opacity-40 w-full h-auto">
+      <img src="MarriageEvent/width_600-removebg-preview-e1746788098745.webp" alt="ISO Certified Logo" class="mb-4">
+      <h2 class="head-title">
+        ISO 9001:2015 CERTIFIED
+      </h2>
+      <div class="second-title">
+        EVENT MANAGEMENT COMPANY IN KERALA
+        <p class="para text-gray-900 text-base md:text-lg leading-relaxed mt-6 mx-4">Have you ever dreamed of planning
+          the perfect event that will be remembered forever? Look no further than Happening Hub®
+          Events, the top-notch event management company in Kerala, India, that has everything you need to make your
+          occasion an
+          unforgettable experience. We make everything from corporate event planning and personal celebrations to even
+          small
+          customized event packages absolutely memorable! Contact us today to learn more about our services and how we
+          can help
+          you organize the top event management in Kerala.</p>
+
+        <div class="flex justify-center my-6">
+          <img src="MarriageEvent/underline.svg" class="w-48 md:w-60 lg:w-72" alt="underline">
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Event Section -->
   <section id="eventSection">
+    <div class="flex justify-center">
+      <h2 class="font-bold text-4xl text-gray-800 uppercase tracking-wide mb-4 border-b-2 border-blue-500 pb-2">
+        Event Gallery
+      </h2>
+    </div>
     <div id="eventNavbar" class="bg-white text-black flex justify-center space-x-4 p-4 z-45">
-      <button class="nav-button" data-section="card1">Concert</button>
-      <button class="nav-button" data-section="card2">Marriage</button>
-      <button class="nav-button" data-section="card3">Birthday</button>
-      <button class="nav-button" data-section="card4">Corporate</button>
+      <button id="con" class="nav-button" data-section="card1">Concert</button>
+      <button id="mar" class="nav-button" data-section="card2">Marriage</button>
+      <button id="bir" class="nav-button" data-section="card3">Birthday</button>
+      <button id="cor" class="nav-button" data-section="card4">Corporate</button>
     </div>
     <div id="eventNavbarPlaceholder"></div>
     <div class="stack-container">
       <!-- Card 1 -->
-      <div class="card" id="card1" onclick="window.location.href='/book/concert'">
+      <div class="card" id="card1" onclick="window.location.href='./concert.html'">
         <div class="flex justify-between items-start">
           <div>
             <div class="flex items-center space-x-4">
@@ -401,7 +445,7 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="card" id="card2" onclick="window.location.href='/book/marriage'">
+      <div class="card" id="card2" onclick="window.location.href='./Marriage.html'">
         <div class="flex justify-between items-start">
           <div>
             <div class="flex items-center space-x-4">
@@ -435,7 +479,7 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="card" id="card3" onclick="window.location.href='/book/birthday'">
+      <div class="card" id="card3" onclick="window.location.href='./birthdaybooking.html'">
         <div class="flex justify-between items-start">
           <div>
             <div class="flex items-center space-x-4">
@@ -530,10 +574,14 @@
           </div>
           <div class="gallery-item">
             <video autoplay muted loop playsinline>
-              <source src="./landingvedios/concert-highlight.mp4" type="video/mp4">
+              <source src="./landingvedios/cong.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <div class="gallery-overlay"><span>Concert Highlights</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbb735d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Concert 4">
+            <div class="gallery-overlay"><span>Rock Concert</span></div>
           </div>
         </div>
         <!-- Wedding Gallery -->
@@ -551,10 +599,14 @@
           </div>
           <div class="gallery-item">
             <video autoplay muted loop playsinline>
-              <source src="./landingvedios/wedding-reception.mp4" type="video/mp4">
+              <source src="https://cdn1.hitched.co.uk/emp/videos/9/4/5/139673_shortstory2-174375137762009.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <div class="gallery-overlay"><span>Reception Moment</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fef5cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Wedding 4">
+            <div class="gallery-overlay"><span>Romantic Vows</span></div>
           </div>
         </div>
         <!-- Birthday Gallery -->
@@ -572,10 +624,14 @@
           </div>
           <div class="gallery-item">
             <video autoplay muted loop playsinline>
-              <source src="./landingvedios/birthday-cake.mp4" type="video/mp4">
+              <source src="https://videos.pexels.com/video-files/5805063/5805063-uhd_2560_1440_25fps.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <div class="gallery-overlay"><span>Cake Cutting</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Birthday 4">
+            <div class="gallery-overlay"><span>Fun Party Moment</span></div>
           </div>
         </div>
         <!-- Corporate Gallery -->
@@ -593,10 +649,14 @@
           </div>
           <div class="gallery-item">
             <video autoplay muted loop playsinline>
-              <source src="./landingvedios/corporate-networking.mp4" type="video/mp4">
+              <source src="https://videos.pexels.com/video-files/8922353/8922353-uhd_2732_1440_25fps.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <div class="gallery-overlay"><span>Networking Event</span></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://thepaintsesh.com/wp-content/uploads/2021/04/corporate-580e8bbf3df78c2c73adc69a-scaled.jpeg" alt="Corporate 4">
+            <div class="gallery-overlay"><span>Team Building</span></div>
           </div>
         </div>
       </div>
@@ -665,7 +725,7 @@
   </section>
 
   <!-- Call to Action -->
-  <section class="bg-gradient-to-r from-blue-600 to-teal-500 text-white py-16">
+  <section class="call-to-action text-white py-16">
     <div class="max-w-4xl mx-auto text-center px-6">
       <h2 class="text-3xl font-bold mb-4">Ready to Plan Your Next Big Event?</h2>
       <p class="mb-6">Let our team turn your vision into a spectacular reality. Get in touch today.</p>
@@ -803,10 +863,9 @@
       const lastCard = cards[cards.length - 1];
       const eventRect = eventSection.getBoundingClientRect();
       const lastCardRect = lastCard.getBoundingClientRect();
-      const offset = 64; // Main navbar height
-      const gap = 10; // Desired gap between fixed navbar and first card
+      const offset = 64;
+      const gap = 10;
 
-      // Toggle fixed navbar and placeholder
       if (eventRect.top <= offset && lastCardRect.bottom > offset + 50) {
         eventNavbar.classList.add('fixed');
         eventNavbarPlaceholder.classList.add('active');
@@ -815,7 +874,6 @@
         eventNavbarPlaceholder.classList.remove('active');
       }
 
-      // Update active nav button based on card visibility
       Array.from(cards).forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
         const cardId = card.id;

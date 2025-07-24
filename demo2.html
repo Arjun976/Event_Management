@@ -46,7 +46,7 @@
       padding: 2rem;
       min-height: 28rem;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, top 0.3s ease; /* Added top transition */
       cursor: pointer;
     }
 
@@ -71,6 +71,7 @@
       border: 2px solid red;
     }
 
+    /* Base top values when navbar is not fixed */
     .card:nth-child(1) {
       top: 146px;
       z-index: 6;
@@ -89,6 +90,23 @@
     .card:nth-child(4) {
       top: 191px;
       z-index: 9;
+    }
+
+    /* Adjusted top values when navbar is fixed (64px navbar height + 10px gap) */
+    #eventNavbar.fixed ~ .stack-container .card:nth-child(1) {
+      top: 158px; /* 64px (navbar) + 10px (gap) + 64px (main navbar) = 138px */
+    }
+
+    #eventNavbar.fixed ~ .stack-container .card:nth-child(2) {
+      top: 173px; /* 138px + 15px */
+    }
+
+    #eventNavbar.fixed ~ .stack-container .card:nth-child(3) {
+      top: 188px; /* 153px + 15px */
+    }
+
+    #eventNavbar.fixed ~ .stack-container .card:nth-child(4) {
+      top: 203px; /* 168px + 15px */
     }
 
     .nav-button {
@@ -122,13 +140,25 @@
       z-index: 45;
       width: 100%;
       transition: all 0.3s ease;
-      margin-bottom: 40px;
     }
 
     #eventNavbar.fixed {
       position: fixed;
       top: 64px;
       left: 0;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    #eventNavbarPlaceholder {
+      display: none;
+      height: 0;
+      transition: height 0.3s ease;
+    }
+
+    #eventNavbarPlaceholder.active {
+      display: block;
+      height: 64px;
     }
 
     #offcanvas {
@@ -230,7 +260,7 @@
 <body class="bg-white font-sans text-gray-800">
 
   <!-- Header -->
-  <header class="flex items-center justify-center py-4 bg-gradient-to-r from-blue-600 to-teal-500">
+  <header class="flex items-center justify-center py-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white">
     <img src="./image/Location Pin Celebration Design.png" alt="HappeningHub Logo" class="h-24 pt-2" />
     <h1 class="text-3xl font-bold text-white ml-2">HappeningHub</h1>
   </header>
@@ -260,6 +290,7 @@
         <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign In</a>
         <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign Up</a>
         <button onclick="toggleOffcanvas()" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Contact Us</button>
+        <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Help</a>
       </div>
     </div>
   </nav>
@@ -321,19 +352,53 @@
   <!-- New Gray Bar Section -->
   <section class="bg-black bg-opacity-60 backdrop-blur text-white py-4 shadow-md">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold">We Make Your Dreams Happen</h2>
+      <h2 class="text-2xl font-bold">Here We Make Your Dreams Happen</h2>
     </div>
   </section>
 
-  <!-- Event section -->
+  <section class=" mt-6 mb-4">
+    <!-- ISO Certified -->
+    <div class="iso flex flex-col items-center justify-center text-center bg-white bg-opacity-40 w-full h-auto">
+      <img src="MarriageEvent/width_600-removebg-preview-e1746788098745.webp" alt="ISO Certified Logo" class=" mb-4">
+      <h2 class="head-title">
+        ISO 9001:2015 CERTIFIED
+      </h2>
+      <div class="second-title">
+        EVENT MANAGEMENT COMPANY IN KERALA
+        <p class="para text-gray-900 text-base md:text-lg leading-relaxed mt-6 mx-4">Have you ever dreamed of planning
+          the perfect event that will be remembered forever? Look no further than Happening Hub®
+          Events, the top-notch event management company in Kerala, India, that has everything you need to make your
+          occasion an
+          unforgettable experience.We make everything from corporate event planning and personal celebrations to even
+          small
+          customized event packages absolutely memorable! Contact us today to learn more about our services and how we
+          can help
+          you organize the top event management in Kerala.</p>
+
+        <div class="flex justify-center my-6">
+          <img src="MarriageEvent/underline.svg" class="w-48 md:w-60 lg:w-72" alt="underline">
+        </div>
+
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Event Section -->
   <section id="eventSection">
+    <div class="flex justify-center">
+  <h2 class="font-bold text-4xl text-gray-800 uppercase tracking-wide mb-4 border-b-2 border-blue-500 pb-2">
+    Event Gallery
+  </h2>
+</div>
     <div id="eventNavbar" class="bg-white text-black flex justify-center space-x-4 p-4 z-45">
       <button class="nav-button" data-section="card1">Concert</button>
       <button class="nav-button" data-section="card2">Marriage</button>
       <button class="nav-button" data-section="card3">Birthday</button>
       <button class="nav-button" data-section="card4">Corporate</button>
     </div>
-
+    <div id="eventNavbarPlaceholder"></div>
     <div class="stack-container">
       <!-- Card 1 -->
       <div class="card" id="card1" onclick="window.location.href='/book/concert'">
@@ -499,7 +564,7 @@
           </div>
           <div class="gallery-item">
             <video autoplay muted loop playsinline>
-              <source src="./landingvedios/concert-highlight.mp4" type="video/mp4">
+              <source src="./landingvedios/cong.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <div class="gallery-overlay"><span>Concert Highlights</span></div>
@@ -520,7 +585,7 @@
           </div>
           <div class="gallery-item">
             <video autoplay muted loop playsinline>
-              <source src="./landingvedios/wedding-reception.mp4" type="video/mp4">
+              <source src="https://cdn1.hitched.co.uk/emp/videos/9/4/5/139673_shortstory2-174375137762009.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <div class="gallery-overlay"><span>Reception Moment</span></div>
@@ -541,7 +606,7 @@
           </div>
           <div class="gallery-item">
             <video autoplay muted loop playsinline>
-              <source src="./landingvedios/birthday-cake.mp4" type="video/mp4">
+              <source src="https://videos.pexels.com/video-files/5805063/5805063-uhd_2560_1440_25fps.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <div class="gallery-overlay"><span>Cake Cutting</span></div>
@@ -562,7 +627,7 @@
           </div>
           <div class="gallery-item">
             <video autoplay muted loop playsinline>
-              <source src="./landingvedios/corporate-networking.mp4" type="video/mp4">
+              <source src="https://videos.pexels.com/video-files/8922353/8922353-uhd_2732_1440_25fps.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <div class="gallery-overlay"><span>Networking Event</span></div>
@@ -691,6 +756,19 @@
 
   <!-- JS -->
   <script>
+    // Debounce function to limit scroll event frequency
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
     function toggleOffcanvas() {
       const offcanvas = document.getElementById('offcanvas');
       offcanvas.classList.toggle('translate-x-full');
@@ -749,21 +827,29 @@
 
     setInterval(nextHeroSlide, 4000);
 
-    window.addEventListener('scroll', () => {
+    // Event Navbar Scroll Logic
+    const handleScroll = debounce(() => {
       const eventSection = document.getElementById('eventSection');
       const eventNavbar = document.getElementById('eventNavbar');
+      const eventNavbarPlaceholder = document.getElementById('eventNavbarPlaceholder');
       const navButtons = eventNavbar.getElementsByClassName('nav-button');
       const cards = document.getElementsByClassName('card');
       const lastCard = cards[cards.length - 1];
       const eventRect = eventSection.getBoundingClientRect();
       const lastCardRect = lastCard.getBoundingClientRect();
+      const offset = 64; // Main navbar height
+      const gap = 10; // Desired gap between fixed navbar and first card
 
-      if (eventRect.top <= 64 && lastCardRect.bottom > 64) {
+      // Toggle fixed navbar and placeholder
+      if (eventRect.top <= offset && lastCardRect.bottom > offset + 50) {
         eventNavbar.classList.add('fixed');
+        eventNavbarPlaceholder.classList.add('active');
       } else {
         eventNavbar.classList.remove('fixed');
+        eventNavbarPlaceholder.classList.remove('active');
       }
 
+      // Update active nav button based on card visibility
       Array.from(cards).forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
         const cardId = card.id;
@@ -784,7 +870,9 @@
           }
         }
       });
-    });
+    }, 50);
+
+    window.addEventListener('scroll', handleScroll);
 
     // Image Carousel for Event Cards
     const carousels = document.querySelectorAll('.image-carousel');
