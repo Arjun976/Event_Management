@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Launch Management | Elevate Events</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+
+  
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="#" class="text-xl font-bold text-blue-600">pro-events</a>
+        </div>
+
+        <!-- Menu button (mobile) -->
+        <div class="flex items-center md:hidden">
+          <button id="menu-btn" class="text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Menu (desktop) -->
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">Services</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Services</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
+    </div>
+  </nav>
+  
+  <!-- Hero Section: Full-screen with overlay -->
+<!-- Hero Section: Fixed background with overlay -->
+<section class="relative h-screen bg-fixed bg-cover bg-center" style="background-image: url('./pl-1024x576.jpg.webp');">
+  <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+    <div class="text-center text-white px-6 max-w-2xl">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Launch Your Product with Impact</h1>
+      <p class="text-lg md:text-xl mb-6">From concept to celebration, we craft unforgettable launch experiences that resonate with your audience.</p>
+      <a href="#contact" class="inline-block bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-300 transition">Plan Your Launch</a>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Feature Strip -->
+  <section class="py-16 px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us for Your Product Launch?</h2>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-6 text-center">
+      <div class="p-4">
+        <div class="text-4xl mb-2">🎤</div>
+        <h3 class="font-bold text-lg mb-1">Press & Media</h3>
+        <p class="text-sm">Full PR strategy & influencer engagement</p>
+      </div>
+      <div class="p-4">
+        <div class="text-4xl mb-2">🎉</div>
+        <h3 class="font-bold text-lg mb-1">Creative Reveal</h3>
+        <p class="text-sm">Custom build stage, lighting & launch moment</p>
+      </div>
+      <div class="p-4">
+        <div class="text-4xl mb-2">🎥</div>
+        <h3 class="font-bold text-lg mb-1">Live Broadcast</h3>
+        <p class="text-sm">Multicam setup & streaming services</p>
+      </div>
+      <div class="p-4">
+        <div class="text-4xl mb-2">💡</div>
+        <h3 class="font-bold text-lg mb-1">Concept Planning</h3>
+        <p class="text-sm">Theme, flow, design and experience planning</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase Section -->
+  <section class="bg-gray-100 py-20 px-6">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 items-center gap-10">
+      <img src="./product-launch-event.jpg" alt="Event Planning" class="rounded shadow">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">From Strategy to Showtime</h2>
+        <p class="text-lg mb-6">We take your product story and transform it into a stunning real-world experience — one your audience will remember and share.</p>
+        <ul class="list-disc ml-5 text-gray-700 space-y-2">
+          <li>Venue & audience experience design</li>
+          <li>Launch moment choreography</li>
+          <li>Full coordination with your brand & marketing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Launches Carousel Style Grid -->
+  <section class="py-16 px-6">
+    <h2 class="text-3xl font-bold text-center mb-10">Events We’ve Powered</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="rounded overflow-hidden shadow hover:shadow-lg transition">
+        <img src="./maxresdefault.jpg" alt="Launch 1">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Neo Car Launch</h3>
+          <p class="text-sm">Live car reveal with LED floor & national media</p>
+        </div>
+      </div>
+      <div class="rounded overflow-hidden shadow hover:shadow-lg transition">
+        <img src="./nok.webp" alt="Launch 2">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Zeno Phone Series</h3>
+          <p class="text-sm">Tech influencer invite + digital countdown</p>
+        </div>
+      </div>
+      <div class="rounded overflow-hidden shadow hover:shadow-lg transition">
+        <img src="./maxresdefaultdivs.jpg" alt="Launch 3">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Elevate Water Purifier</h3>
+          <p class="text-sm">Lifestyle brand story told through stage drama</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-blue-900 text-white py-16 px-6">
+    <h2 class="text-3xl font-bold text-center mb-8">Let’s Launch Together</h2>
+    <div class="max-w-3xl mx-auto bg-white text-black p-6 rounded shadow">
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" placeholder="Your Name" class="p-3 border rounded" required>
+        <input type="email" placeholder="Email Address" class="p-3 border rounded" required>
+        <input type="text" placeholder="Brand / Company Name" class="p-3 border rounded">
+        <input type="text" placeholder="Product to Launch" class="p-3 border rounded">
+        <textarea placeholder="Event Goals / Questions" class="md:col-span-2 p-3 border rounded h-28"></textarea>
+        <button class="md:col-span-2 bg-blue-700 text-white py-3 rounded hover:bg-blue-800">Submit Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8 text-center">
+    <div class="max-w-4xl mx-auto text-sm">
+      <p class="font-semibold text-lg">Elevate Event Management</p>
+      <p class="mt-1">Your partner in launches, conferences, and brand activations.</p>
+      <p class="mt-2">📧 info@elevateevents.in | 📞 +91-9876543210</p>
+      <div class="mt-3 space-x-4">
+        <a href="#" class="hover:underline">LinkedIn</a>
+        <a href="#" class="hover:underline">Instagram</a>
+        <a href="#" class="hover:underline">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
