@@ -112,6 +112,9 @@
 </head>
 
 <body class="bg-white">
+  <!-- Toggle (hidden) -->
+  <input type="checkbox" id="toggle-canvas" class="peer hidden">
+
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
@@ -122,92 +125,114 @@
           </a>
         </div>
 
-        <div class="hidden md:flex space-x-6">
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex space-x-6 items-center">
           <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">Home</a>
-          <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">About Us</a>
-          <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">Services</a>
-          <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">Gallery</a>
+          <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">Blog</a>
           <a href="#" class="text-gray-700 hover:text-orange-600 font-medium">Contact</a>
 
-        </div>
-
-        <!-- Desktop Menu -->
-        <input type="checkbox" id="toggle-canvas" class="peer hidden">
-        <!-- Header with toggle label -->
-        <header class="bg-white  sticky top-0 z-50 p-4 flex justify-end">
-          <label for="toggle-canvas" class="cursor-pointer flex flex-col items-center">
-            <div class="w-8 h-5 p-2 rounded-full mb-1">
-              <svg class="w-5 h-3 text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </div>
-            <p class="text-xs text-gray-700"></p>
+          <!-- Book Event button (opens canvas) -->
+          <label for="toggle-canvas"
+            class="ml-4 inline-flex items-center px-4 py-2 rounded-md bg-orange-600 text-white font-medium hover:bg-orange-700 cursor-pointer transition">
+            Book Event
           </label>
-        </header>
+        </div>
 
-
-
-
-
-
-
-
-
-
-        <!-- Overlay -->
-        <div class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden peer-checked:block"></div>
-
-        <!-- Off-canvas sidebar -->
-        <div
-          class="fixed top-0 right-0 h-full w-100 bg-white shadow-lg transform translate-x-full peer-checked:translate-x-0 transition-transform duration-300 z-50">
-          <div class="p-4 border-b flex justify-between items-center">
-            <h2 class="text-lg font-bold">Menu</h2>
-            <!-- Close label -->
-            <label for="toggle-canvas" class="text-gray-600 hover:text-gray-900 text-2xl cursor-pointer">×</label>
+        <!-- Mobile hamburger (opens canvas) -->
+        <label for="toggle-canvas" class="md:hidden cursor-pointer flex flex-col items-center">
+          <div class="w-8 h-5 p-2 rounded-full mb-1">
+            <svg class="w-5 h-3 text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
           </div>
-          <div class="canvas p-4 space-y-4">
+        </label>
+      </div>
+    </div>
+  </header>
 
-            <p class="text-sm">Welcome to the event !</p>
-            <a href="#" class="block text-gray-700 hover:text-orange-600 font-medium text-center">Event Schedule</a>
+  <!-- Overlay -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden peer-checked:block"></div>
 
-            <!-- Date schedule -->
-            <div id="date-range-picker" date-rangepicker="" class="flex items-center">
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z">
-                    </path>
-                  </svg>
-                </div>
-                <input id="datepicker-range-start" name="start" type="date"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Select date start">
+  <!-- Off-canvas sidebar -->
+  <div
+    class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-lg transform translate-x-full peer-checked:translate-x-0 transition-transform duration-300 z-50">
+    <div class="p-4 border-b flex justify-between items-center">
+      <h2 class="text-lg font-bold">Quick Book</h2>
+      <!-- Close -->
+      <label for="toggle-canvas" class="text-gray-600 hover:text-gray-900 text-2xl cursor-pointer">×</label>
+    </div>
+
+    <div class="p-4 space-y-6">
+      <p class="text-sm text-gray-600">Welcome to the event!</p>
+
+      <!-- Book Now quick form -->
+      <form action="booking.html" method="GET" class="space-y-4">
+        <!-- Venue Location -->
+        <div>
+          <label for="venue" class="block text-sm font-medium text-gray-700 mb-1">Venue Location</label>
+          <input id="venue" name="venue" type="text" placeholder="Type your venue / city"
+            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 p-2.5">
+        </div>
+
+        <!-- Event Type -->
+        <div>
+          <label for="eventType" class="block text-sm font-medium text-gray-700 mb-1">Event Type</label>
+          <select id="eventType" name="type"
+            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 p-2.5"
+            disabled>
+            <option selected>Marriage Event</option>
+          </select>
+        </div>
+
+        <!-- Date schedule -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Event Dates</label>
+          <div id="date-range-picker" date-rangepicker class="flex items-center">
+            <div class="relative w-1/2">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                </svg>
               </div>
-              <span class="mx-4 text-gray-500">to</span>
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z">
-                    </path>
-                  </svg>
-                </div>
-                <input id="datepicker-range-end" name="end" type="date"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Select date end">
-              </div>
+              <input id="datepicker-range-start" name="start" type="date"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full ps-10 p-2.5">
             </div>
-
-
+            <span class="mx-2 text-gray-500">to</span>
+            <div class="relative w-1/2">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                </svg>
+              </div>
+              <input id="datepicker-range-end" name="end" type="date"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full ps-10 p-2.5">
+            </div>
           </div>
         </div>
 
+        <!-- Book Now -->
+        <button type="submit"
+          class="w-full bg-orange-600 text-white font-semibold py-3 rounded-md hover:bg-orange-700 transition duration-200">
+          Book Now
+        </button>
+      </form>
 
-        <!-- Mobile -->
-        <!-- <div class="md:hidden">
+      <!-- Or just a link to booking.html if you prefer -->
+      <a href="landing.html"
+        class="block text-center w-full bg-gray-100 border border-gray-300 text-gray-800 font-medium py-2 rounded-md hover:bg-gray-200 transition">
+        Go to Home
+      </a>
+    </div>
+  </div>
+
+
+
+  <!-- Mobile -->
+  <!-- <div class="md:hidden">
           <button id="menu-toggle" class="text-gray-700 focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -217,16 +242,16 @@
       </div>
     </div> -->
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
-          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Home</a>
-          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">About Us</a>
-          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Services</a>
-          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Gallery</a>
-          <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Contact</a>
-        </div>
-      </div>
-    </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+    <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Home</a>
+    <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">About Us</a>
+    <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Services</a>
+    <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Gallery</a>
+    <a href="#" class="block text-gray-700 py-2 hover:text-orange-600 font-medium">Contact</a>
+  </div>
+  </div>
+  </div>
   </header>
 
 
@@ -494,40 +519,44 @@
 
 
       <!-- Right: Paragraph Content -->
-<div class="booking text-gray-100 text-base md:text-lg leading-relaxed border rounded-lg w-auto ml-4 p-6 bg-gray-900 shadow-lg">
-  <h2 class="unlock mb-4 text-center my-5 text-2xl font-bold text-orange-400">
-    Unlock Your Dream Destination Wedding in Kerala
-  </h2>
-  
-  <p class="Choose text-justify">
-    Choose <span class="font-semibold text-orange-300">HappeningHub Event Management Company</span> for your premium 
-    destination wedding in Kerala, India. Whether you dream of a beach wedding in Kerala or a backwater resort 
-    celebration, we will bring it to life, infusing rich traditions. We also offer venue selection assistance 
-    and booking services for an easier planning process. Our track record includes clients from India and abroad, 
-    making us your ideal partner for a dream destination wedding in Kerala, India.
-  </p>
-  
-  <p class="Choose mt-4 text-justify">
-    Whether it's a grand wedding or a corporate celebration, our experienced team ensures every picture tells 
-    a story of perfection.
-  </p>
+      <div
+        class="booking text-gray-100 text-base md:text-lg leading-relaxed border rounded-lg w-auto ml-4 p-6 bg-gray-900 shadow-lg">
+        <h2 class="unlock mb-4 text-center my-5 text-2xl font-bold text-orange-400">
+          Unlock Your Dream Destination Wedding in Kerala
+        </h2>
 
-  <!-- Buttons -->
-  <div class="flex justify-center gap-4 mt-6">
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/919876543210" target="_blank" class="flex items-center bg-green-500 hover:bg-green-600 text-white font-medium px-4 py-2 rounded-lg shadow-md transition">
-      <i class="fab fa-whatsapp mr-2 text-lg"></i> WhatsApp Us
-    </a>
-    
-    <!-- Contact Button -->
-    <a href="#contact" class="bg-orange-500 hover:bg-orange-600 text-white font-medium px-4 py-2 rounded-lg shadow-md transition">
-      Contact Us
-    </a>
-  </div>
-</div>
+        <p class="Choose text-justify">
+          Choose <span class="font-semibold text-orange-300">HappeningHub Event Management Company</span> for your
+          premium
+          destination wedding in Kerala, India. Whether you dream of a beach wedding in Kerala or a backwater resort
+          celebration, we will bring it to life, infusing rich traditions. We also offer venue selection assistance
+          and booking services for an easier planning process. Our track record includes clients from India and abroad,
+          making us your ideal partner for a dream destination wedding in Kerala, India.
+        </p>
 
-<!-- Add Font Awesome for WhatsApp icon -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+        <p class="Choose mt-4 text-justify">
+          Whether it's a grand wedding or a corporate celebration, our experienced team ensures every picture tells
+          a story of perfection.
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex justify-center gap-4 mt-6">
+          <!-- WhatsApp Button -->
+          <a href="https://wa.me/919876543210" target="_blank"
+            class="flex items-center bg-green-500 hover:bg-green-600 text-white font-medium px-4 py-2 rounded-lg shadow-md transition">
+            <i class="fab fa-whatsapp mr-2 text-lg"></i> WhatsApp Us
+          </a>
+
+          <!-- Contact Button -->
+          <a href="#contact"
+            class="bg-orange-500 hover:bg-orange-600 text-white font-medium px-4 py-2 rounded-lg shadow-md transition">
+            Contact Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Add Font Awesome for WhatsApp icon -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
     </div>
   </section>
