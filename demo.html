@@ -7,17 +7,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
   <style>
-   @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
-    /* carosel text */
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Great+Vibes&family=Italianno&family=Manufacturing+Consent&family=Playwrite+AU+QLD:wght@100..400&display=swap');
-    #head{
+    @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Great+Vibes&family=Italianno&family=Playwrite+AU+QLD:wght@100..400&display=swap');
+
+    #head {
       font-family: "Bowlby One SC", sans-serif;
-      font-size: 3rem;
+      font-size: clamp(2rem, 8vw, 2.5rem);
     }
-    #hero{
-      font-family: "Great Vibes", cursive;
-    }
-    #sup{
+
+    #hero, #sup {
       font-family: "Great Vibes", cursive;
     }
 
@@ -25,11 +23,13 @@
       background-color: #fef3c7;
       font-family: sans-serif;
     }
+
     .popup {
       border-radius: 1rem;
-      width: 20rem;
-      height: 22rem;
-      padding: 1.5rem;
+      width: 100%;
+      max-width: 20rem;
+      height: auto;
+      padding: 1rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -37,114 +37,55 @@
     }
 
     .speaker-image {
-      width: 18rem;
-      height: 16rem;
+      width: 100%;
+      max-width: 18rem;
+      height: auto;
+      aspect-ratio: 9/8;
       object-fit: cover;
       border-radius: 1rem;
     }
 
     .stack-container {
       position: relative;
-      margin-top: 8rem;
+      margin-top: 4rem;
     }
 
     .card {
-      position: sticky;
-      width: 80%;
-      margin: 0 auto 15px auto;
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      margin: 1rem auto;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.3));
       backdrop-filter: blur(10px);
       border-radius: 1rem;
-      padding: 2rem;
-      min-height: 28rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, top 0.3s ease;
+      padding: 1.5rem;
+      min-height: auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
     }
 
-    .card#card1 {
-      border: 2px solid #3b82f6;
-    }
-
-    .card#card2 {
-      border: 2px solid #22c55e;
-    }
-
-    .card#card3 {
-      border: 2px solid #a855f7;
-    }
-
-    .card#card4 {
-      border: 2px solid red;
-    }
-
-    .card:nth-child(1) {
-      top: 146px;
-      z-index: 6;
-    }
-
-    .card:nth-child(2) {
-      top: 161px;
-      z-index: 7;
-    }
-
-    .card:nth-child(3) {
-      top: 176px;
-      z-index: 8;
-    }
-
-    .card:nth-child(4) {
-      top: 191px;
-      z-index: 9;
-    }
-
-    #eventNavbar.fixed ~ .stack-container .card:nth-child(1) {
-      top: 158px;
-    }
-
-    #eventNavbar.fixed ~ .stack-container .card:nth-child(2) {
-      top: 173px;
-    }
-
-    #eventNavbar.fixed ~ .stack-container .card:nth-child(3) {
-      top: 188px;
-    }
-
-    #eventNavbar.fixed ~ .stack-container .card:nth-child(4) {
-      top: 203px;
-    }
+    .card#card1 { border: 2px solid #3b82f6; }
+    .card#card2 { border: 2px solid #22c55e; }
+    .card#card3 { border: 2px solid #a855f7; }
+    .card#card4 { border: 2px solid red; }
 
     .nav-button {
-      margin-top: 10px;
       padding: 0.5rem 1rem;
       border-radius: 9999px;
       transition: background-color 0.3s ease;
+      font-size: clamp(0.8rem, 3vw, 0.9rem);
     }
 
-    .nav-button.selected-blue {
-      background-color: #3b82f6;
-      color: white;
-    }
-
-    .nav-button.selected-green {
-      background-color: #22c55e;
-      color: white;
-    }
-
-    .nav-button.selected-purple {
-      background-color: #a855f7;
-      color: white;
-    }
-
-    .nav-button.selected-red {
-      background-color: red;
-      color: white;
-    }
+    .nav-button.selected-blue { background-color: #3b82f6; color: white; }
+    .nav-button.selected-green { background-color: #22c55e; color: white; }
+    .nav-button.selected-purple { background-color: #a855f7; color: white; }
+    .nav-button.selected-red { background-color: red; color: white; }
 
     #eventNavbar {
       z-index: 45;
@@ -154,7 +95,7 @@
 
     #eventNavbar.fixed {
       position: fixed;
-      top: 64px;
+      top: 0;
       left: 0;
       background-color: white;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -168,16 +109,19 @@
 
     #eventNavbarPlaceholder.active {
       display: block;
-      height: 64px;
+      height: 3.5rem;
     }
 
     #offcanvas {
-      width: 400px;
+      width: 100%;
+      max-width: 400px;
     }
 
     .image-carousel {
-      width: 18rem;
-      height: 16rem;
+      width: 100%;
+      max-width: 18rem;
+      height: auto;
+      aspect-ratio: 9/8;
       overflow: hidden;
       border-radius: 1rem;
     }
@@ -190,16 +134,17 @@
     }
 
     .image-carousel-inner img {
-      width: 18rem;
-      height: 16rem;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       flex-shrink: 0;
     }
 
     .gallery-tab {
-      padding: 0.5rem 1.5rem;
+      padding: 0.5rem 1rem;
       border-radius: 9999px;
       transition: all 0.3s ease;
+      font-size: clamp(0.8rem, 3vw, 0.9rem);
     }
 
     .gallery-tab.active {
@@ -212,10 +157,12 @@
       overflow: hidden;
       border-radius: 0.5rem;
       cursor: pointer;
-      width: 300px;
-      height: 200px;
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      aspect-ratio: 3/2;
       flex-shrink: 0;
-      margin-right: 1rem;
+      margin-right: 0.5rem;
     }
 
     .gallery-item video,
@@ -225,64 +172,154 @@
       object-fit: cover;
     }
 
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .gallery-overlay span {
-      color: white;
-      font-weight: bold;
-    }
-
     .gallery-section {
       display: flex;
       flex-direction: row;
       overflow-x: auto;
       padding-bottom: 1rem;
       scroll-snap-type: x mandatory;
-      -ms-overflow-style: none;  /* Internet Explorer 10+ */
-      scrollbar-width: none;     /* Firefox */
+      scrollbar-width: none;
     }
 
     .gallery-section::-webkit-scrollbar {
-      display: none;             /* Chrome, Safari, Edge */
+      display: none;
     }
 
-    /* Updated header background with PNG and gradient */
     header {
       background: linear-gradient(to right, rgba(37, 99, 235, 0.7), rgba(20, 184, 166, 0.7)), url('./landingvedios/bg3.png') center/cover no-repeat;
     }
 
-    /* Updated call-to-action background with PNG and gradient */
     .call-to-action {
       background: linear-gradient(to right, rgba(37, 99, 235, 0.7), rgba(20, 184, 166, 0.7)), url('./landingvedios/bg3.png') center/cover no-repeat;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 95%;
+        padding: 1rem;
+      }
+
+      .card .flex {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .popup {
+        margin-top: 1rem;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .stack-container {
+        margin-top: 2rem;
+      }
+
+      .card:nth-child(n) {
+        position: relative;
+        top: 0 !important;
+        z-index: 1;
+      }
+
+      #eventNavbar.fixed ~ .stack-container .card:nth-child(n) {
+        top: 0 !important;
+      }
+
+      #eventNavbar {
+        padding: 0.5rem;
+      }
+
+      #eventNavbar .nav-button {
+        padding: 0.4rem 0.8rem;
+        font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+      }
+
+      #heroCarousel {
+        width: 100%;
+      }
+
+      #heroCarousel > div {
+        width: 100%;
+      }
+
+      #hero .text-5xl {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+      }
+
+      #hero .text-2xl {
+        font-size: clamp(1rem, 4vw, 1.2rem);
+      }
+
+      .gallery-item {
+        max-width: 200px;
+      }
+
+      #offcanvas {
+        width: 100%;
+        max-width: none;
+      }
+
+      .iso img {
+        width: 80%;
+        max-width: 300px;
+      }
+
+      .iso .para {
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      header img {
+        height: 100px;
+      }
+
+      #head {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        text-align: center;
+      }
+
+      nav .flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      nav .max-w-7xl {
+        padding: 0.5rem;
+      }
+
+      .dropdown-menu {
+        width: 100%;
+        text-align: center;
+      }
+
+      .customer-carousel  {
+        width: 32%;
+      }
+
+      .customer-carousel .flex {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body class="bg-white font-sans text-gray-800">
-
   <!-- Header -->
-  <header class="flex items-center justify-center py-4 text-white">
-    <img src="./image/Location Pin Celebration Design.png" alt="HappeningHub Logo" class="h-32 pt-2" />
-    <h1 id="head" class=" text-white ">HappeningHub</h1>
+  <header class="flex flex-col md:flex-row items-center justify-center py-4 text-white">
+    <img src="./image/Location Pin Celebration Design.png" alt="HappeningHub Logo" class="h-24 md:h-32 pt-2" />
+    <h1 id="head" class="text-white">HappeningHub</h1>
   </header>
 
   <!-- Navbar -->
   <nav class="bg-black bg-opacity-60 backdrop-blur sticky top-0 z-50 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
-      <div class="flex space-x-6 items-center">
-         <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Home</a>
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center h-auto md:h-16 py-2">
+      <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 items-center">
+        <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Home</a>
         <div class="relative">
           <button onclick="toggleDropdown()" class="text-white px-3 py-2 flex items-center hover:bg-gray-700 rounded text-sm font-medium">
             Events
@@ -290,16 +327,16 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
-          <div id="dropdownMenu" class="absolute hidden bg-black text-white rounded shadow mt-2 w-48">
+          <div id="dropdownMenu" class="absolute hidden bg-black text-white rounded shadow mt-2 w-48 md:w-48">
             <a href="#mar" class="block px-4 py-2 hover:bg-gray-700">Marriage</a>
             <a href="#bir" class="block px-4 py-2 hover:bg-gray-700">Birthday</a>
             <a href="#con" class="block px-4 py-2 hover:bg-gray-700">Concert</a>
             <a href="#cor" class="block px-4 py-2 hover:bg-gray-700">Corporate Events</a>
           </div>
         </div>
-         <a href="#blog" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Blog</a>
+        <a href="#blog" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Blog</a>
       </div>
-      <div class="flex space-x-4 items-center">
+      <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 items-center">
         <a href="./log_in.html" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign In</a>
         <a href="./signup.html" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Sign Up</a>
         <button onclick="toggleOffcanvas()" class="text-white hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium">Contact Us</button>
@@ -309,17 +346,17 @@
   </nav>
 
   <!-- HERO VIDEO CAROUSEL -->
-  <section class="relative h-screen overflow-hidden" id="hero">
-    <div id="heroCarousel" class="flex transition-transform duration-700 ease-in-out h-full w-[400%]">
+  <section class="relative h-[60vh] md:h-screen overflow-hidden" id="hero">
+    <div id="heroCarousel" class="flex transition-transform duration-700 ease-in-out h-full w-[400%] md:w-[400%]">
       <div class="w-full h-full relative">
         <video autoplay muted loop playsinline class="absolute w-full h-full object-cover">
           <source src="./landingvedios/concert.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <div class="text-white text-center p-8">
-            <h1 class="text-5xl font-bold mb-4">Rainy Concert Vibes</h1>
-            <p class="text-2xl">Feel the energy of every drop and beat.</p>
+          <div class="text-white text-center p-4 md:p-8">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Rainy Concert Vibes</h1>
+            <p class="text-lg md:text-2xl">Feel the energy of every drop and beat.</p>
           </div>
         </div>
       </div>
@@ -329,9 +366,9 @@
           Your browser does not support the video tag.
         </video>
         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <div class="text-white text-center p-8">
-            <h1 class="text-5xl font-bold mb-4">Elegant Wedding Moments</h1>
-            <p class="text-2xl">We make your big day unforgettable.</p>
+          <div class="text-white text-center p-4 md:p-8">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Elegant Wedding Moments</h1>
+            <p class="text-lg md:text-2xl">We make your big day unforgettable.</p>
           </div>
         </div>
       </div>
@@ -341,9 +378,9 @@
           Your browser does not support the video tag.
         </video>
         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <div class="text-white text-center p-8">
-            <h1 class="text-5xl font-bold mb-4">Corporate Excellence</h1>
-            <p class="text-2xl">From seminars to success stories.</p>
+          <div class="text-white text-center p-4 md:p-8">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Corporate Excellence</h1>
+            <p class="text-lg md:text-2xl">From seminars to success stories.</p>
           </div>
         </div>
       </div>
@@ -353,9 +390,9 @@
           Your browser does not support the video tag.
         </video>
         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <div class="text-white text-center p-8">
-            <h1 class="text-5xl font-bold mb-4">Magical Birthday Celebrations</h1>
-            <p class="text-2xl">Celebrate your day, your way – we make it unforgettable!</p>
+          <div class="text-white text-center p-4 md:p-8">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Magical Birthday Celebrations</h1>
+            <p class="text-lg md:text-2xl">Celebrate your day, your way – we make it unforgettable!</p>
           </div>
         </div>
       </div>
@@ -365,31 +402,27 @@
   <!-- New Gray Bar Section -->
   <section id="sup" class="bg-black bg-opacity-60 backdrop-blur text-white py-4 shadow-md">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold">Here &nbsp; We &nbsp; Make  &nbsp;Your &nbsp; Dreams &nbsp;  Happen</h2>
+      <h2 class="text-xl md:text-2xl font-bold">Here We Make Your Dreams Happen</h2>
     </div>
   </section>
 
+  <!-- ISO Certified -->
   <section class="mt-6 mb-4">
-    <!-- ISO Certified -->
-    <div class="iso flex flex-col items-center justify-center text-center bg-white bg-opacity-40 w-full h-auto">
-      <img src="MarriageEvent/width_600-removebg-preview-e1746788098745.webp" alt="ISO Certified Logo" class="mb-4">
-      <h2 class="head-title">
+    <div class="iso flex flex-col items-center justify-center text-center bg-white bg-opacity-40 w-full h-auto px-4">
+      <img src="MarriageEvent/width_600-removebg-preview-e1746788098745.webp" alt="ISO Certified Logo" class="mb-4 w-full max-w-xs md:max-w-sm">
+      <h2 class="head-title text-xl md:text-2xl font-bold">
         ISO 9001:2015 CERTIFIED
       </h2>
       <div class="second-title">
         EVENT MANAGEMENT COMPANY IN KERALA
-        <p class="para text-gray-900 text-base md:text-lg leading-relaxed mt-6 mx-4">Have you ever dreamed of planning
+        <p class="para text-gray-900 text-sm md:text-base leading-relaxed mt-4 mx-2">Have you ever dreamed of planning
           the perfect event that will be remembered forever? Look no further than Happening Hub®
           Events, the top-notch event management company in Kerala, India, that has everything you need to make your
-          occasion an
-          unforgettable experience. We make everything from corporate event planning and personal celebrations to even
-          small
-          customized event packages absolutely memorable! Contact us today to learn more about our services and how we
-          can help
-          you organize the top event management in Kerala.</p>
-
+          occasion an unforgettable experience. We make everything from corporate event planning and personal celebrations to even
+          small customized event packages absolutely memorable! Contact us today to learn more about our services and how we
+          can help you organize the top event management in Kerala.</p>
         <div class="flex justify-center my-6">
-          <img src="MarriageEvent/underline.svg" class="w-48 md:w-60 lg:w-72" alt="underline">
+          <img src="MarriageEvent/underline.svg" class="w-32 md:w-48 lg:w-60" alt="underline">
         </div>
       </div>
     </div>
@@ -398,11 +431,11 @@
   <!-- Event Section -->
   <section id="eventSection">
     <div class="flex justify-center">
-      <h2 class="font-bold text-4xl text-gray-800 uppercase tracking-wide mb-4 border-b-2 border-blue-500 pb-2">
+      <h2 class="font-bold text-2xl md:text-4xl text-gray-800 uppercase tracking-wide mb-4 border-b-2 border-blue-500 pb-2">
         Event Gallery
       </h2>
     </div>
-    <div id="eventNavbar" class="bg-white text-black flex justify-center space-x-4 p-4 z-45">
+    <div id="eventNavbar" class="bg-white text-black flex justify-center space-x-2 md:space-x-4 p-2 md:p-4 z-45 flex-wrap">
       <button id="con" class="nav-button" data-section="card1">Concert</button>
       <button id="mar" class="nav-button" data-section="card2">Marriage</button>
       <button id="bir" class="nav-button" data-section="card3">Birthday</button>
@@ -412,14 +445,14 @@
     <div class="stack-container">
       <!-- Card 1 -->
       <div class="card" id="card1" onclick="window.location.href='./concert.html'">
-        <div class="flex justify-between items-start">
-          <div>
+        <div class="flex flex-col md:flex-row justify-between items-start">
+          <div class="w-full md:w-1/2">
             <div class="flex items-center space-x-4">
               <span class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-gray-500">01</span>
-              <h2 class="text-2xl font-bold">Concert Event Management</h2>
+              <h2 class="text-xl md:text-2xl font-bold">Concert Event Management</h2>
             </div>
-            <p class="mt-4 text-gray-600">Experience electrifying concerts with seamless planning and execution, ensuring every beat resonates with your audience.</p>
-            <ul class="mt-4 space-y-2 text-gray-700">
+            <p class="mt-4 text-gray-600 text-sm md:text-base">Experience electrifying concerts with seamless planning and execution, ensuring every beat resonates with your audience.</p>
+            <ul class="mt-4 space-y-2 text-gray-700 text-sm md:text-base">
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate with artists and sound engineers</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Plan stage setup and lighting design</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage crowd control and safety protocols</li>
@@ -429,10 +462,10 @@
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Provide real-time event monitoring</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange post-concert merchandise sales</li>
             </ul>
-            <button class="mt-4 bg-blue-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-blue-600 cursor-pointer">Book Now</button>
+            <button class="mt-4 bg-blue-500 text-white font-semibold px-4 md:px-6 py-2 rounded-full hover:bg-blue-600 cursor-pointer">Book Now</button>
           </div>
-          <div class="popup bg-blue-500">
-            <h2 class="text-2xl font-bold text-white mb-4">Concert Highlights</h2>
+          <div class="popup bg-blue-500 mt-4 md:mt-0">
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-4">Concert Highlights</h2>
             <div class="image-carousel" id="carousel1">
               <div class="image-carousel-inner">
                 <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Concert 1">
@@ -446,14 +479,14 @@
 
       <!-- Card 2 -->
       <div class="card" id="card2" onclick="window.location.href='./Marriage.html'">
-        <div class="flex justify-between items-start">
-          <div>
+        <div class="flex flex-col md:flex-row justify-between items-start">
+          <div class="w-full md:w-1/2">
             <div class="flex items-center space-x-4">
               <span class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-gray-500">02</span>
-              <h2 class="text-2xl font-bold">Marriage Event Management</h2>
+              <h2 class="text-xl md:text-2xl font-bold">Marriage Event Management</h2>
             </div>
-            <p class="mt-4 text-gray-600">Create your dream wedding with our meticulous planning, turning your special day into a timeless celebration.</p>
-            <ul class="mt-4 space-y-2 text-gray-700">
+            <p class="mt-4 text-gray-600 text-sm md:text-base">Create your dream wedding with our meticulous planning, turning your special day into a timeless celebration.</p>
+            <ul class="mt-4 space-y-2 text-gray-700 text-sm md:text-base">
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Plan wedding ceremonies and receptions</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate with vendors for decor and catering</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage guest lists and RSVPs</li>
@@ -463,10 +496,10 @@
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange transportation for guests and couple</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Offer post-wedding event planning</li>
             </ul>
-            <button class="mt-4 bg-green-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-green-600 cursor-pointer">Book Now</button>
+            <button class="mt-4 bg-green-500 text-white font-semibold px-4 md:px-6 py-2 rounded-full hover:bg-green-600 cursor-pointer">Book Now</button>
           </div>
-          <div class="popup bg-green-500">
-            <h2 class="text-2xl font-bold text-white mb-4">Wedding Moments</h2>
+          <div class="popup bg-green-500 mt-4 md:mt-0">
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-4">Wedding Moments</h2>
             <div class="image-carousel" id="carousel2">
               <div class="image-carousel-inner">
                 <img src="https://cdn0.weddingwire.in/article/3713/3_2/1280/jpg/63173-marriage-images-rituals-wedding-photography-lead-image.webp" alt="Wedding 1">
@@ -480,14 +513,14 @@
 
       <!-- Card 3 -->
       <div class="card" id="card3" onclick="window.location.href='./birthdaybooking.html'">
-        <div class="flex justify-between items-start">
-          <div>
+        <div class="flex flex-col md:flex-row justify-between items-start">
+          <div class="w-full md:w-1/2">
             <div class="flex items-center space-x-4">
               <span class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-gray-500">03</span>
-              <h2 class="text-2xl font-bold">Birthday Event Management</h2>
+              <h2 class="text-xl md:text-2xl font-bold">Birthday Event Management</h2>
             </div>
-            <p class="mt-4 text-gray-600">Celebrate milestones with joy and creativity, tailored to make every birthday unforgettable for all ages.</p>
-            <ul class="mt-4 space-y-2 text-gray-700">
+            <p class="mt-4 text-gray-600 text-sm md:text-base">Celebrate milestones with joy and creativity, tailored to make every birthday unforgettable for all ages.</p>
+            <ul class="mt-4 space-y-2 text-gray-700 text-sm md:text-base">
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Plan themed birthday parties</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange entertainment and activities</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate catering and cake services</li>
@@ -497,10 +530,10 @@
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Arrange interactive games and workshops</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Offer professional photography services</li>
             </ul>
-            <button class="mt-4 bg-purple-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-purple-600 cursor-pointer">Book Now</button>
+            <button class="mt-4 bg-purple-500 text-white font-semibold px-4 md:px-6 py-2 rounded-full hover:bg-purple-600 cursor-pointer">Book Now</button>
           </div>
-          <div class="popup bg-purple-500">
-            <h2 class="text-2xl font-bold text-white mb-4">Birthday Events</h2>
+          <div class="popup bg-purple-500 mt-4 md:mt-0">
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-4">Birthday Events</h2>
             <div class="image-carousel" id="carousel3">
               <div class="image-carousel-inner">
                 <img src="./landingvedios/bir.jpg" alt="Birthday 1">
@@ -514,14 +547,14 @@
 
       <!-- Card 4 -->
       <div class="card" id="card4" onclick="window.location.href='/book/corporate'">
-        <div class="flex justify-between items-start">
-          <div>
+        <div class="flex flex-col md:flex-row justify-between items-start">
+          <div class="w-full md:w-1/2">
             <div class="flex items-center space-x-4">
               <span class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-gray-500">04</span>
-              <h2 class="text-2xl font-bold">Corporate Event Management</h2>
+              <h2 class="text-xl md:text-2xl font-bold">Corporate Event Management</h2>
             </div>
-            <p class="mt-4 text-gray-600">Elevate your business events with professional planning, fostering networking and brand success.</p>
-            <ul class="mt-4 space-y-2 text-gray-700">
+            <p class="mt-4 text-gray-600 text-sm md:text-base">Elevate your business events with professional planning, fostering networking and brand success.</p>
+            <ul class="mt-4 space-y-2 text-gray-700 text-sm md:text-base">
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Organize professional conferences and seminars</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate venue setup and AV equipment</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Manage speaker schedules and presentations</li>
@@ -531,10 +564,10 @@
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Coordinate catering for professional settings</li>
               <li class="flex items-center"><span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Offer virtual event integration options</li>
             </ul>
-            <button class="mt-4 bg-red-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-red-600 cursor-pointer">Book Now</button>
+            <button class="mt-4 bg-red-500 text-white font-semibold px-4 md:px-6 py-2 rounded-full hover:bg-red-600 cursor-pointer">Book Now</button>
           </div>
-          <div class="popup bg-red-500">
-            <h2 class="text-2xl font-bold text-white mb-4">Corporate Events</h2>
+          <div class="popup bg-red-500 mt-4 md:mt-0">
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-4">Corporate Events</h2>
             <div class="image-carousel" id="carousel4">
               <div class="image-carousel-inner">
                 <img src="https://cdn.pixabay.com/photo/2023/01/02/21/11/conference-7693055_1280.jpg" alt="Corporate 1">
@@ -549,10 +582,10 @@
   </section>
 
   <!-- Portfolio/Gallery Section -->
-  <section class="py-16 bg-white" id="portfolio">
+  <section class="py-8 md:py-16 bg-white" id="portfolio">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Past Events Showcase</h2>
-      <div class="flex justify-center space-x-4 mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-800">Past Events Showcase</h2>
+      <div class="flex justify-center space-x-2 md:space-x-4 mb-8 flex-wrap">
         <button class="gallery-tab bg-gray-200 text-gray-800" data-tab="concert">Concerts</button>
         <button class="gallery-tab bg-gray-200 text-gray-800" data-tab="wedding">Weddings</button>
         <button class="gallery-tab bg-gray-200 text-gray-800" data-tab="birthday">Birthdays</button>
@@ -580,7 +613,7 @@
             <div class="gallery-overlay"><span>Concert Highlights</span></div>
           </div>
           <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbb735d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Concert 4">
+            <img src="https://wallup.net/wp-content/uploads/2019/09/08/737614-metallica-thrash-metal-heavy-rock-concert-guitar-748x421.jpg" alt="Concert 4">
             <div class="gallery-overlay"><span>Rock Concert</span></div>
           </div>
         </div>
@@ -605,7 +638,7 @@
             <div class="gallery-overlay"><span>Reception Moment</span></div>
           </div>
           <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fef5cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Wedding 4">
+            <img src="https://assets.easyweddings.com/files/2024/03/17120632/camille-abbott-marriage-celebrant-supplierprofilelive-photo-c347e6cb-1c2f-4fd8-a627-cb229a286a4a-1400x933.webp" alt="Wedding 4">
             <div class="gallery-overlay"><span>Romantic Vows</span></div>
           </div>
         </div>
@@ -664,57 +697,57 @@
   </section>
 
   <!-- Customer Blog Section -->
-  <section class="py-16 bg-white" id="blog">
+  <section class="py-8 md:py-16 bg-white" id="blog">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Customer Blog & Reviews</h2>
-      <div class="bg-gray-100 p-6 rounded-lg shadow-md mb-12 max-w-2xl mx-auto">
-        <h3 class="text-xl font-semibold mb-4 text-gray-700">Share Your Experience</h3>
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-800">Customer Blog & Reviews</h2>
+      <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow-md mb-8 md:mb-12 max-w-xl mx-auto">
+        <h3 class="text-lg md:text-xl font-semibold mb-4 text-gray-700">Share Your Experience</h3>
         <form>
-          <input type="text" placeholder="Name" class="w-full mb-4 px-4 py-2 border rounded" />
-          <textarea placeholder="Write your review..." class="w-full mb-4 px-4 py-2 border rounded h-28"></textarea>
-          <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">Post Review</button>
+          <input type="text" placeholder="Name" class="w-full mb-4 px-3 py-2 border rounded text-sm md:text-base" />
+          <textarea placeholder="Write your review..." class="w-full mb-4 px-3 py-2 border rounded h-24 md:h-28 text-sm md:text-base"></textarea>
+          <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 text-sm md:text-base">Post Review</button>
         </form>
       </div>
       <div class="relative overflow-hidden">
-        <div id="customerCarousel" class="flex transition-transform duration-500 ease-in-out space-x-6">
-          <div class="flex space-x-6 min-w-full">
-            <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
-              <img src="https://i.pravatar.cc/80?img=1" alt="profile" class="w-16 h-16 rounded-full mb-3">
-              <h4 class="font-bold text-purple-600 mb-1">Aarav S.</h4>
-              <div class="text-yellow-400 mb-2">★★★★☆</div>
-              <p class="text-gray-700 italic">"The concert setup was top-tier. Sound and stage lighting were spot on!"</p>
+        <div id="customerCarousel" class="flex transition-transform duration-500 ease-in-out space-x-4 md:space-x-6">
+          <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 min-w-full">
+            <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow w-full md:w-1/3 flex flex-col items-center text-center">
+              <img src="https://i.pravatar.cc/80?img=1" alt="profile" class="w-12 md:w-16 h-12 md:h-16 rounded-full mb-3">
+              <h4 class="font-bold text-purple-600 mb-1 text-sm md:text-base">Aarav S.</h4>
+              <div class="text-yellow-400 mb-2 text-sm">★★★★☆</div>
+              <p class="text-gray-700 italic text-sm md:text-base">"The concert setup was top-tier. Sound and stage lighting were spot on!"</p>
             </div>
-            <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
-              <img src="https://i.pravatar.cc/80?img=2" alt="profile" class="w-16 h-16 rounded-full mb-3">
-              <h4 class="font-bold text-purple-600 mb-1">Nisha R.</h4>
-              <div class="text-yellow-400 mb-2">★★★★★</div>
-              <p class="text-gray-700 italic">"Our wedding was magical, thanks to the wonderful planning team!"</p>
+            <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow w-full md:w-1/3 flex flex-col items-center text-center">
+              <img src="https://i.pravatar.cc/80?img=2" alt="profile" class="w-12 md:w-16 h-12 md:h-16 rounded-full mb-3">
+              <h4 class="font-bold text-purple-600 mb-1 text-sm md:text-base">Nisha R.</h4>
+              <div class="text-yellow-400 mb-2 text-sm">★★★★★</div>
+              <p class="text-gray-700 italic text-sm md:text-base">"Our wedding was magical, thanks to the wonderful planning team!"</p>
             </div>
-            <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
-              <img src="https://i.pravatar.cc/80?img=3" alt="profile" class="w-16 h-16 rounded-full mb-3">
-              <h4 class="font-bold text-purple-600 mb-1">Karan V.</h4>
-              <div class="text-yellow-400 mb-2">★★★★☆</div>
-              <p class="text-gray-700 italic">"I loved how professional everything was for our corporate event."</p>
+            <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow w-full md:w-1/3 flex flex-col items-center text-center">
+              <img src="https://i.pravatar.cc/80?img=3" alt="profile" class="w-12 md:w-16 h-12 md:h-16 rounded-full mb-3">
+              <h4 class="font-bold text-purple-600 mb-1 text-sm md:text-base">Karan V.</h4>
+              <div class="text-yellow-400 mb-2 text-sm">★★★★☆</div>
+              <p class="text-gray-700 italic text-sm md:text-base">"I loved how professional everything was for our corporate event."</p>
             </div>
           </div>
-          <div class="flex space-x-6 min-w-full">
-            <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
-              <img src="https://i.pravatar.cc/80?img=4" alt="profile" class="w-16 h-16 rounded-full mb-3">
-              <h4 class="font-bold text-purple-600 mb-1">Meena T.</h4>
-              <div class="text-yellow-400 mb-2">★★★★★</div>
-              <p class="text-gray-700 italic">"My son’s birthday party turned out amazing. Highly recommend!"</p>
+          <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 min-w-full">
+            <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow w-full md:w-1/3 flex flex-col items-center text-center">
+              <img src="https://i.pravatar.cc/80?img=4" alt="profile" class="w-12 md:w-16 h-12 md:h-16 rounded-full mb-3">
+              <h4 class="font-bold text-purple-600 mb-1 text-sm md:text-base">Meena T.</h4>
+              <div class="text-yellow-400 mb-2 text-sm">★★★★★</div>
+              <p class="text-gray-700 italic text-sm md:text-base">"My son’s birthday party turned out amazing. Highly recommend!"</p>
             </div>
-            <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
-              <img src="https://i.pravatar.cc/80?img=5" alt="profile" class="w-16 h-16 rounded-full mb-3">
-              <h4 class="font-bold text-purple-600 mb-1">Ajay G.</h4>
-              <div class="text-yellow-400 mb-2">★★★★☆</div>
-              <p class="text-gray-700 italic">"They made our anniversary event memorable. Beautiful decor!"</p>
+            <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow w-full md:w-1/3 flex flex-col items-center text-center">
+              <img src="https://i.pravatar.cc/80?img=5" alt="profile" class="w-12 md:w-16 h-12 md:h-16 rounded-full mb-3">
+              <h4 class="font-bold text-purple-600 mb-1 text-sm md:text-base">Ajay G.</h4>
+              <div class="text-yellow-400 mb-2 text-sm">★★★★☆</div>
+              <p class="text-gray-700 italic text-sm md:text-base">"They made our anniversary event memorable. Beautiful decor!"</p>
             </div>
-            <div class="bg-gray-100 p-6 rounded-lg shadow w-1/3 flex flex-col items-center text-center">
-              <img src="https://i.pravatar.cc/80?img=6" alt="profile" class="w-16 h-16 rounded-full mb-3">
-              <h4 class="font-bold text-purple-600 mb-1">Sneha M.</h4>
-              <div class="text-yellow-400 mb-2">★★★★☆</div>
-              <p class="text-gray-700 italic">"Excellent customer service and attention to detail!"</p>
+            <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow w-full md:w-1/3 flex flex-col items-center text-center">
+              <img src="https://i.pravatar.cc/80?img=6" alt="profile" class="w-12 md:w-16 h-12 md:h-16 rounded-full mb-3">
+              <h4 class="font-bold text-purple-600 mb-1 text-sm md:text-base">Sneha M.</h4>
+              <div class="text-yellow-400 mb-2 text-sm">★★★★☆</div>
+              <p class="text-gray-700 italic text-sm md:text-base">"Excellent customer service and attention to detail!"</p>
             </div>
           </div>
         </div>
@@ -725,11 +758,11 @@
   </section>
 
   <!-- Call to Action -->
-  <section class="call-to-action text-white py-16">
-    <div class="max-w-4xl mx-auto text-center px-6">
-      <h2 class="text-3xl font-bold mb-4">Ready to Plan Your Next Big Event?</h2>
-      <p class="mb-6">Let our team turn your vision into a spectacular reality. Get in touch today.</p>
-      <button onclick="toggleOffcanvas()" class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-200">
+  <section class="call-to-action text-white py-8 md:py-16">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="text-xl md:text-3xl font-bold mb-4">Ready to Plan Your Next Big Event?</h2>
+      <p class="mb-6 text-sm md:text-base">Let our team turn your vision into a spectacular reality. Get in touch today.</p>
+      <button onclick="toggleOffcanvas()" class="bg-white text-indigo-600 font-semibold px-4 md:px-6 py-2 md:py-3 rounded shadow hover:bg-gray-200">
         Contact Us
       </button>
     </div>
@@ -737,31 +770,31 @@
 
   <!-- Offcanvas Contact Form -->
   <div id="offcanvas" class="fixed inset-y-0 right-0 bg-white shadow transform translate-x-full transition-transform duration-300 z-50">
-    <div class="p-6">
+    <div class="p-4 md:p-6">
       <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold">Contact Us</h2>
+        <h2 class="text-xl md:text-2xl font-bold">Contact Us</h2>
         <button onclick="toggleOffcanvas()" class="text-gray-600 hover:text-black">✕</button>
       </div>
-      <dotlottie-wc src="https://lottie.host/6616aa76-62ba-4216-a456-7fa6761c0698/HhW1E558Nx.lottie" style="width: 300px; height: 300px" speed="1" autoplay loop></dotlottie-wc>
+      <dotlottie-wc src="https://lottie.host/6616aa76-62ba-4216-a456-7fa6761c0698/HhW1E558Nx.lottie" style="width: 100%; max-width: 300px; height: auto" speed="1" autoplay loop></dotlottie-wc>
       <form>
-        <input type="text" placeholder="Name" class="w-full mb-4 px-3 py-2 border rounded" />
-        <input type="email" placeholder="Email" class="w-full mb-4 px-3 py-2 border rounded" />
-        <textarea placeholder="Message" class="w-full mb-4 px-3 py-2 border rounded"></textarea>
-        <button type="button" class="w-full bg-black text-white py-2 rounded hover:bg-gray-800">Send</button>
+        <input type="text" placeholder="Name" class="w-full mb-4 px-3 py-2 border rounded text-sm md:text-base" />
+        <input type="email" placeholder="Email" class="w-full mb-4 px-3 py-2 border rounded text-sm md:text-base" />
+        <textarea placeholder="Message" class="w-full mb-4 px-3 py-2 border rounded h-24 md:h-32 text-sm md:text-base"></textarea>
+        <button type="button" class="w-full bg-black text-white py-2 rounded hover:bg-gray-800 text-sm md:text-base">Send</button>
       </form>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-black text-white py-12">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+  <footer class="bg-black text-white py-8 md:py-12">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       <div>
-        <h3 class="text-xl font-bold mb-2">HappeningHub</h3>
-        <p>Your one-stop solution for unforgettable events. We make it happen!</p>
+        <h3 class="text-lg md:text-xl font-bold mb-2">HappeningHub</h3>
+        <p class="text-sm md:text-base">Your one-stop solution for unforgettable events. We make it happen!</p>
       </div>
       <div>
-        <h3 class="text-xl font-bold mb-2">Quick Links</h3>
-        <ul class="space-y-1">
+        <h3 class="text-lg md:text-xl font-bold mb-2">Quick Links</h3>
+        <ul class="space-y-1 text-sm md:text-base">
           <li><a href="#" class="hover:underline">Home</a></li>
           <li><a href="#" class="hover:underline">Services</a></li>
           <li><a href="#" class="hover:underline">Gallery</a></li>
@@ -769,7 +802,7 @@
         </ul>
       </div>
       <div>
-        <h3 class="text-xl font-bold mb-2">Follow Us</h3>
+        <h3 class="text-lg md:text-xl font-bold mb-2">Follow Us</h3>
         <div class="flex space-x-4">
           <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook--v1.png"/></a>
           <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"/></a>
@@ -777,12 +810,12 @@
         </div>
       </div>
     </div>
-    <div class="text-center text-gray-400 mt-6 text-sm">© 2025 HappeningHub. All rights reserved.</div>
+    <div class="text-center text-gray-400 mt-6 text-xs md:text-sm">© 2025 HappeningHub. All rights reserved.</div>
   </footer>
 
   <!-- JS -->
   <script>
-    // Debounce function to limit scroll event frequency
+    // Debounce function
     function debounce(func, wait) {
       let timeout;
       return function executedFunction(...args) {
@@ -863,8 +896,7 @@
       const lastCard = cards[cards.length - 1];
       const eventRect = eventSection.getBoundingClientRect();
       const lastCardRect = lastCard.getBoundingClientRect();
-      const offset = 64;
-      const gap = 10;
+      const offset = 0;
 
       if (eventRect.top <= offset && lastCardRect.bottom > offset + 50) {
         eventNavbar.classList.add('fixed');
